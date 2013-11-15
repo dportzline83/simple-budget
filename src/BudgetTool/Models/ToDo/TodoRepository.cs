@@ -4,11 +4,12 @@ using System.Data.Entity.Infrastructure;
 using System.Security;
 using System.Security.Principal;
 using Breeze.WebApi;
+using BudgetTool.Models.Budget;
 
 // ReSharper disable InconsistentNaming
 namespace BudgetTool.Models
 {
-    public class TodoRepository : EFContextProvider<TodoItemContext>
+    public class TodoRepository : EFContextProvider<BudgetContext>
     {
         public TodoRepository(IPrincipal user)
         {
@@ -77,11 +78,11 @@ namespace BudgetTool.Models
         // for db access during custom save validation. 
         // See this stackoverflow question and reply for an explanation:
         // http://stackoverflow.com/questions/14517945/using-this-context-inside-beforesaveentity
-        private TodoItemContext ValidationContext
+        private BudgetContext ValidationContext
         {
-            get { return _validationContext ?? (_validationContext = new TodoItemContext()); }
+            get { return _validationContext ?? (_validationContext = new BudgetContext()); }
         }
-        private TodoItemContext _validationContext;
+        private BudgetContext _validationContext;
 
         private bool throwCannotSaveEntityForThisUser()
         {

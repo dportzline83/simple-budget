@@ -227,7 +227,6 @@
     <Compile Include="Models\Budget\Category.cs" />
     <Compile Include="Models\ToDo\TodoList.cs" />
     <Compile Include="Models\ToDo\TodoItem.cs" />
-    <Compile Include="Models\ToDo\TodoItemContext.cs" />
     <Compile Include="Models\ToDo\TodoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -301,6 +300,7 @@
     <Content Include="Views\Home\_Authentication.cshtml" />
     <Content Include="Views\Home\_Login.cshtml" />
     <Content Include="Views\Home\_Register.cshtml" />
+    <Content Include="Views\Home\Budget.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

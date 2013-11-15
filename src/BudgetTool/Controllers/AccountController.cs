@@ -4,6 +4,7 @@ using System.Linq;
 using System.Transactions;
 using System.Web.Mvc;
 using System.Web.Security;
+using BudgetTool.Models.Budget;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
@@ -88,7 +89,7 @@ namespace BudgetTool.Controllers
         /// <param name="userName"></param>
         private static void InitiateDatabaseForNewUser(string userName)
         {
-            TodoItemContext db = new TodoItemContext();
+            BudgetContext db = new BudgetContext();
             TodoList todoList = new TodoList();
             todoList.UserId = userName;
             todoList.Title = "My Todo List #1";

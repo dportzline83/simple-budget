@@ -13,14 +13,27 @@ budget.controller('BudgetController',
             logger.log("creating the budget controller");
 
             $scope.budgets = [];
+            $scope.error = "";
             $scope.getBudgets = getBudgets;
 
             $scope.getBudgets();
-            
+
             function getBudgets() {
                 datacontext.getBudgets()
                     .then(getSucceeded).fail(failed)
                     .fin(refreshView);
+            }
+
+            function getSucceeded(data) {
+                $scope.budgets = data;
+            }
+
+            function failed(error) {
+                $scope.error = error.message;
+            }
+
+            function refreshView() {
+                $scope.$apply();
             }
         }
     ]);

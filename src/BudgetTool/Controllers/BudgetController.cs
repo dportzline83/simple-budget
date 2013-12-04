@@ -34,7 +34,7 @@ namespace BudgetTool.Controllers
             return _repository.SaveChanges(saveBundle);
         }
 
-        // GET ~/api/Budget/TodoList
+        // GET ~/api/Budget/Budgets
         [HttpGet]
         public IQueryable<Budget> Budgets()
         {

@@ -252,6 +252,7 @@
     <Content Include="Scripts\breeze.min.js" />
     <Content Include="Scripts\Budget\budget-datacontext.js" />
     <Content Include="Scripts\Budget\budget-main.js" />
+    <Content Include="Scripts\Budget\budget.view.html" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

@@ -7,22 +7,22 @@
     {
         string cookieToken, formToken;
         AntiForgery.GetTokens(null, out cookieToken, out formToken);
-        return cookieToken + ":" + formToken;                
+        return cookieToken + ":" + formToken;
     }
 }
 
 <header>
     <h1>@ViewBag.Title</h1>
 </header>
-<div id="main-content" data-ng-app="todo">
-@if (@User.Identity.IsAuthenticated)
-{
-    <div data-ng-view></div> <!-- The SPA Views go here -->   
-}
-else
-{
-    @Html.Partial("_Authentication")
-}
+<div id="main-content" data-ng-app="budget">
+    @if (@User.Identity.IsAuthenticated)
+    {
+        <div data-ng-view></div> <!-- The SPA Views go here -->   
+    }
+    else
+    {
+        @Html.Partial("_Authentication")
+    }
 </div>
 
 @if (@User.Identity.IsAuthenticated)
@@ -33,5 +33,6 @@ else
         @Scripts.Render("~/bundles/angular")
         @Scripts.Render("~/bundles/breeze")
         @Scripts.Render("~/bundles/todo")
+        @Scripts.Render("~/bundles/budget")
     }
 }

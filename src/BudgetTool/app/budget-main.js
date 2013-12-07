@@ -2,12 +2,12 @@
 
 budget.value('breeze', window.breeze)
     .value('Q', window.Q);
-budget.config(['routeProvider', function ($routeProvider) {
+budget.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
-        .when('/budgets', { templateUrl: 'Scripts/Budget/budget.view.html', controller: 'BudgetController' });
+        .when('/home/budget', { templateUrl: 'app/budget.view.html', controller: 'BudgetCtrl' });
 }]);
 
-budget.controller('BudgetController',
+budget.controller('BudgetCtrl',
     ['$scope', 'breeze', 'datacontext', 'logger',
         function ($scope, breeze, datacontext, logger) {
             logger.log("creating the budget controller");

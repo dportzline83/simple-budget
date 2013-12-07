@@ -11,3 +11,9 @@
 <div data-ng-app="budget">
     <div data-ng-view></div>
 </div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/breeze")
+    @Scripts.Render("~/bundles/budget")
+}

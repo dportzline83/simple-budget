@@ -41,7 +41,9 @@ namespace BudgetTool
 
             bundles.Add(new ScriptBundle("~/bundles/budget").Include(
                     "~/app/budget-main.js",
-                    "~/app/budget-datacontext.js"
+                    "~/app/budget-model.js",
+                    "~/app/budget-datacontext.js",
+                    "~/app/budget-controller.js"
                 ));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're

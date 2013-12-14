@@ -12,11 +12,11 @@ todo.value('breeze', window.breeze)
 
 // Configure routes
 todo.config(['$routeProvider', function ($routeProvider) {
-      $routeProvider.
-          when('/', { templateUrl: 'app/todo.view.html', controller: 'TodoCtrl' }).
-          when('/about', { templateUrl: 'app/about.view.html', controller: 'AboutCtrl' }).
-          otherwise({ redirectTo: '/' });
-  }]);
+    $routeProvider.
+        when('/', { templateUrl: 'app/todo.view.html', controller: 'TodoCtrl' }).
+        when('/about', { templateUrl: 'app/about.view.html', controller: 'AboutCtrl' });
+    //otherwise({ redirectTo: '/' });
+}]);
 
 //#region Ng directives
 /*  We extend Angular with custom data bindings written as Ng directives */

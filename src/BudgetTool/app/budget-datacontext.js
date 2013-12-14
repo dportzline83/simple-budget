@@ -1,8 +1,8 @@
 ﻿budget.factory('datacontext',
-    ['breeze', 'Q', 'model', 'logger', '$timeout',
-        function(breeze, Q, model, logger, $timeout) {
+    ['breeze', 'Q', 'model', '$timeout',
+        function(breeze, Q, model, $timeout) {
 
-            logger.log("creating budget datacontext");
+            //logger.log("creating budget datacontext");
             var initialized;
             configureBreeze();
 
@@ -37,8 +37,8 @@
             }
             
             function getSucceeded(data) {
-                var qType = data.XHR ? "remote" : "local";
-                logger.log(qType + " query succeeded");
+                //var qType = data.XHR ? "remote" : "local";
+                //logger.log(qType + " query succeeded");
                 return data.results;
             }
             
@@ -58,14 +58,14 @@
                 return manager.saveChanges().then(saveSucceeded).fail(saveFailed);
                 
                 function saveSucceeded() {
-                    logger.log("saved " + description);
+                    //logger.log("saved " + description);
                 }
                 function saveFailed(error) {
                     var msg = "Error saving " +
                         description + ": " +
                         getErrorMessage(error);
                     masterEntity.errorMessage = msg;
-                    logger.log(msg, 'error');
+                    //logger.log(msg, 'error');
                     // Let user see invalid value briefly before reverting
                     $timeout(function () { manager.rejectChanges(); }, 1000);
                     throw error; // so caller can see failure

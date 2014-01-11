@@ -6,7 +6,7 @@
             var initialized;
             configureBreeze();
 
-            var manager = new breeze.EntityManager("api/Budget");
+            var manager = new breeze.EntityManager("/api/Budget");
             manager.enableSaveQueuing(true);
 
             var datacontext = {

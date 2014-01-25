@@ -35,15 +35,15 @@ namespace BudgetTool
                 "~/app/todo.model.js",
                 "~/app/todo.datacontext.js",
                 "~/app/todo.controller.js",
-                "~/app/about.controller.js",
-                "~/app/about.logger.js"
+                "~/app/about.controller.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/budget").Include(
                     "~/app/budget-main.js",
                     "~/app/budget-model.js",
                     "~/app/budget-datacontext.js",
-                    "~/app/budget-controller.js"
+                    "~/app/budget-controller.js",
+                    "~/app/budget-logger.js"
                 ));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're

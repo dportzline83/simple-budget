@@ -8,3 +8,13 @@ budget.config(['$routeProvider', function ($routeProvider) {
     //.otherwise({ redirectTo: '/home/budget' });
 }]);
 
+budget.directive('onBlur', function() {
+  return {
+    restrict: 'A',
+    link: function(scope, elm, attrs) {
+      elm.bind('blur', function() {
+        scope.$apply(attrs.onBlur);
+      });
+    }
+  };
+});

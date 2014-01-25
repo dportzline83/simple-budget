@@ -235,6 +235,7 @@
     <Content Include="app\budget-controller.js" />
     <Content Include="app\budget-model.js" />
     <Content Include="app\budget.view.html" />
+    <Content Include="app\budget-logger.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />

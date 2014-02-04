@@ -5,17 +5,17 @@ budget.value('breeze', window.breeze)
 budget.config([
   '$routeProvider', function ($routeProvider) {
     $routeProvider
-      .when('/',
+      .when('/list',
       {
         templateUrl: '/app/budget.list.view.html',
         controller: 'BudgetsCtrl'
       })
-      .when('/detail',
+      .when('/details/:id',
       {
         templateUrl: '/app/budget.detail.view.html',
         controller: 'BudgetCtrl'
       })
-      .otherwise({ redirectTo: '/yougotredirected' });
+      .otherwise({ redirectTo: '/list' });
   }
 ]);
 

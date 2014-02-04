@@ -16,23 +16,19 @@
                 .then(getSucceeded).fail(failed)
                 .fin(refreshView);
           }
-
           function refresh() {
             getBudgets();
           }
-
           function endEdit(entity) {
-            datacontext.saveEntity(entity).fin(refreshView);
+            datacontext.saveEntity(entity)
+              .fin(refreshView);
           }
-
           function getSucceeded(data) {
             $scope.budgets = data;
           }
-
           function failed(error) {
             $scope.error = error.message;
           }
-
           function refreshView() {
             $scope.$apply();
           }

@@ -10,7 +10,7 @@ namespace BudgetTool.Controllers
             return View();
         }
 
-        public ActionResult Budget()
+        public ActionResult Budgets()
         {
             return View();
         }

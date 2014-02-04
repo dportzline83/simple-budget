@@ -1,0 +1,11 @@
+﻿<p>Yay, you made it to the detail view!</p>
+<p data-ng-show="error">{{error}}</p>
+
+<button data-ng-click="addCategory()">Add New Category</button>
+
+<br/>
+<div data-ng-repeat="category in categories">
+    <form data-ng-submit="endEdit(category)">
+        <input data-on-blur="endEdit(category)" data-ng-model="category.name"/>
+    </form>
+</div>

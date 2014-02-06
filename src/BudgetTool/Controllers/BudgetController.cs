@@ -39,9 +39,13 @@ namespace BudgetTool.Controllers
         public IQueryable<Budget> Budgets()
         {
             return _repository.Budgets;
-            // We do the following on the client
-            //.Include("Todos")
-            //.OrderByDescending(t => t.TodoListId);
+        }
+
+        // GET ~/api/Budget/Categories
+        [HttpGet]
+        public IQueryable<Category> Categories()
+        {
+            return _repository.Categories;
         }
     }
 }

@@ -11,8 +11,9 @@
       $scope.getCategories();
 
       function getCategories() {
-        datacontext.getCategories()
-          .then(getSucceeded).fail(failed)
+        datacontext.getCategories($routeParams.id)
+          .then(getSucceeded)
+          .fail(failed)
           .fin(refreshView);
       }
       function refresh() {

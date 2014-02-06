@@ -8,6 +8,6 @@
 <div data-ng-repeat="budget in budgets">
     <form data-ng-submit="endEdit(budget)">
         <input data-on-blur="endEdit(budget)" data-ng-model="budget.name"/>
-                
+        <a href="#/details/{{budget.id}}">Edit</a>
     </form>
 </div>

@@ -5,7 +5,7 @@ budget.value('breeze', window.breeze)
 budget.config([
   '$routeProvider', function ($routeProvider) {
     $routeProvider
-      .when('/list',
+      .when('/',
       {
         templateUrl: '/app/budget.list.view.html',
         controller: 'BudgetsCtrl'

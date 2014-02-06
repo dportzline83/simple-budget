@@ -1,7 +1,10 @@
-﻿@model BudgetTool.Models.LoginModel
+﻿@using System.Web.UI.WebControls
+@model dynamic
+
 @{
-    ViewBag.Title = "My BudgetTool";
+    ViewBag.Title = "Budgets";
 }
+
 @functions{
     public string GetAntiForgeryToken()
     {
@@ -11,13 +14,13 @@
     }
 }
 
-<header>
-    <h1>@ViewBag.Title</h1>
-</header>
-<div id="main-content" data-ng-app="todo">
+<!DOCTYPE html>
+
+<h1>@ViewBag.Title</h1>
+<div data-ng-app="budget">
     @if (@User.Identity.IsAuthenticated)
     {
-        <div data-ng-view></div> <!-- The SPA Views go here -->   
+        <div data-ng-view></div>
     }
     else
     {
@@ -25,13 +28,10 @@
     }
 </div>
 
-@if (@User.Identity.IsAuthenticated)
-{
-    <input id="antiForgeryToken" type="hidden" value="@GetAntiForgeryToken()" />
+<input id="antiForgeryToken" type="hidden" value="@GetAntiForgeryToken()" />
 
-    @section scripts {
-        @Scripts.Render("~/bundles/angular")
-        @Scripts.Render("~/bundles/breeze")
-        @Scripts.Render("~/bundles/todo")
-    }
+@section scripts {
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/breeze")
+    @Scripts.Render("~/bundles/budget")
 }

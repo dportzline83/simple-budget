@@ -3,7 +3,7 @@
 budget.value('breeze', window.breeze)
     .value('Q', window.Q);
 budget.config([
-  '$routeProvider', function ($routeProvider) {
+  '$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
     $routeProvider
       .when('/',
       {
@@ -16,6 +16,8 @@ budget.config([
         controller: 'BudgetCtrl'
       })
       .otherwise({ redirectTo: '/list' });
+
+    $locationProvider.html5Mode(true);
   }
 ]);
 

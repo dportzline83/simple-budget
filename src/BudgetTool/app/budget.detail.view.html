@@ -6,6 +6,9 @@
 <br/>
 <div data-ng-repeat="category in categories">
     <form data-ng-submit="endEdit(category)">
-        <input data-on-blur="endEdit(category)" data-ng-model="category.name"/>
+        <select>
+            <option data-ng-repeat="" value=""></option>
+        </select>
+        <input data-on-blur="endEdit(category)" data-ng-model="category.category.name"/>
     </form>
 </div>

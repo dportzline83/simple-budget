@@ -10,6 +10,7 @@
     datacontext = context;
     var store = datacontext.metadataStore;
     store.registerEntityTypeCtor("Budget", Budget, budgetInitializer);
+    store.registerEntityTypeCtor("BudgetCategory", BudgetCategory);
   }
 
   function budgetInitializer(budget) {
@@ -18,5 +19,9 @@
 
   function Budget() {
     this.name = "My Budget";
+  }
+  function BudgetCategory() {
+    this.categoryId = 1;
+    this.budgetedAmount = 0;
   }
 })

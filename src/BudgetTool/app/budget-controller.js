@@ -2,6 +2,7 @@
   ['$scope', 'breeze', 'datacontext', '$routeParams',
     function($scope, breeze, datacontext, $routeParams) {
       $scope.categories = [];
+      $scope.budget = {};
       $scope.error = "";
       $scope.getCategories = getCategories;
       $scope.addCategory = addCategory;
@@ -11,7 +12,7 @@
       $scope.getCategories();
 
       function getCategories() {
-        datacontext.getCategories($routeParams.id)
+        datacontext.getBudgetCategories($routeParams.id)
           .then(getSucceeded)
           .fail(failed)
           .fin(refreshView);
@@ -24,7 +25,8 @@
           .fin(refreshView);
       }
       function getSucceeded(data) {
-        $scope.categories = data;
+        $scope.budget = data[0];
+        $scope.categories = data[0].categories;
       }
       function failed(error) {
         $scope.error = error.message;
@@ -34,7 +36,9 @@
       }
 
       function addCategory() {
-        var cat = datacontext.createCategory();
+        var cat = datacontext.createBudgetCategory({
+          budgetId: $routeParams.id
+        });
         datacontext.saveEntity(cat)
           .then(addSucceeded)
           .fail(addFailed)

@@ -12,9 +12,10 @@
           var datacontext = {
             metadataStore: manager.metadataStore,
             getBudgets: getBudgets,
-            getCategories: getCategories,
+            getBudgetCategories: getBudgetCategories,
             createBudget: createBudget,
             createCategory: createCategory,
+            createBudgetCategory: createBudgetCategory,
             saveEntity: saveEntity
           };
 
@@ -25,7 +26,7 @@
             var query = breeze.EntityQuery
                 .from("Budgets")
                 .expand("Categories")
-                .orderBy("id desc");
+                .orderBy("id asc");
 
             if (initialized) {
               query = query.using(breeze.FetchStrategy.FromLocalCache);
@@ -35,10 +36,11 @@
             return manager.executeQuery(query)
                 .then(getSucceeded);
           }
-          function getCategories(budgetId) {
+          function getBudgetCategories(budgetId) {
             var query = breeze.EntityQuery
-              .from("Categories")
-              .orderBy("id desc");
+              .from("Budgets")
+              .expand("Categories.Category")
+              .orderBy("id asc");
             query = query.where("id", "==", budgetId);
             if (initialized) {
               query = query.using(breeze.FetchStrategy.FromLocalCache);
@@ -58,6 +60,9 @@
           }
           function createCategory() {
             return manager.createEntity("Category");
+          }
+          function createBudgetCategory(initialValues) {
+            return manager.createEntity("BudgetCategory", initialValues);
           }
 
           function saveEntity(masterEntity) {

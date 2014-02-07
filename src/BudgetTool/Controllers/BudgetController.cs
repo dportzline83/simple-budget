@@ -47,5 +47,12 @@ namespace BudgetTool.Controllers
         {
             return _repository.Categories;
         }
+
+        // GET ~/api/Budget/BudgetCategories
+        [HttpGet]
+        public IQueryable<BudgetCategory> BudgetCategories()
+        {
+            return _repository.BudgetCategories;
+        }
     }
 }

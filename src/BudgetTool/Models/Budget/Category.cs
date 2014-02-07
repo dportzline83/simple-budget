@@ -14,12 +14,16 @@ namespace BudgetTool.Models.Budget
         public string Name { get; set; }
     }
 
-    public class BudgetedCategory
+    public class BudgetCategory
     {
         public int Id { get; set; }
         [Required]
+        public int BudgetId { get; set; }
+        public virtual Budget Budget { get; set; }
+
+        [Required]
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public virtual Category Category { get; set; }
 
         [Required]
         public decimal BudgetedAmount { get; set; }
@@ -32,7 +36,8 @@ namespace BudgetTool.Models.Budget
 
         [Required]
         public string Name { get; set; }
-        public List<BudgetedCategory> Categories { get; set; }
+
+        public virtual ICollection<BudgetCategory> Categories { get; set; }
     }
     
     public class BudgetContext : DbContext
@@ -41,6 +46,7 @@ namespace BudgetTool.Models.Budget
 
         public DbSet<Budget> Budgets { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<BudgetCategory> BudgetCategories { get; set; }
 
         public DbSet<TodoItem> TodoItems { get; set; }
         public DbSet<TodoList> TodoLists { get; set; }
@@ -55,18 +61,17 @@ namespace BudgetTool.Models.Budget
 
         public DbQuery<Budget> Budgets
         {
-            get
-            {
-                return Context.Budgets;
-            }
+            get { return Context.Budgets; }
         }
 
         public DbQuery<Category> Categories
         {
-            get
-            {
-                return Context.Categories;
-            }
+            get { return Context.Categories; }
+        }
+
+        public DbQuery<BudgetCategory> BudgetCategories
+        {
+            get { return Context.BudgetCategories; }
         }
 
     }

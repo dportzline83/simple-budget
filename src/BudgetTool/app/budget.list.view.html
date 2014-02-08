@@ -1,13 +1,11 @@
-﻿<a data-ng-click="refresh()">Refresh</a>
-<p>Yay, you made it to the budgets template!</p>
-<p data-ng-show="error">{{error}}</p>
+﻿<h1>Budgets</h1>
 
 <button data-ng-click="addBudget()">Add New Budget</button>
-
 <br/>
 <div data-ng-repeat="budget in budgets">
-    <form data-ng-submit="endEdit(budget)">
-        <input data-on-blur="endEdit(budget)" data-ng-model="budget.name"/>
-        <a href="#/details/{{budget.id}}">Edit</a>
-    </form>
+  <form data-ng-submit="endEdit(budget)">
+    <input data-on-blur="endEdit(budget)" data-ng-model="budget.name"/>
+    <a href="#/details/{{budget.id}}">Edit</a>
+  </form>
 </div>
+<p data-ng-show="error">{{error}}</p>

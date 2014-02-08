@@ -1,17 +1,20 @@
-﻿<p>Yay, you made it to the detail view!</p>
-<p data-ng-show="error">{{error}}</p>
-<h1>{{budget.name}}</h1>
+﻿<h1>{{budget.name}}</h1>
 <button data-ng-click="addCategory()">Add New Category</button>
-
 <br />
 <table>
+  <tr data-ng-show="budget.categories.length > 0"><th>Category</th><th>Budgeted Amount</th><th>Actual Amount</th></tr>
   <tr data-ng-repeat="category in budget.categories">
     <td>
       <select data-on-change="endEdit(category)" data-ng-model="category.category" data-ng-options="c.name for c in categories">
         <option value="">Choose category...</option>
       </select>
+    </td>
+    <td>
       <input data-on-blur="endEdit(category)" data-ng-model="category.budgetedAmount" />
+    </td>
+    <td>
       <input data-on-blur="endEdit(category)" data-ng-model="category.actualAmount" />
     </td>
   </tr>
 </table>
+<p data-ng-show="error">{{error}}</p>

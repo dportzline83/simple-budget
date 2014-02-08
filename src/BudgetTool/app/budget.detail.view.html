@@ -3,12 +3,15 @@
 <h1>{{budget.name}}</h1>
 <button data-ng-click="addCategory()">Add New Category</button>
 
-<br/>
-<div data-ng-repeat="category in categories">
-    <form data-ng-submit="endEdit(category)">
-        <select>
-            <option data-ng-repeat="" value=""></option>
-        </select>
-        <input data-on-blur="endEdit(category)" data-ng-model="category.category.name"/>
-    </form>
-</div>
+<br />
+<table>
+  <tr data-ng-repeat="category in budget.categories">
+    <td>
+      <select data-on-change="endEdit(category)" data-ng-model="category.category" data-ng-options="c.name for c in categories">
+        <option value="">Choose category...</option>
+      </select>
+      <input data-on-blur="endEdit(category)" data-ng-model="category.budgetedAmount" />
+      <input data-on-blur="endEdit(category)" data-ng-model="category.actualAmount" />
+    </td>
+  </tr>
+</table>

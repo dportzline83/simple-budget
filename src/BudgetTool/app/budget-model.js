@@ -21,7 +21,5 @@
     this.name = "My Budget";
   }
   function BudgetCategory() {
-    this.categoryId = 1;
-    this.budgetedAmount = 0;
   }
 })

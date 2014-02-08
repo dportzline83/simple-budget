@@ -13,11 +13,13 @@
             metadataStore: manager.metadataStore,
             getBudgets: getBudgets,
             getCategories: getCategories,
-            getBudgetCategories: getBudgetCategories,
+            getBudgetWithCategories: getBudgetWithCategories,
             createBudget: createBudget,
             createCategory: createCategory,
             createBudgetCategory: createBudgetCategory,
-            saveEntity: saveEntity
+            saveEntity: saveEntity,
+            addEntity: addEntity,
+            createDetachedEntity: createDetachedEntity
           };
 
           model.initialize(datacontext);
@@ -42,21 +44,22 @@
             var query = breeze.EntityQuery
               .from("Categories")
               .orderBy("name asc");
-            if (initialized) {
-              query = query.using(breeze.FetchStrategy.FromLocalCache);
-            }
-
+            //if (initialized) {
+            //  query = query.using(breeze.FetchStrategy.FromLocalCache);
+            //}
+            return manager.executeQuery(query)
+              .then(getSucceeded);
           }
 
-          function getBudgetCategories(budgetId) {
+          function getBudgetWithCategories(budgetId) {
             var query = breeze.EntityQuery
               .from("Budgets")
               .expand("Categories.Category")
               .orderBy("id asc");
             query = query.where("id", "==", budgetId);
-            if (initialized) {
-              query = query.using(breeze.FetchStrategy.FromLocalCache);
-            }
+            //if (initialized) {
+            //  query = query.using(breeze.FetchStrategy.FromLocalCache);
+            //}
             return manager.executeQuery(query)
               .then(getSucceeded);
           }
@@ -77,11 +80,14 @@
             return manager.createEntity("BudgetCategory", initialValues);
           }
 
+          function createDetachedEntity(entityType, initialValues) {
+            return manager.createEntity(entityType, initialValues, breeze.EntityState.Detached);
+          }
+
           function saveEntity(masterEntity) {
             if (!manager.hasChanges()) {
               return Q();
             }
-
             var description = describeSaveOperation(masterEntity);
             return manager.saveChanges().then(saveSucceeded).fail(saveFailed);
 
@@ -99,6 +105,10 @@
               throw error; // so caller can see failure
             }
           }
+          function addEntity(entity) {
+            manager.addEntity(entity);
+          }
+
           function describeSaveOperation(entity) {
             var statename = entity.entityAspect.entityState.name.toLowerCase();
             var typeName = entity.entityType.shortName;

@@ -17,7 +17,7 @@ budget.config([
       })
       .otherwise({ redirectTo: '/list' });
 
-    $locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true);
   }
 ]);
 
@@ -27,6 +27,17 @@ budget.directive('onBlur', function () {
     link: function (scope, elm, attrs) {
       elm.bind('blur', function () {
         scope.$apply(attrs.onBlur);
+      });
+    }
+  };
+});
+
+budget.directive('onChange', function () {
+  return {
+    restrict: 'A',
+    link: function (scope, elm, attrs) {
+      elm.bind('change', function () {
+        scope.$apply(attrs.onChange);
       });
     }
   };

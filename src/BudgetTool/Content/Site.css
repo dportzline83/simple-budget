@@ -1,12 +1,4 @@
-﻿body, input, button {
-  font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
-  font-size: 1.2em;
-}
-
-body {
-}
-
-.content-wrapper {
+﻿.content-wrapper {
   margin: 0 auto;
   max-width: 960px;
   padding-right: 10px;
@@ -30,8 +22,18 @@ header {
   clear: both;
 }
 
-#userSettings > form:before {
-  content: ' | ';
+#userSettings ul {
+  list-style-type: none;
+}
+
+#userSettings ul li {
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+#userSettings ul li:nth-child(odd) {
+  border-right: 1px solid;
 }
 
 #userSettings form {
@@ -48,7 +50,7 @@ header {
   }
 
     #menu li:not(:first-child) {
-      margin-left: .8em;
+      margin-left: 10px;
     }
 
 /*#endregion */
@@ -89,9 +91,6 @@ header {
 
 #loginPanel {
   display: block;
-  position: relative;
-  float: left;
-  text-align: left;
   padding: 25px;
   width: 600px;
 }
@@ -235,18 +234,7 @@ ol.round {
 
 footer {
   clear: both;
-  margin: 5em 5em .7em 0;
+  margin-top: 60px;
 }
 
 /*#endregion */
-
-@media only screen and (max-width: 600px) {
-
-  body {
-    margin: .2em 0;
-  }
-
-  header {
-    text-align: center;
-  }
-}

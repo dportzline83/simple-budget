@@ -1,20 +1,30 @@
 ﻿<h1>{{budget.name}}</h1>
-<button data-ng-click="addCategory()">Add New Category</button>
+<button class="btn btn-default" data-ng-click="addCategory()">Add New Category</button>
 <br />
-<table>
-  <tr data-ng-show="budget.categories.length > 0"><th>Category</th><th>Budgeted Amount</th><th>Actual Amount</th></tr>
-  <tr data-ng-repeat="category in budget.categories">
-    <td>
-      <select data-on-change="endEdit(category)" data-ng-model="category.category" data-ng-options="c.name for c in categories">
-        <option value="">Choose category...</option>
-      </select>
-    </td>
-    <td>
-      <input data-on-blur="endEdit(category)" data-ng-model="category.budgetedAmount" />
-    </td>
-    <td>
-      <input data-on-blur="endEdit(category)" data-ng-model="category.actualAmount" />
-    </td>
-  </tr>
+<table class="table table-striped">
+  <thead>
+    <tr data-ng-show="budget.categories.length > 0"><th>Category</th><th>Budgeted Amount</th><th>Actual Amount</th></tr>
+  </thead>
+  <tbody>
+    <tr data-ng-repeat="category in budget.categories">
+      <td>
+        <select class="form-control" data-on-change="endEdit(category)" data-ng-model="category.category" data-ng-options="c.name for c in categories">
+          <option value="">Choose category...</option>
+        </select>
+      </td>
+      <td>
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          <input class="form-control" data-on-blur="endEdit(category)" data-ng-model="category.budgetedAmount" />
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          <input class="form-control" data-on-blur="endEdit(category)" data-ng-model="category.actualAmount" />
+        </div>
+      </td>
+    </tr>
+  </tbody>
 </table>
 <p data-ng-show="error">{{error}}</p>

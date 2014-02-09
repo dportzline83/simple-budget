@@ -1,11 +1,13 @@
 ﻿<h1>Budgets</h1>
 
-<button data-ng-click="addBudget()">Add New Budget</button>
+<button class="btn btn-default" data-ng-click="addBudget()">Add New Budget</button>
 <br/>
-<div data-ng-repeat="budget in budgets">
-  <form data-ng-submit="endEdit(budget)">
-    <input data-on-blur="endEdit(budget)" data-ng-model="budget.name"/>
-    <a href="#/details/{{budget.id}}">Edit</a>
-  </form>
+<div id="budget-list" class="row" data-ng-repeat="budget in budgets">
+  <div class="col-md-4">
+    <form role="form" class="form-inline" data-ng-submit="endEdit(budget)">
+      <input class="form-control" data-on-blur="endEdit(budget)" data-ng-model="budget.name"/>
+      <a href="#/details/{{budget.id}}">Edit</a>
+    </form>
+  </div>
 </div>
 <p data-ng-show="error">{{error}}</p>

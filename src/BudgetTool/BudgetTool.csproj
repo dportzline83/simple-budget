@@ -265,6 +265,12 @@
     <Content Include="Content\bootstrap\bower_components\jquery\jquery-migrate.min.js" />
     <Content Include="Content\bootstrap\bower_components\jquery\jquery.js" />
     <Content Include="Content\bootstrap\bower_components\jquery\jquery.min.js" />
+    <Content Include="Content\Site.css">
+      <DependentUpon>Site.less</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.min.css">
+      <DependentUpon>Site.less</DependentUpon>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -383,7 +389,7 @@
     <Content Include="app\todo.model.js" />
     <Content Include="app\todo.view.html" />
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
-    <Content Include="Content\Site.css" />
+    <None Include="Content\Site.less" />
     <Content Include="Content\TodoList.css" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Scripts\angular.js" />

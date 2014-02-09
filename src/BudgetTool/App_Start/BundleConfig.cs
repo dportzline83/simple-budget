@@ -53,7 +53,7 @@ namespace BudgetTool
                 "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                "~/Content/bootstrap/js/bootstrap.js"));
+                "~/Content/bootstrap/bower_components/bootstrap/dist/js/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/Site.css",

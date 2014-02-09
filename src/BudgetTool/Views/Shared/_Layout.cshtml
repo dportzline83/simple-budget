@@ -6,13 +6,13 @@
   <title>@ViewBag.Title</title>
   <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  @Styles.Render("~/Content/bootstrap")
   @Styles.Render("~/Content/css")
   @Scripts.Render("~/bundles/modernizr")
-  @Styles.Render("~/Content/bootstrap")
 </head>
-<body>
+<body class="container">
   <!--[if lt IE 9]><p class="error" style="clear:both;">'Breeze + Angular' requires browser support for defined properties.</p><![endif]-->
-  <div id="userSettings">
+  <div id="userSettings" class="pull-right">
     @Html.Partial("_UserSettings")
   </div>
 

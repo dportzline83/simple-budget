@@ -60,7 +60,7 @@ namespace BudgetTool
                 "~/Content/TodoList.css"));
 
             bundles.Add(new StyleBundle("~/Content/bootstrap").Include(
-                "~/Content/bootstrap/css/bootstrap.css"));
+                "~/Content/bootstrap/bower_components/bootstrap/dist/css/bootstrap.css"));
         }
     }
 }

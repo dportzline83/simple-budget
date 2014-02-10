@@ -13,7 +13,7 @@
             metadataStore: manager.metadataStore,
             getBudgets: getBudgets,
             getCategories: getCategories,
-            getBudgetWithCategories: getBudgetWithCategories,
+            getBudgetData: getBudgetData,
             createBudget: createBudget,
             createCategory: createCategory,
             createBudgetCategory: createBudgetCategory,
@@ -51,10 +51,10 @@
               .then(getSucceeded);
           }
 
-          function getBudgetWithCategories(budgetId) {
+          function getBudgetData(budgetId) {
             var query = breeze.EntityQuery
               .from("Budgets")
-              .expand("Categories.Category")
+              .expand("Categories.Category, Categories.Transactions")
               .orderBy("id asc");
             query = query.where("id", "==", budgetId);
             //if (initialized) {

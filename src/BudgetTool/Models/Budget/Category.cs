@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -7,6 +8,16 @@ using Breeze.WebApi;
 
 namespace BudgetTool.Models.Budget
 {
+    public class Budget
+    {
+        public int Id { get; set; }
+
+        [Required]
+        public string Name { get; set; }
+
+        public virtual ICollection<BudgetCategory> Categories { get; set; }
+    }
+
     public class Category
     {
         public int Id { get; set; }
@@ -27,17 +38,30 @@ namespace BudgetTool.Models.Budget
 
         [Required]
         public decimal BudgetedAmount { get; set; }
-        public decimal ActualAmount { get; set; }
+
+        public virtual ICollection<Transaction> Transactions { get; set; }
     }
 
-    public class Budget
+    public class Transaction
     {
         public int Id { get; set; }
+        [Required]
+        public TransactionType Type { get; set; }
+        [Required]
+        public DateTime Date { get; set; }
+        [Required]
+        public decimal Amount { get; set; }
+        public string Description { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public int BudgetCategoryId { get; set; }
+        public virtual BudgetCategory BudgetCategory { get; set; }
+    }
 
-        public virtual ICollection<BudgetCategory> Categories { get; set; }
+    public enum TransactionType
+    {
+        Income,
+        Outgo
     }
     
     public class BudgetContext : DbContext
@@ -55,9 +79,7 @@ namespace BudgetTool.Models.Budget
     public class BudgetRepository : EFContextProvider<BudgetContext>
     {
 
-        public BudgetRepository(IPrincipal user)
-        {
-        }
+        public BudgetRepository(IPrincipal user) { }
 
         public DbQuery<Budget> Budgets
         {
@@ -73,6 +95,5 @@ namespace BudgetTool.Models.Budget
         {
             get { return Context.BudgetCategories; }
         }
-
     }
 }

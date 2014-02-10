@@ -4,17 +4,19 @@
       $scope.budget = {};
       $scope.error = "";
       $scope.categories = [];
-      $scope.getBudgetWithCategories = getBudgetWithCategories;
+      $scope.transactions = [];
+      $scope.getBudgetData = getBudgetData;
       $scope.getCategories = getCategories;
       $scope.addCategory = addCategory;
+      $scope.getSpentAmount = getSpentAmount;
       $scope.refresh = refresh;
       $scope.endEdit = endEdit;
 
       $scope.getCategories();
-      $scope.getBudgetWithCategories();
+      $scope.getBudgetData();
 
-      function getBudgetWithCategories() {
-        datacontext.getBudgetWithCategories($routeParams.id)
+      function getBudgetData() {
+        datacontext.getBudgetData($routeParams.id)
           .then(getSucceeded)
           .fail(failed)
           .fin(refreshView);
@@ -26,6 +28,13 @@
           })
           .fail(failed)
           .fin(refreshView);
+      }
+      function getSpentAmount(category) {
+        var total = 0;
+        category.transactions.map(function(transaction) {
+          total += transaction.amount;
+        });
+        return total;
       }
       function refresh() {
         getCategories();

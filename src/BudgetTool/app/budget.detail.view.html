@@ -5,7 +5,7 @@
   <div class="row" data-ng-show="budget.categories.length > 0">
     <div class="col-md-4"><strong>Category</strong></div>
     <div class="col-md-2"><strong>Budgeted Amount</strong></div>
-    <div class="col-md-2"><strong>Actual Amount</strong></div>
+    <div class="col-md-2"><strong>Spent Amount</strong></div>
   </div>
   <div class="row" data-ng-repeat="category in budget.categories">
     <div class="col-md-4" >
@@ -22,7 +22,7 @@
     <div class="col-md-2">
       <div class="input-group">
         <span class="input-group-addon">$</span>
-        <input class="form-control" data-on-blur="endEdit(category)" data-ng-model="category.actualAmount" />
+        <input class="form-control" disabled value="{{getSpentAmount(category)}}" />
       </div>
     </div>
   </div>

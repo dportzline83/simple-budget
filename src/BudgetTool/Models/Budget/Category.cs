@@ -16,6 +16,7 @@ namespace BudgetTool.Models.Budget
         public string Name { get; set; }
 
         public virtual ICollection<BudgetCategory> Categories { get; set; }
+        public virtual ICollection<Transaction> Transactions { get; set; } 
     }
 
     public class Category
@@ -38,8 +39,6 @@ namespace BudgetTool.Models.Budget
 
         [Required]
         public decimal BudgetedAmount { get; set; }
-
-        public virtual ICollection<Transaction> Transactions { get; set; }
     }
 
     public class Transaction
@@ -54,8 +53,12 @@ namespace BudgetTool.Models.Budget
         public string Description { get; set; }
 
         [Required]
-        public int BudgetCategoryId { get; set; }
-        public virtual BudgetCategory BudgetCategory { get; set; }
+        public int BudgetId { get; set; }
+        public virtual Budget Budget { get; set; }
+
+        [Required]
+        public int CategoryId { get; set; }
+        public virtual Category Category { get; set; } 
     }
 
     public enum TransactionType
@@ -71,6 +74,7 @@ namespace BudgetTool.Models.Budget
         public DbSet<Budget> Budgets { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<BudgetCategory> BudgetCategories { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
 
         public DbSet<TodoItem> TodoItems { get; set; }
         public DbSet<TodoList> TodoLists { get; set; }
@@ -94,6 +98,11 @@ namespace BudgetTool.Models.Budget
         public DbQuery<BudgetCategory> BudgetCategories
         {
             get { return Context.BudgetCategories; }
+        }
+
+        public DbQuery<Transaction> Transactions
+        {
+            get { return Context.Transactions; }
         }
     }
 }

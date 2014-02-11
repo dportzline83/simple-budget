@@ -41,7 +41,7 @@
                 .fin(refreshView);
 
             function addSucceeded() {
-              $scope.budgets.unshift(budget);
+              $scope.budgets.push(budget);
             }
             function addFailed(error) {
               failed({ message: error.message });

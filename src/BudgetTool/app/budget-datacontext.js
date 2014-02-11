@@ -17,6 +17,7 @@
             createBudget: createBudget,
             createCategory: createCategory,
             createBudgetCategory: createBudgetCategory,
+            createEntity: createEntity,
             saveEntity: saveEntity,
             addEntity: addEntity,
             createDetachedEntity: createDetachedEntity
@@ -28,7 +29,6 @@
           function getBudgets() {
             var query = breeze.EntityQuery
                 .from("Budgets")
-                .expand("Categories")
                 .orderBy("id asc");
 
             if (initialized) {
@@ -54,7 +54,7 @@
           function getBudgetData(budgetId) {
             var query = breeze.EntityQuery
               .from("Budgets")
-              .expand("Categories.Category, Categories.Transactions")
+              .expand("Transactions, Categories.Category")
               .orderBy("id asc");
             query = query.where("id", "==", budgetId);
             //if (initialized) {
@@ -79,7 +79,9 @@
           function createBudgetCategory(initialValues) {
             return manager.createEntity("BudgetCategory", initialValues);
           }
-
+          function createEntity(entityType, initialValues) {
+            return manager.createEntity(entityType, initialValues);
+          }
           function createDetachedEntity(entityType, initialValues) {
             return manager.createEntity(entityType, initialValues, breeze.EntityState.Detached);
           }

@@ -8,9 +8,11 @@
       $scope.getBudgetData = getBudgetData;
       $scope.getCategories = getCategories;
       $scope.addCategory = addCategory;
+      $scope.addTransaction = addTransaction;
       $scope.getSpentAmount = getSpentAmount;
       $scope.refresh = refresh;
       $scope.endEdit = endEdit;
+      $scope.newTransaction = {};
 
       $scope.getCategories();
       $scope.getBudgetData();
@@ -31,8 +33,9 @@
       }
       function getSpentAmount(category) {
         var total = 0;
-        category.transactions.map(function(transaction) {
-          total += transaction.amount;
+        $scope.budget.transactions.forEach(function (transaction) {
+          if (transaction.categoryId === category.categoryId)
+            total += transaction.amount;
         });
         return total;
       }
@@ -55,9 +58,7 @@
 
       function addCategory() {
         var cat =
-          datacontext.createDetachedEntity(
-          'BudgetCategory',
-          {
+          datacontext.createDetachedEntity('BudgetCategory', {
             budgetId: $routeParams.id
           });
         datacontext.saveEntity(cat)
@@ -66,9 +67,27 @@
           .fin(refreshView);
 
         function addSucceeded() {
-          $scope.budget.categories.unshift(cat);
+          $scope.budget.categories.push(cat);
         }
 
+        function addFailed(error) {
+          failed({ message: error.message });
+        }
+      }
+
+      function addTransaction(initialValues) {
+        initialValues.budgetId = $routeParams.id;
+        var transaction =
+          datacontext.createEntity('Transaction',
+            initialValues);
+        datacontext.saveEntity(transaction)
+          .then(addSucceeded)
+          .fail(addFailed)
+          .fin(refreshView);
+
+        function addSucceeded() {
+          $scope.transactions.push(transaction);
+        }
         function addFailed(error) {
           failed({ message: error.message });
         }

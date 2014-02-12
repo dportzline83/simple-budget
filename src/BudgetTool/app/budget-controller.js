@@ -86,7 +86,8 @@
           .fin(refreshView);
 
         function addSucceeded() {
-          $scope.transactions.push(transaction);
+          $scope.budget.transactions.push(transaction);
+          $scope.newTransaction = {};
         }
         function addFailed(error) {
           failed({ message: error.message });

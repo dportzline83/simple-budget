@@ -1,4 +1,12 @@
-﻿<h1>{{budget.name}}</h1>
+﻿<script type="text/javascript">
+
+  $('input.datepicker').datepicker({
+    todayHighlight: true,
+    autoclose: true
+  });
+
+</script>
+<h1>{{budget.name}}</h1>
 <button class="btn btn-default" data-ng-click="addCategory()">Add New Category</button>
 <br />
 <div id="category-list">
@@ -37,7 +45,10 @@
         </select>
       </div>
       <div class="form-group">
-        <input class="form-control" placeholder="Date" data-ng-model="newTransaction.date"/>
+        <div class="input-group">
+          <input type="text" class="form-control datepicker" placeholder="Date" data-ng-model="newTransaction.date"/>
+          <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+        </div>
       </div>
       <div class="form-group">
         <div class="input-group">

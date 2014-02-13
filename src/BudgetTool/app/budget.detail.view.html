@@ -4,7 +4,7 @@
     autoclose: true
   });
 </script>
-<h1>{{budget.name}}</h1>
+<h1 class="page-header">{{budget.name}}</h1>
 <button class="btn btn-default" data-ng-click="addCategory()">Add New Category</button>
 <button class="btn btn-default" data-toggle="modal" data-target="#transactionModal">Add Transaction</button>
 <br />
@@ -35,7 +35,7 @@
   </div>
 </div>
 <div id="transactionModal" class="modal fade">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -43,7 +43,7 @@
       </div>
       <div class="modal-body">
         <div class="row">
-          <div class="col-md-6 col-md-offset-3">
+          <div class="col-md-12">
             <form>
               <div class="form-group">
                 <select class="form-control" data-ng-model="newTransaction.category" data-ng-options="c.name for c in categories">

@@ -258,6 +258,12 @@
     <Content Include="Content\bootstrap\bower_components\bootstrap\js\tab.js" />
     <Content Include="Content\bootstrap\bower_components\bootstrap\js\tooltip.js" />
     <Content Include="Content\bootstrap\bower_components\bootstrap\js\transition.js" />
+    <Content Include="Content\bootstrap\bower_components\bootstrap\less\bootstrap.css">
+      <DependentUpon>bootstrap.less</DependentUpon>
+    </Content>
+    <Content Include="Content\bootstrap\bower_components\bootstrap\less\bootstrap.min.css">
+      <DependentUpon>bootstrap.less</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap\bower_components\bootstrap\test-infra\requirements.txt" />
     <Content Include="Content\bootstrap\bower_components\bootstrap\test-infra\shrinkwrap.js" />
     <Content Include="Content\bootstrap\bower_components\jquery\.gitignore" />
@@ -358,6 +364,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\custom-variables.less" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <None Include="Scripts\breeze.intellisense.js" />
     <Content Include="Scripts\angular-route.js" />

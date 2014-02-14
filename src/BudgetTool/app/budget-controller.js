@@ -13,7 +13,6 @@
       $scope.refresh = refresh;
       $scope.endEdit = endEdit;
       $scope.newTransaction = {};
-
       $scope.getCategories();
       $scope.getBudgetData();
 

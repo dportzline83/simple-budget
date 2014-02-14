@@ -14,6 +14,7 @@ namespace BudgetTool.Models.Budget
 
         [Required]
         public string Name { get; set; }
+        public decimal Income { get; set; }
 
         public virtual ICollection<BudgetCategory> Categories { get; set; }
         public virtual ICollection<Transaction> Transactions { get; set; } 

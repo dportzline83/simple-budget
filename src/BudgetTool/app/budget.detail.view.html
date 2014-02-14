@@ -8,11 +8,17 @@
 <button class="btn btn-default" data-ng-click="addCategory()">Add New Category</button>
 <button class="btn btn-default" data-toggle="modal" data-target="#transactionModal">Add Transaction</button>
 <br />
+<div id="income">
+  <div class="row">
+    
+  </div>
+</div>
 <div id="category-list">
   <div class="row" data-ng-show="budget.categories.length > 0">
     <div class="col-md-4"><strong>Category</strong></div>
-    <div class="col-md-2"><strong>Budgeted Amount</strong></div>
-    <div class="col-md-2"><strong>Spent Amount</strong></div>
+    <div class="col-md-2"><strong>Budgeted</strong></div>
+    <div class="col-md-2"><strong>Spent</strong></div>
+    <div class="col-md-2"><strong>Remaining</strong></div>
   </div>
   <div class="row" data-ng-repeat="category in budget.categories">
     <div class="col-md-4" >

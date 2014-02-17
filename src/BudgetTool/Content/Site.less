@@ -13,9 +13,7 @@
   text-align: center;
 }
 
-.datepicker {
-  z-index: 2000 !important;
-}
+
 
 /*#region Header */
 
@@ -253,7 +251,15 @@ footer {
 
 /* #region Budget Detail */
 
-#category-list {
+#income {
+  margin-top: 15px;
+}
+
+#income-label {
+  text-align: right;
+}
+
+#category-list, #income {
   margin-top: 10px;
 
   .row {
@@ -261,6 +267,10 @@ footer {
     padding-bottom: 5px;
     border-bottom: 1px solid @gray-lighter;
   }
+}
+
+.datepicker {
+  z-index: 2000 !important;
 }
 
 /* #endregion */

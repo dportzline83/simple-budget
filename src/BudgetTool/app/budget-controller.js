@@ -15,6 +15,7 @@
       $scope.newTransaction = {};
       $scope.getCategories();
       $scope.getBudgetData();
+      $scope.getBudgetedIncome = getBudgetedIncome;
 
       function getBudgetData() {
         datacontext.getBudgetData($routeParams.id)
@@ -36,6 +37,18 @@
           if (transaction.categoryId === category.categoryId)
             total += transaction.amount;
         });
+        category.totalSpent = total;
+        return total;
+      }
+      function getBudgetedIncome() {
+        var total = 0;
+        $scope.budget.categories.forEach(function (c) {
+          total += c.budgetedAmount;
+        });
+        $scope.income = {
+          budgeted: total,
+          remaining: $scope.budget.income - total
+        };
         return total;
       }
       function refresh() {

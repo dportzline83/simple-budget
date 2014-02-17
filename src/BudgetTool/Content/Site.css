@@ -6625,9 +6625,6 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
   min-height: 400px;
   text-align: center;
 }
-.datepicker {
-  z-index: 2000 !important;
-}
 /*#region Header */
 .page-header {
   margin: 0px 0px 15px 0px;
@@ -6819,13 +6816,24 @@ footer {
 }
 /*#endregion */
 /* #region Budget Detail */
-#category-list {
+#income {
+  margin-top: 15px;
+}
+#income-label {
+  text-align: right;
+}
+#category-list,
+#income {
   margin-top: 10px;
 }
-#category-list .row {
+#category-list .row,
+#income .row {
   padding-top: 5px;
   padding-bottom: 5px;
   border-bottom: 1px solid #eeeeee;
+}
+.datepicker {
+  z-index: 2000 !important;
 }
 /* #endregion */
 /* #region Budget List */

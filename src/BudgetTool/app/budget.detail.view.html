@@ -8,12 +8,37 @@
 <button class="btn btn-default" data-ng-click="addCategory()">Add New Category</button>
 <button class="btn btn-default" data-toggle="modal" data-target="#transactionModal">Add Transaction</button>
 <br />
-<div id="income">
+<div id="income" class="col-md-12">
   <div class="row">
-    
+    <div class="col-md-2"><strong></strong></div>
+    <div class="col-md-2"><strong>Expected</strong></div>
+    <div class="col-md-2"><strong>Allocated</strong></div>
+    <div class="col-md-2"><strong>Remaining</strong></div>
+  </div>
+  <div class="row">
+    <div id="income-label" class="col-md-2"><strong>Income</strong></div>
+    <div class="col-md-2">
+      <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <input class="form-control" data-on-blur="endEdit(budget)" data-ng-model="budget.income" />
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <input class="form-control" disabled value="{{getBudgetedIncome()}}" />
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <input class="form-control" disabled value="{{income.remaining}}" />
+      </div>
+    </div>
+    <div class="col-md-2"><strong></strong></div>
   </div>
 </div>
-<div id="category-list">
+<div id="category-list" class="col-md-12">
   <div class="row" data-ng-show="budget.categories.length > 0">
     <div class="col-md-4"><strong>Category</strong></div>
     <div class="col-md-2"><strong>Budgeted</strong></div>
@@ -36,6 +61,12 @@
       <div class="input-group">
         <span class="input-group-addon">$</span>
         <input class="form-control" disabled value="{{getSpentAmount(category)}}" />
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <input class="form-control" disabled value="{{category.budgetedAmount - category.totalSpent}}" />
       </div>
     </div>
   </div>

@@ -10,12 +10,14 @@
       $scope.addCategory = addCategory;
       $scope.addTransaction = addTransaction;
       $scope.getSpentAmount = getSpentAmount;
+      $scope.getBudgetedIncome = getBudgetedIncome;
+      $scope.removeCategory = removeCategory;
       $scope.refresh = refresh;
       $scope.endEdit = endEdit;
       $scope.newTransaction = {};
       $scope.getCategories();
       $scope.getBudgetData();
-      $scope.getBudgetedIncome = getBudgetedIncome;
+      $scope.income = {};
 
       function getBudgetData() {
         datacontext.getBudgetData($routeParams.id)
@@ -33,22 +35,26 @@
       }
       function getSpentAmount(category) {
         var total = 0;
-        $scope.budget.transactions.forEach(function (transaction) {
-          if (transaction.categoryId === category.categoryId)
-            total += transaction.amount;
-        });
-        category.totalSpent = total;
+        if ($scope.budget.transactions) {
+          $scope.budget.transactions.forEach(function(transaction) {
+            if (transaction.categoryId === category.categoryId)
+              total += transaction.amount;
+          });
+          category.totalSpent = total;
+        }
         return total;
       }
       function getBudgetedIncome() {
         var total = 0;
-        $scope.budget.categories.forEach(function (c) {
-          total += c.budgetedAmount;
-        });
-        $scope.income = {
-          budgeted: total,
-          remaining: $scope.budget.income - total
-        };
+        if ($scope.budget.categories) {
+          $scope.budget.categories.forEach(function(c) {
+            total += c.budgetedAmount;
+          });
+          $scope.income = {
+            budgeted: total,
+            remaining: $scope.budget.income - total
+          };
+        }
         return total;
       }
       function refresh() {
@@ -83,6 +89,22 @@
         }
 
         function addFailed(error) {
+          failed({ message: error.message });
+        }
+      }
+
+      function removeCategory(category) {
+        category.entityAspect.setDeleted();
+        datacontext.saveEntity(category)
+          .then(removeSucceeded)
+          .fail(removeFailed)
+          .fin(refreshView());
+
+        function removeSucceeded() {
+          var index = $scope.budget.categories.indexOf(category);
+          $scope.budget.categories.splice(index, 1);
+        }
+        function removeFailed(error) {
           failed({ message: error.message });
         }
       }

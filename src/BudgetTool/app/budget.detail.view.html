@@ -12,7 +12,7 @@
   <div class="row">
     <div class="col-md-2"><strong></strong></div>
     <div class="col-md-2"><strong>Expected</strong></div>
-    <div class="col-md-2"><strong>Allocated</strong></div>
+    <div class="col-md-2"><strong>Budgeted</strong></div>
     <div class="col-md-2"><strong>Remaining</strong></div>
   </div>
   <div class="row">
@@ -40,12 +40,16 @@
 </div>
 <div id="category-list" class="col-md-12">
   <div class="row" data-ng-show="budget.categories.length > 0">
+    <div class="col-md-1"></div>
     <div class="col-md-4"><strong>Category</strong></div>
     <div class="col-md-2"><strong>Budgeted</strong></div>
     <div class="col-md-2"><strong>Spent</strong></div>
     <div class="col-md-2"><strong>Remaining</strong></div>
   </div>
   <div class="row" data-ng-repeat="category in budget.categories">
+    <div class="col-md-1">
+      <button class="btn btn-danger" data-ng-click="removeCategory(category)"><span class="glyphicon glyphicon-remove"></span></button>
+    </div>
     <div class="col-md-4" >
       <select class="form-control" data-on-change="endEdit(category)" data-ng-model="category.category" data-ng-options="c.name for c in categories">
         <option value="">Choose category...</option>

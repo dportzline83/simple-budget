@@ -12,6 +12,7 @@
       $scope.getSpentAmount = getSpentAmount;
       $scope.getBudgetedIncome = getBudgetedIncome;
       $scope.removeCategory = removeCategory;
+      $scope.setTransactionCategory = setTransactionCategory;
       $scope.refresh = refresh;
       $scope.endEdit = endEdit;
       $scope.newTransaction = {};
@@ -126,6 +127,9 @@
         function addFailed(error) {
           failed({ message: error.message });
         }
+      }
+      function setTransactionCategory(category) {
+        $scope.newTransaction.category = category.category;
       }
     }
   ]);

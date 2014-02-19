@@ -5,22 +5,22 @@
   });
 </script>
 <h1 class="page-header">{{budget.name}}</h1>
-<button class="btn btn-default" data-ng-click="addCategory()">Add New Category</button>
-<button class="btn btn-default" data-toggle="modal" data-target="#transactionModal">Add Transaction</button>
-<br />
 <div id="income" class="col-md-12">
   <div class="row">
-    <div class="col-md-2"><strong></strong></div>
+    <div class="col-md-3"></div>
     <div class="col-md-2"><strong>Expected</strong></div>
     <div class="col-md-2"><strong>Budgeted</strong></div>
     <div class="col-md-2"><strong>Remaining</strong></div>
   </div>
   <div class="row">
-    <div id="income-label" class="col-md-2"><strong>Income</strong></div>
+    <div class="col-md-2">
+      <button class="btn btn-default" data-toggle="modal" data-target="#transactionModal">Add Transaction</button>
+    </div>
+    <div id="income-label" class="col-md-1"><strong>Income</strong></div>
     <div class="col-md-2">
       <div class="input-group">
         <span class="input-group-addon">$</span>
-        <input class="form-control" data-on-blur="endEdit(budget)" data-ng-model="budget.income" />
+        <input class="form-control" type="number" data-on-blur="endEdit(budget)" data-ng-model="budget.income" />
       </div>
     </div>
     <div class="col-md-2">
@@ -41,16 +41,17 @@
 <div id="category-list" class="col-md-12">
   <div class="row" data-ng-show="budget.categories.length > 0">
     <div class="col-md-1"></div>
-    <div class="col-md-4"><strong>Category</strong></div>
+    <div class="col-md-3"><strong>Category</strong></div>
     <div class="col-md-2"><strong>Budgeted</strong></div>
     <div class="col-md-2"><strong>Spent</strong></div>
     <div class="col-md-2"><strong>Remaining</strong></div>
+    <div class="col-md-1"></div>
   </div>
   <div class="row" data-ng-repeat="category in budget.categories">
     <div class="col-md-1">
       <button class="btn btn-danger" data-ng-click="removeCategory(category)"><span class="glyphicon glyphicon-remove"></span></button>
     </div>
-    <div class="col-md-4" >
+    <div class="col-md-3" >
       <select class="form-control" data-on-change="endEdit(category)" data-ng-model="category.category" data-ng-options="c.name for c in categories">
         <option value="">Choose category...</option>
       </select>
@@ -58,13 +59,18 @@
     <div class="col-md-2">
       <div class="input-group">
         <span class="input-group-addon">$</span>
-        <input class="form-control" data-on-blur="endEdit(category)" data-ng-model="category.budgetedAmount" />
+        <input class="form-control" type="number" data-on-blur="endEdit(category)" data-ng-model="category.budgetedAmount" />
       </div>
     </div>
     <div class="col-md-2">
       <div class="input-group">
         <span class="input-group-addon">$</span>
         <input class="form-control" disabled value="{{getSpentAmount(category)}}" />
+        <span class="input-group-btn">
+          <button class="btn btn-success" data-ng-click="setTransactionCategory(category)" data-toggle="modal" data-target="#transactionModal">
+            <span class="glyphicon glyphicon-plus"></span>
+          </button>
+        </span>
       </div>
     </div>
     <div class="col-md-2">
@@ -72,6 +78,11 @@
         <span class="input-group-addon">$</span>
         <input class="form-control" disabled value="{{category.budgetedAmount - category.totalSpent}}" />
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-1">
+      <button class="btn btn-success" data-ng-click="addCategory()"><span class="glyphicon glyphicon-plus"></span></button>
     </div>
   </div>
 </div>
@@ -100,7 +111,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon">$</span>
-                  <input class="form-control" placeholder="Amount" data-ng-model="newTransaction.amount"/>
+                  <input class="form-control" type="number" placeholder="Amount" data-ng-model="newTransaction.amount"/>
                 </div>
               </div>
               <div class="form-group">
@@ -111,10 +122,10 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" data-ng-click="newTransaction = {};">Cancel</button>
         <button type="button" class="btn btn-primary" data-dismiss="modal" data-ng-click="addTransaction(newTransaction)">Save</button>
       </div>
     </div>
   </div>
 </div>
-<p data-ng-show="error">{{error}}</p>
+<p class="alert alert-danger" data-ng-show="error">{{error}}</p>

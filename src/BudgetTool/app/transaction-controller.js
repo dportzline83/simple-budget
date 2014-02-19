@@ -1,4 +1,4 @@
-﻿budget.controller('BudgetCtrl',
+﻿budget.controller('TransactionCtrl',
   ['$scope', 'breeze', 'datacontext', '$routeParams',
     function($scope, breeze, datacontext, $routeParams) {
       $scope.budget = {};
@@ -7,11 +7,9 @@
       $scope.transactions = [];
       $scope.getBudgetData = getBudgetData;
       $scope.getCategories = getCategories;
-      $scope.addCategory = addCategory;
       $scope.addTransaction = addTransaction;
-      $scope.getSpentAmount = getSpentAmount;
       $scope.getBudgetedIncome = getBudgetedIncome;
-      $scope.removeCategory = removeCategory;
+      $scope.removeTransaction = removeTransaction;
       $scope.setTransactionCategory = setTransactionCategory;
       $scope.refresh = refresh;
       $scope.endEdit = endEdit;
@@ -33,17 +31,6 @@
           })
           .fail(failed)
           .fin(refreshView);
-      }
-      function getSpentAmount(category) {
-        var total = 0;
-        if ($scope.budget.transactions) {
-          $scope.budget.transactions.forEach(function(transaction) {
-            if (transaction.categoryId === category.categoryId)
-              total += transaction.amount;
-          });
-          category.totalSpent = total;
-        }
-        return total;
       }
       function getBudgetedIncome() {
         var total = 0;
@@ -75,35 +62,16 @@
         $scope.$apply();
       }
 
-      function addCategory() {
-        var cat =
-          datacontext.createDetachedEntity('BudgetCategory', {
-            budgetId: $routeParams.id
-          });
-        datacontext.saveEntity(cat)
-          .then(addSucceeded)
-          .fail(addFailed)
-          .fin(refreshView);
-
-        function addSucceeded() {
-          $scope.budget.categories.push(cat);
-        }
-
-        function addFailed(error) {
-          failed({ message: error.message });
-        }
-      }
-
-      function removeCategory(category) {
-        category.entityAspect.setDeleted();
-        datacontext.saveEntity(category)
+      function removeTransaction(trans) {
+        trans.entityAspect.setDeleted();
+        datacontext.saveEntity(trans)
           .then(removeSucceeded)
           .fail(removeFailed)
-          .fin(refreshView);
+          .fin(refreshView());
 
         function removeSucceeded() {
-          var index = $scope.budget.categories.indexOf(category);
-          $scope.budget.categories.splice(index, 1);
+          var index = $scope.budget.transactions.indexOf(trans);
+          $scope.budget.transactions.splice(index, 1);
         }
         function removeFailed(error) {
           failed({ message: error.message });

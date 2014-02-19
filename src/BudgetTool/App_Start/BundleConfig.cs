@@ -44,6 +44,7 @@ namespace BudgetTool
                     "~/app/budget-datacontext.js",
                     "~/app/budgets-controller.js",
                     "~/app/budget-controller.js",
+                    "~/app/transaction-controller.js",
                     "~/app/budget-logger.js"
                 ));
 

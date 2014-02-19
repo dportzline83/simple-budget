@@ -238,6 +238,8 @@
     <Content Include="app\budget.list.view.html" />
     <Content Include="app\budget-logger.js" />
     <Content Include="app\budget.detail.view.html" />
+    <Content Include="app\budget.transaction.view.html" />
+    <Content Include="app\transaction-controller.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap\bower_components\bootstrap\dist\css\bootstrap-theme.css" />
     <Content Include="Content\bootstrap\bower_components\bootstrap\dist\css\bootstrap-theme.min.css" />

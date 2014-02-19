@@ -1,0 +1,58 @@
+﻿<script type="text/javascript">
+  $('input.datepicker').datepicker({
+    todayHighlight: true,
+    autoclose: true
+  });
+</script>
+<h1 class="page-header">{{budget.name}} Budget Transactions</h1>
+
+<div id="category-list" class="col-md-12">
+  <div class="row" data-ng-show="budget.categories.length > 0">
+    <div class="col-md-1"></div>
+    <div class="col-md-3"><strong>Category</strong></div>
+    <div class="col-md-2"><strong>Date</strong></div>
+    <div class="col-md-2"><strong>Amount</strong></div>
+    <div class="col-md-2"><strong>Description</strong></div>
+    <div class="col-md-1"></div>
+  </div>
+  <div class="row" data-ng-repeat="trans in budget.transactions">
+    <div class="col-md-1">
+      <button class="btn btn-danger" data-ng-click="removeTransaction(trans)"><span class="glyphicon glyphicon-remove"></span></button>
+    </div>
+    <div class="col-md-3" >
+      <select class="form-control" data-on-change="endEdit(trans)" data-ng-model="trans.category" data-ng-options="c.name for c in categories">
+        <option value="">Choose category...</option>
+      </select>
+    </div>
+    <div class="col-md-2">
+      <div class="input-group">
+        <input type="text" class="form-control datepicker" placeholder="Date" data-on-blur="endEdit(trans)" data-ng-model="trans.date"/>
+        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <input class="form-control" disabled value="{{getSpentAmount(category)}}" />
+        <span class="input-group-btn">
+          <button class="btn btn-success" data-ng-click="setTransactionCategory(category)" data-toggle="modal" data-target="#transactionModal">
+            <span class="glyphicon glyphicon-plus"></span>
+          </button>
+        </span>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <input class="form-control" disabled value="{{category.budgetedAmount - category.totalSpent}}" />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-1">
+      <button class="btn btn-success" data-ng-click="addTransaction()"><span class="glyphicon glyphicon-plus"></span></button>
+    </div>
+  </div>
+</div>
+
+<p class="alert alert-danger" data-ng-show="error">{{error}}</p>

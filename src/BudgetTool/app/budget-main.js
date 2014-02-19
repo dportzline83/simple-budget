@@ -15,7 +15,12 @@ budget.config([
         templateUrl: '/app/budget.detail.view.html',
         controller: 'BudgetCtrl'
       })
-      .otherwise({ redirectTo: '/list' });
+      .when('/transactions/:id',
+      {
+        templateUrl: '/app/budget.transaction.view.html',
+        controller: 'TransactionCtrl'
+      })
+      .otherwise({ redirectTo: '/' });
 
     //$locationProvider.html5Mode(true);
   }

@@ -5,7 +5,11 @@
   });
 </script>
 <h1 class="page-header">{{budget.name}} Budget Transactions</h1>
-
+<div>
+  <div class="col-md-2">
+      <a class="btn btn-default" href="#/details/{{budget.id}}">Back to budget</a>
+  </div>
+</div>
 <div id="category-list" class="col-md-12">
   <div class="row" data-ng-show="budget.categories.length > 0">
     <div class="col-md-1"></div>
@@ -33,19 +37,11 @@
     <div class="col-md-2">
       <div class="input-group">
         <span class="input-group-addon">$</span>
-        <input class="form-control" disabled value="{{getSpentAmount(category)}}" />
-        <span class="input-group-btn">
-          <button class="btn btn-success" data-ng-click="setTransactionCategory(category)" data-toggle="modal" data-target="#transactionModal">
-            <span class="glyphicon glyphicon-plus"></span>
-          </button>
-        </span>
+        <input class="form-control" type="number" data-on-blur="endEdit(trans)" data-ng-model="trans.amount" />
       </div>
     </div>
-    <div class="col-md-2">
-      <div class="input-group">
-        <span class="input-group-addon">$</span>
-        <input class="form-control" disabled value="{{category.budgetedAmount - category.totalSpent}}" />
-      </div>
+    <div class="col-md-4">
+        <input class="form-control" type="text" data-on-blur="endEdit(trans)" data-ng-model="trans.description"/>
     </div>
   </div>
   <div class="row">

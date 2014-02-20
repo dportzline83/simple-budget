@@ -7,15 +7,12 @@
 <h1 class="page-header">{{budget.name}}</h1>
 <div id="income" class="col-md-12">
   <div class="row">
-    <div class="col-md-3"></div>
+    <div class="col-md-1"></div>
     <div class="col-md-2"><strong>Expected</strong></div>
     <div class="col-md-2"><strong>Budgeted</strong></div>
     <div class="col-md-2"><strong>Remaining</strong></div>
   </div>
   <div class="row">
-    <div class="col-md-2">
-      <button class="btn btn-default" data-toggle="modal" data-target="#transactionModal">Add Transaction</button>
-    </div>
     <div id="income-label" class="col-md-1"><strong>Income</strong></div>
     <div class="col-md-2">
       <div class="input-group">
@@ -35,7 +32,11 @@
         <input class="form-control" disabled value="{{income.remaining}}" />
       </div>
     </div>
-    <div class="col-md-2"><strong></strong></div>
+    <div class="col-md-2"></div>
+    <div class="col-md-3">
+      <button class="btn btn-success" data-toggle="modal" data-target="#transactionModal"><span class="glyphicon glyphicon-plus"></span> Transaction</button>
+      <a class="btn btn-default" href="#/transactions/{{budget.id}}">All Transactions</a>
+    </div>
   </div>
 </div>
 <div id="category-list" class="col-md-12">

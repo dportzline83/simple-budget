@@ -78,10 +78,12 @@
         }
       }
 
-      function addTransaction(initialValues) {
-        initialValues.budgetId = $routeParams.id;
+      function addTransaction() {
+        var initialValues = {
+          budgetId: $routeParams.id
+        };
         var transaction =
-          datacontext.createEntity('Transaction',
+          datacontext.createDetachedEntity('Transaction',
             initialValues);
         datacontext.saveEntity(transaction)
           .then(addSucceeded)

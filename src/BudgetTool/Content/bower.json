@@ -1,0 +1,17 @@
+{
+  "name": "budget-tool",
+  "version": "1.0.0",
+  "main": "",
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ],
+  "dependencies": {
+    "jquery": "latest",
+	"angular": "latest",
+	"angular-ui-date": "latest"
+	"bootstrap": "latest"
+  },
+  "devDependencies": {
+  }
+}

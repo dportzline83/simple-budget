@@ -9,7 +9,7 @@
   "dependencies": {
     "jquery": "latest",
 	"angular": "latest",
-	"angular-ui-date": "latest"
+	"angular-ui-date": "latest",
 	"bootstrap": "latest"
   },
   "devDependencies": {

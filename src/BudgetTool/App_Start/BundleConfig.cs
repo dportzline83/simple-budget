@@ -8,18 +8,18 @@ namespace BudgetTool
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Content/bower_components/jquery/dist/jquery.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-                        "~/Scripts/jquery-ui-{version}.js"));
+                        "~/Content/bower_components/jquery-ui/ui/jquery-ui.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                        "~/Scripts/angular.js",
-                        "~/Scripts/angular-route.js"));
+                        "~/Content/bower_components/angular/angular.js",
+                        "~/Content/bower_components/angular-route/angular-route.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/ajaxlogin").Include(
                 "~/app/ajaxlogin.js"));
@@ -54,15 +54,12 @@ namespace BudgetTool
                 "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                "~/Content/bootstrap/bower_components/bootstrap/dist/js/bootstrap.js",
+                "~/Content/bower_components/bootstrap/dist/js/bootstrap.js",
                 "~/Content/datepicker/bootstrap-datepicker.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/Site.css",
                 "~/Content/TodoList.css"));
-
-            bundles.Add(new StyleBundle("~/Content/bootstrap").Include(
-                "~/Content/bootstrap/bower_components/bootstrap/dist/css/bootstrap.css"));
         }
     }
 }

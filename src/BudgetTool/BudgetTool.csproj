@@ -271,12 +271,13 @@
     <Content Include="Content\bower_components\bootstrap\js\transition.js" />
     <Content Include="Content\bower_components\bootstrap\test-infra\requirements.txt" />
     <Content Include="Content\bower_components\jquery-ui\ui\jquery-ui.js" />
+    <Content Include="Content\bower_components\jquery-ui\ui\jquery.ui.draggable.js" />
+    <Content Include="Content\bower_components\jquery-ui\ui\jquery.ui.droppable.js" />
+    <Content Include="Content\bower_components\jquery-ui\ui\jquery.ui.sortable.js" />
     <Content Include="Content\bower_components\jquery\dist\jquery.js" />
     <Content Include="Content\bower_components\jquery\dist\jquery.min.js" />
     <Content Include="Content\datepicker\bootstrap-datepicker.js" />
-    <Content Include="Content\Site.css">
-      <DependentUpon>Site.less</DependentUpon>
-    </Content>
+    <Content Include="Content\Site.css" />
     <Content Include="Content\Site.min.css">
       <DependentUpon>Site.less</DependentUpon>
     </Content>

@@ -11,7 +11,11 @@ namespace BudgetTool
                         "~/Content/bower_components/jquery/dist/jquery.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-                        "~/Content/bower_components/jquery-ui/ui/jquery-ui.js"));
+                        "~/Content/bower_components/jquery-ui/ui/jquery-ui.js",
+                        "~/Content/bower_components/jquery-ui/ui/jquery-ui.draggable.js",
+                        "~/Content/bower_components/jquery-ui/ui/jquery-ui.droppable.js",
+                        "~/Content/bower_components/jquery-ui/ui/jquery-ui.sortable.js"
+                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.unobtrusive*",

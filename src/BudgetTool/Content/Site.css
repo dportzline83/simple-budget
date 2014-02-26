@@ -6778,7 +6778,7 @@ footer {
 #income {
   margin-top: 15px;
 }
-#sortable {
+[data-sortable] {
   list-style-type: none;
   padding: 0px;
   margin: 0px;

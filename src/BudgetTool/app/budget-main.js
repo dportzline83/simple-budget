@@ -61,3 +61,13 @@ budget.directive('onEnter', function() {
     });
   };
 });
+
+budget.directive('sortable', function () {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attrs) {
+      element.sortable()
+    }
+
+  };
+});

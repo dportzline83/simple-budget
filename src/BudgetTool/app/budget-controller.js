@@ -13,6 +13,8 @@
       $scope.getBudgetedIncome = getBudgetedIncome;
       $scope.removeCategory = removeCategory;
       $scope.setTransactionCategory = setTransactionCategory;
+      $scope.sortStart = sortStart;
+      $scope.sortEnd = sortEnd;
       $scope.saveSequences = saveSequences;
       $scope.refresh = refresh;
       $scope.endEdit = endEdit;
@@ -133,8 +135,19 @@
       }
       function setTransactionCategory(category) {
         $scope.newTransaction.category = category.category;
-      }
+      };
 
+      var lastSortStart;
+
+      function sortStart(e, ui) {
+        lastSortStart = ui.item.index();
+      }
+      function sortEnd(e, ui) {
+        var end = ui.item.index();
+
+        var previous = $scope.budget.categories.splice(lastSortStart, 1)[0];
+        $scope.budget.categories.splice(end, 0, previous);
+      }
       function saveSequences() {
         
       }

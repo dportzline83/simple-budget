@@ -15,7 +15,7 @@
       $scope.setTransactionCategory = setTransactionCategory;
       $scope.sortStart = sortStart;
       $scope.sortEnd = sortEnd;
-      $scope.saveSequences = saveSequences;
+      $scope.saveSequences = saveSequence;
       $scope.refresh = refresh;
       $scope.endEdit = endEdit;
       $scope.newTransaction = {};
@@ -147,9 +147,13 @@
 
         var previous = $scope.budget.categories.splice(lastSortStart, 1)[0];
         $scope.budget.categories.splice(end, 0, previous);
+        saveSequence();
       }
-      function saveSequences() {
-        
+      function saveSequence() {
+        var categories = $scope.budget.categories;
+        for (var i = 0; i < categories.length; i++) {
+          categories[i].priority = i;
+        }
       }
     }
   ]);

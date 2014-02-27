@@ -40,6 +40,8 @@ namespace BudgetTool.Models.Budget
 
         [Required]
         public decimal BudgetedAmount { get; set; }
+        [Required]
+        public int Priority { get; set; }
     }
 
     public class Transaction

@@ -11,6 +11,7 @@
 	"angular": "latest",
 	"angular-route": "latest",
 	"angular-ui-date": "latest",
+	"angular-ui-sortable": "latest",
 	"bootstrap": "latest"
   },
   "devDependencies": {

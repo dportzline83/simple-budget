@@ -70,6 +70,12 @@
       }
       function getSucceeded(data) {
         $scope.budget = data[0];
+        $scope.budget.categories.sort(function(first, second) {
+          if (first.priority < second.priority)
+            return -1;
+          else
+            return 1;
+        });
       }
       function failed(error) {
         $scope.error = error.message;
@@ -89,6 +95,9 @@
           .fin(refreshView);
 
         function addSucceeded() {
+          var len = $scope.budget.categories.length;
+          cat.priority = len === 0 ?
+            0 : $scope.budget.categories[len - 1].priority + 1;
           $scope.budget.categories.push(cat);
         }
 
@@ -147,12 +156,24 @@
 
         var previous = $scope.budget.categories.splice(lastSortStart, 1)[0];
         $scope.budget.categories.splice(end, 0, previous);
+        refreshView();
         saveSequence();
       }
       function saveSequence() {
         var categories = $scope.budget.categories;
         for (var i = 0; i < categories.length; i++) {
-          categories[i].priority = i;
+          var cat = categories[i];
+          cat.priority = i;
+        }
+        datacontext.saveEntity(categories)
+            .then(saveSequenceSucceeded)
+            .fail(saveSequenceFailed)
+            .fin(refreshView);
+        function saveSequenceSucceeded() {
+          
+        }
+        function saveSequenceFailed(error) {
+          failed({ message: error.message });
         }
       }
     }

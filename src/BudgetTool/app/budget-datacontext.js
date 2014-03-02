@@ -91,7 +91,9 @@
               return Q();
             }
             var description = describeSaveOperation(masterEntity);
-            return manager.saveChanges().then(saveSucceeded).fail(saveFailed);
+            return manager.saveChanges()
+              .then(saveSucceeded)
+              .fail(saveFailed);
 
             function saveSucceeded() {
               logger.log("saved " + description);

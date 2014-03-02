@@ -82,6 +82,9 @@
             <input class="form-control" disabled value="{{category.budgetedAmount - category.totalSpent}}" />
           </div>
         </div>
+        <div class="col-md-2">
+            <input class="form-control" type="number" data-on-blur="endEdit(category)" data-ng-model="category.priority" />
+        </div>
       </div>
     </li>
   </ul>

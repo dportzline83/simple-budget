@@ -15,7 +15,7 @@
       $scope.setTransactionCategory = setTransactionCategory;
       $scope.sortStart = sortStart;
       $scope.sortEnd = sortEnd;
-      $scope.saveSequences = saveSequence;
+      $scope.saveSequence = saveSequence;
       $scope.refresh = refresh;
       $scope.endEdit = endEdit;
       $scope.newTransaction = {};
@@ -28,7 +28,7 @@
           .then(getSucceeded)
           .fail(failed)
           .fin(refreshView);
-      }
+      };
       function getCategories() {
         datacontext.getCategories()
           .then(function(data) {
@@ -36,7 +36,7 @@
           })
           .fail(failed)
           .fin(refreshView);
-      }
+      };
       function getSpentAmount(category) {
         var total = 0;
         if ($scope.budget.transactions) {
@@ -47,7 +47,7 @@
           category.totalSpent = total;
         }
         return total;
-      }
+      };
       function getBudgetedIncome() {
         var total = 0;
         if ($scope.budget.categories) {
@@ -60,14 +60,14 @@
           };
         }
         return total;
-      }
+      };
       function refresh() {
         getCategories();
-      }
+      };
       function endEdit(entity) {
         datacontext.saveEntity(entity)
           .fin(refreshView);
-      }
+      };
       function getSucceeded(data) {
         $scope.budget = data[0];
         $scope.budget.categories.sort(function(first, second) {
@@ -76,13 +76,13 @@
           else
             return 1;
         });
-      }
+      };
       function failed(error) {
         $scope.error = error.message;
-      }
+      };
       function refreshView() {
         $scope.$apply();
-      }
+      };
 
       function addCategory() {
         var cat =
@@ -104,7 +104,7 @@
         function addFailed(error) {
           failed({ message: error.message });
         }
-      }
+      };
 
       function removeCategory(category) {
         var index = $scope.budget.categories.indexOf(category);
@@ -122,7 +122,7 @@
         function removeFailed(error) {
           failed({ message: error.message });
         }
-      }
+      };
 
       function addTransaction(initialValues) {
         initialValues.budgetId = $routeParams.id;
@@ -141,16 +141,20 @@
         function addFailed(error) {
           failed({ message: error.message });
         }
-      }
+      };
       function setTransactionCategory(category) {
         $scope.newTransaction.category = category.category;
+      };
+
+      $scope.sortableOptions = {
+        stop: $scope.saveSequence
       };
 
       var lastSortStart;
 
       function sortStart(e, ui) {
         lastSortStart = ui.item.index();
-      }
+      };
       function sortEnd(e, ui) {
         var end = ui.item.index();
 
@@ -158,23 +162,26 @@
         $scope.budget.categories.splice(end, 0, previous);
         refreshView();
         saveSequence();
-      }
+      };
       function saveSequence() {
         var categories = $scope.budget.categories;
         for (var i = 0; i < categories.length; i++) {
           var cat = categories[i];
           cat.priority = i;
         }
-        datacontext.saveEntity(categories)
+
+        datacontext.saveChanges()
             .then(saveSequenceSucceeded)
             .fail(saveSequenceFailed)
             .fin(refreshView);
+        
         function saveSequenceSucceeded() {
-          
+          $scope.budget.categories = categories;
         }
         function saveSequenceFailed(error) {
           failed({ message: error.message });
         }
-      }
+      };
+
     }
   ]);

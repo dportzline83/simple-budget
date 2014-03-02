@@ -20,8 +20,9 @@
             createEntity: createEntity,
             saveEntity: saveEntity,
             addEntity: addEntity,
-            createDetachedEntity: createDetachedEntity
-          };
+            createDetachedEntity: createDetachedEntity,
+            saveChanges: saveChanges
+        };
 
           model.initialize(datacontext);
           return datacontext;
@@ -85,7 +86,27 @@
           function createDetachedEntity(entityType, initialValues) {
             return manager.createEntity(entityType, initialValues, breeze.EntityState.Detached);
           }
+          function saveChanges() {
+            if (!manager.hasChanges()) {
+              return Q();
+            }
+            return manager.saveChanges()
+              .then(saveSucceeded)
+              .fail(saveFailed);
 
+            function saveSucceeded() {
+              logger.log("saved one or more entities");
+            }
+            function saveFailed(error) {
+              var msg = "Error saving" + ": " +
+                  getErrorMessage(error);
+              //masterEntity.errorMessage = msg;
+              logger.log(msg, 'error');
+              // Let user see invalid value briefly before reverting
+              $timeout(function () { manager.rejectChanges(); }, 1000);
+              throw error; // so caller can see failure
+            }
+          }
           function saveEntity(masterEntity) {
             if (!manager.hasChanges()) {
               return Q();

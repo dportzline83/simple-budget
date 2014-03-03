@@ -218,7 +218,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BudgetController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\TodoController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Filters\ValidateHttpAntiForgeryTokenAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -404,7 +403,6 @@
     <Content Include="app\todo.view.html" />
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <None Include="Content\Site.less" />
-    <Content Include="Content\TodoList.css" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Scripts\breeze.savequeuing.js" />
     <Content Include="Views\_ViewStart.cshtml" />

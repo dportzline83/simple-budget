@@ -6781,6 +6781,9 @@ footer {
   padding: 0px;
   margin: 0px;
 }
+[data-ui-sortable] li {
+  cursor: move;
+}
 #category-list,
 #income {
   margin-top: 10px;

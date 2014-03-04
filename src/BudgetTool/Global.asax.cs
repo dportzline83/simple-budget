@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Data.Entity;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -20,8 +21,8 @@ namespace BudgetTool
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
 
-            System.Data.Entity.Database.
-                SetInitializer(new System.Data.Entity.DropCreateDatabaseIfModelChanges<Models.Budget.BudgetContext>());
+            Database.
+                SetInitializer(new DropCreateDatabaseIfModelChanges<Models.Budget.BudgetContext>());
         }
     }
 }

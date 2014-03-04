@@ -67,9 +67,7 @@ namespace BudgetTool.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
-
-                    InitiateDatabaseForNewUser(model.UserName);
-
+                    
                     FormsAuthentication.SetAuthCookie(model.UserName, createPersistentCookie: false);
                     return Json(new { success = true, redirect = returnUrl });
                 }
@@ -81,25 +79,6 @@ namespace BudgetTool.Controllers
 
             // If we got this far, something failed
             return Json(new { errors = GetErrorsFromModelState() });
-        }
-
-        /// <summary>
-        /// Initiate a new todo list for new user
-        /// </summary>
-        /// <param name="userName"></param>
-        private static void InitiateDatabaseForNewUser(string userName)
-        {
-            BudgetContext db = new BudgetContext();
-            TodoList todoList = new TodoList();
-            todoList.UserId = userName;
-            todoList.Title = "My Todo List #1";
-            todoList.Todos = new List<TodoItem>();
-            db.TodoLists.Add(todoList);
-            db.SaveChanges();
-
-            todoList.Todos.Add(new TodoItem() { Title = "Todo item #1", TodoListId = todoList.TodoListId, IsDone = false });
-            todoList.Todos.Add(new TodoItem() { Title = "Todo item #2", TodoListId = todoList.TodoListId, IsDone = false });
-            db.SaveChanges();
         }
 
         //
@@ -263,7 +242,7 @@ namespace BudgetTool.Controllers
         {
             string provider = null;
             string providerUserId = null;
-
+            
             if (User.Identity.IsAuthenticated || !OAuthWebSecurity.TryDeserializeProviderUserId(model.ExternalLoginData, out provider, out providerUserId))
             {
                 return RedirectToAction("Manage");
@@ -281,8 +260,6 @@ namespace BudgetTool.Controllers
                         // Insert name into the profile table
                         db.UserProfiles.Add(new UserProfile { UserName = model.UserName });
                         db.SaveChanges();
-
-                        InitiateDatabaseForNewUser(model.UserName);
 
                         OAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.UserName);
                         OAuthWebSecurity.Login(provider, providerUserId, createPersistentCookie: false);

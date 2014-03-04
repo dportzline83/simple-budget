@@ -78,9 +78,6 @@ namespace BudgetTool.Models.Budget
         public DbSet<Category> Categories { get; set; }
         public DbSet<BudgetCategory> BudgetCategories { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
-
-        public DbSet<TodoItem> TodoItems { get; set; }
-        public DbSet<TodoList> TodoLists { get; set; }
     }
 
     public class BudgetRepository : EFContextProvider<BudgetContext>

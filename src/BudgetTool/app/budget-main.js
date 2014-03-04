@@ -20,6 +20,7 @@ budget.config([
         templateUrl: '/app/budget.transaction.view.html',
         controller: 'TransactionCtrl'
       })
+      .when('/about', { templateUrl: 'app/about.view.html', controller: 'AboutCtrl' })
       .otherwise({ redirectTo: '/' });
 
     //$locationProvider.html5Mode(true);

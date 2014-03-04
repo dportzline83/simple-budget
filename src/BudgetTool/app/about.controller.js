@@ -3,7 +3,7 @@
  *     $scope - context variable for the view to which the view binds
  *     logger - logs and caches session log messages (about.logger.js)
  */
-todo.controller('AboutCtrl',
+budget.controller('AboutCtrl',
     ['$scope', 'logger',
     function ($scope, logger) {
         $scope.logEntries = logger.logEntries;

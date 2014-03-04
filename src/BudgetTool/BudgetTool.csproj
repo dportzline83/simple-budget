@@ -225,9 +225,6 @@
     </Compile>
     <Compile Include="Models\Account\AccountModels.cs" />
     <Compile Include="Models\Budget\Category.cs" />
-    <Compile Include="Models\ToDo\TodoList.cs" />
-    <Compile Include="Models\ToDo\TodoItem.cs" />
-    <Compile Include="Models\ToDo\TodoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -35,14 +35,6 @@ namespace BudgetTool
                         "~/Scripts/breeze.min.js",
                         "~/Scripts/breeze.savequeuing.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/todo").Include(
-                "~/app/todo.main.js", // must be first
-                "~/app/todo.model.js",
-                "~/app/todo.datacontext.js",
-                "~/app/todo.controller.js",
-                "~/app/about.controller.js"
-                ));
-
             bundles.Add(new ScriptBundle("~/bundles/budget").Include(
                     "~/app/budget-main.js",
                     "~/app/budget-model.js",
@@ -63,8 +55,7 @@ namespace BudgetTool
                 "~/Content/datepicker/bootstrap-datepicker.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/Site.css",
-                "~/Content/TodoList.css"));
+                "~/Content/Site.css"));
         }
     }
 }

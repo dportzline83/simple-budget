@@ -13,6 +13,8 @@ namespace BudgetTool.Models.Budget
         public int Id { get; set; }
 
         [Required]
+        public string UserId { get; set; }
+        [Required]
         public string Name { get; set; }
         public decimal Income { get; set; }
 
@@ -82,8 +84,12 @@ namespace BudgetTool.Models.Budget
 
     public class BudgetRepository : EFContextProvider<BudgetContext>
     {
+        private readonly IPrincipal _user;
 
-        public BudgetRepository(IPrincipal user) { }
+        public BudgetRepository(IPrincipal user)
+        {
+            _user = user;
+        }
 
         public DbQuery<Budget> Budgets
         {
@@ -103,6 +109,15 @@ namespace BudgetTool.Models.Budget
         public DbQuery<Transaction> Transactions
         {
             get { return Context.Transactions; }
+        }
+
+        protected override bool BeforeSaveEntity(EntityInfo entityInfo)
+        {
+            if (entityInfo.Entity is Budget)
+            {
+                (entityInfo.Entity as Budget).UserId = _user.Identity.Name;
+            }
+            return true;
         }
     }
 }

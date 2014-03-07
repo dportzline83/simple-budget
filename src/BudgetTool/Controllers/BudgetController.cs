@@ -38,7 +38,7 @@ namespace BudgetTool.Controllers
         [HttpGet]
         public IQueryable<Budget> Budgets()
         {
-            return _repository.Budgets;
+            return _repository.Budgets.Where(b=>b.UserId == User.Identity.Name);
         }
 
         // GET ~/api/Budget/Categories

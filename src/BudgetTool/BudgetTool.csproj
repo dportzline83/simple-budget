@@ -393,11 +393,6 @@
     <Content Include="app\about.logger.js" />
     <Content Include="app\about.view.html" />
     <Content Include="app\ajaxlogin.js" />
-    <Content Include="app\todo.controller.js" />
-    <Content Include="app\todo.datacontext.js" />
-    <Content Include="app\todo.main.js" />
-    <Content Include="app\todo.model.js" />
-    <Content Include="app\todo.view.html" />
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <None Include="Content\Site.less" />
     <Content Include="Scripts\_references.js" />

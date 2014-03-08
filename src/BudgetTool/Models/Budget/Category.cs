@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Security.Principal;
 using Breeze.WebApi;
+using WebMatrix.WebData;
 
 namespace BudgetTool.Models.Budget
 {
@@ -13,7 +14,7 @@ namespace BudgetTool.Models.Budget
         public int Id { get; set; }
 
         [Required]
-        public string UserId { get; set; }
+        public int UserId { get; set; }
         [Required]
         public string Name { get; set; }
         public decimal Income { get; set; }
@@ -80,6 +81,7 @@ namespace BudgetTool.Models.Budget
         public DbSet<Category> Categories { get; set; }
         public DbSet<BudgetCategory> BudgetCategories { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
     }
 
     public class BudgetRepository : EFContextProvider<BudgetContext>
@@ -115,7 +117,7 @@ namespace BudgetTool.Models.Budget
         {
             if (entityInfo.Entity is Budget)
             {
-                (entityInfo.Entity as Budget).UserId = _user.Identity.Name;
+                (entityInfo.Entity as Budget).UserId = WebSecurity.CurrentUserId;
             }
             return true;
         }

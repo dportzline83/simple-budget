@@ -1,8 +1,12 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using BudgetTool.Models.Budget;
+using WebMatrix.WebData;
 
 namespace BudgetTool
 {
@@ -22,7 +26,35 @@ namespace BudgetTool
             AuthConfig.RegisterAuth();
 
             Database.
-                SetInitializer(new DropCreateDatabaseIfModelChanges<Models.Budget.BudgetContext>());
+                SetInitializer(new DropCreateDatabaseIfModelChanges<BudgetContext>());
+
+            try
+            {
+                using (var context = new BudgetContext())
+                {
+                    if (!context.Database.Exists())
+                    {
+                        // Create the SimpleMembership database without Entity Framework migration schema
+                        ((IObjectContextAdapter) context).ObjectContext.CreateDatabase();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException(
+                    "The ASP.NET Simple Membership database could not be initialized. For more information, please see http://go.microsoft.com/fwlink/?LinkId=256588",
+                    ex);
+            }
+
+            WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+
+        }
+    }
+
+    public class DatabaseInitializer : DropCreateDatabaseIfModelChanges<BudgetContext>
+    {
+        protected override void Seed(BudgetContext context)
+        {
         }
     }
 }

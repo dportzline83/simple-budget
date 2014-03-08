@@ -18,6 +18,7 @@
   }
 
   function Budget() {
+    this.userId = 1;
     this.name = "My Budget";
   }
   function BudgetCategory() {

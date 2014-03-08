@@ -1,4 +1,5 @@
 ﻿using BudgetTool.Models.Budget;
+using WebMatrix.WebData;
 
 namespace BudgetTool.Controllers
 {
@@ -38,7 +39,7 @@ namespace BudgetTool.Controllers
         [HttpGet]
         public IQueryable<Budget> Budgets()
         {
-            return _repository.Budgets.Where(b=>b.UserId == User.Identity.Name);
+            return _repository.Budgets.Where(b => b.UserId == WebSecurity.CurrentUserId);
         }
 
         // GET ~/api/Budget/Categories

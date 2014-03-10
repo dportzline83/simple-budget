@@ -29,6 +29,21 @@
           .fail(failed)
           .fin(refreshView);
       };
+      function getSucceeded(data) {
+        $scope.budget = data[0];
+        $scope.budget.categories.sort(function (first, second) {
+          if (first.priority < second.priority)
+            return -1;
+          else
+            return 1;
+        });
+      };
+      function failed(error) {
+        $scope.error = error.message;
+      };
+      function refreshView() {
+        $scope.$apply();
+      };
       function getCategories() {
         datacontext.getCategories()
           .then(function(data) {
@@ -68,22 +83,7 @@
         datacontext.saveEntity(entity)
           .fin(refreshView);
       };
-      function getSucceeded(data) {
-        $scope.budget = data[0];
-        $scope.budget.categories.sort(function(first, second) {
-          if (first.priority < second.priority)
-            return -1;
-          else
-            return 1;
-        });
-      };
-      function failed(error) {
-        $scope.error = error.message;
-      };
-      function refreshView() {
-        $scope.$apply();
-      };
-
+      
       function addCategory() {
         var cat =
           datacontext.createDetachedEntity('BudgetCategory', {

@@ -31,14 +31,14 @@ namespace BudgetTool
             {
                 context.Database.Initialize(false);
             }
+            WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
         }
     }
 
-    public class DatabaseInitializer : DropCreateDatabaseAlways<BudgetContext>
+    public class DatabaseInitializer : DropCreateDatabaseIfModelChanges<BudgetContext>
     {
         protected override void Seed(BudgetContext context)
         {
-            WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
             context.Categories.Add(new Category {Name = "Groceries", UserId = null});
             context.Categories.Add(new Category { Name = "Entertainment", UserId = null });
             context.Categories.Add(new Category { Name = "Eating Out", UserId = null });

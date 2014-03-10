@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Security.Principal;
@@ -15,12 +16,13 @@ namespace BudgetTool.Models.Budget
 
         [Required]
         public int UserId { get; set; }
+        public virtual UserProfile UserProfile { get; set; }
+
         [Required]
         public string Name { get; set; }
-        public decimal Income { get; set; }
 
         public virtual ICollection<BudgetCategory> Categories { get; set; }
-        public virtual ICollection<Transaction> Transactions { get; set; } 
+        public virtual ICollection<Transaction> Transactions { get; set; }
     }
 
     public class Category
@@ -28,6 +30,10 @@ namespace BudgetTool.Models.Budget
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
+
+        [ForeignKey("UserProfile")]
+        public Nullable<int> UserId { get; set; }
+        public virtual UserProfile UserProfile { get; set; }
     }
 
     public class BudgetCategory
@@ -64,13 +70,14 @@ namespace BudgetTool.Models.Budget
 
         [Required]
         public int CategoryId { get; set; }
-        public virtual Category Category { get; set; } 
+        public virtual Category Category { get; set; }
     }
 
     public enum TransactionType
     {
         Income,
-        Outgo
+        Spending,
+        Saving
     }
     
     public class BudgetContext : DbContext

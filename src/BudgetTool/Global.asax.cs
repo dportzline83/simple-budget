@@ -26,16 +26,17 @@ namespace BudgetTool
             AuthConfig.RegisterAuth();
 
             Database.
-                SetInitializer(new DropCreateDatabaseIfModelChanges<BudgetContext>());
+                SetInitializer(new DatabaseInitializer());
 
             try
             {
                 using (var context = new BudgetContext())
                 {
+                    context.Database.Initialize(false);
                     if (!context.Database.Exists())
                     {
                         // Create the SimpleMembership database without Entity Framework migration schema
-                        ((IObjectContextAdapter) context).ObjectContext.CreateDatabase();
+                        //((IObjectContextAdapter)context).ObjectContext.CreateDatabase();
                     }
                 }
             }
@@ -46,15 +47,15 @@ namespace BudgetTool
                     ex);
             }
 
-            WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
 
         }
     }
 
-    public class DatabaseInitializer : DropCreateDatabaseIfModelChanges<BudgetContext>
+    public class DatabaseInitializer : DropCreateDatabaseAlways<BudgetContext>
     {
         protected override void Seed(BudgetContext context)
         {
+            WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -28,26 +27,10 @@ namespace BudgetTool
             Database.
                 SetInitializer(new DatabaseInitializer());
 
-            try
+            using (var context = new BudgetContext())
             {
-                using (var context = new BudgetContext())
-                {
-                    context.Database.Initialize(false);
-                    if (!context.Database.Exists())
-                    {
-                        // Create the SimpleMembership database without Entity Framework migration schema
-                        //((IObjectContextAdapter)context).ObjectContext.CreateDatabase();
-                    }
-                }
+                context.Database.Initialize(false);
             }
-            catch (Exception ex)
-            {
-                throw new InvalidOperationException(
-                    "The ASP.NET Simple Membership database could not be initialized. For more information, please see http://go.microsoft.com/fwlink/?LinkId=256588",
-                    ex);
-            }
-
-
         }
     }
 
@@ -56,6 +39,20 @@ namespace BudgetTool
         protected override void Seed(BudgetContext context)
         {
             WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+            context.Categories.Add(new Category {Name = "Groceries", UserId = null});
+            context.Categories.Add(new Category { Name = "Entertainment", UserId = null });
+            context.Categories.Add(new Category { Name = "Eating Out", UserId = null });
+            context.Categories.Add(new Category { Name = "Rent", UserId = null });
+            context.Categories.Add(new Category { Name = "Mortgage", UserId = null });
+            context.Categories.Add(new Category { Name = "Natural Gas", UserId = null });
+            context.Categories.Add(new Category { Name = "Electric", UserId = null });
+            context.Categories.Add(new Category { Name = "Water", UserId = null });
+            context.Categories.Add(new Category { Name = "Sewage", UserId = null });
+            context.Categories.Add(new Category { Name = "Internet", UserId = null });
+            context.Categories.Add(new Category { Name = "Cable", UserId = null });
+            context.Categories.Add(new Category { Name = "School", UserId = null });
+            context.Categories.Add(new Category { Name = "Gasoline", UserId = null });
+            context.SaveChanges();
         }
     }
 }

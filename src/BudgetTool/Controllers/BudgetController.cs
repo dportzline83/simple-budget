@@ -46,7 +46,7 @@ namespace BudgetTool.Controllers
         [HttpGet]
         public IQueryable<Category> Categories()
         {
-            return _repository.Categories;
+            return _repository.Categories.Where(b => b.UserId == WebSecurity.CurrentUserId || b.UserId == null); ;
         }
 
         // GET ~/api/Budget/BudgetCategories

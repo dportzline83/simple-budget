@@ -8,7 +8,6 @@ using BudgetTool.Models.Budget;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
-using BudgetTool.Filters;
 using BudgetTool.Models;
 
 namespace BudgetTool.Controllers

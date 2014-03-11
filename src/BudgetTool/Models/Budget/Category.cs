@@ -126,6 +126,10 @@ namespace BudgetTool.Models.Budget
             {
                 (entityInfo.Entity as Budget).UserId = WebSecurity.CurrentUserId;
             }
+            if (entityInfo.Entity is Category)
+            {
+                (entityInfo.Entity as Category).UserId = WebSecurity.CurrentUserId;
+            }
             return true;
         }
     }

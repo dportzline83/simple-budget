@@ -4,7 +4,6 @@
       $scope.budget = {};
       $scope.error = "";
       $scope.categories = [];
-      $scope.transactions = [];
       $scope.getBudgetData = getBudgetData;
       $scope.getCategories = getCategories;
       $scope.addCategory = addCategory;
@@ -12,7 +11,7 @@
       $scope.getSpentAmount = getSpentAmount;
       $scope.getBudgetedIncome = getBudgetedIncome;
       $scope.removeCategory = removeCategory;
-      $scope.setTransactionCategory = setTransactionCategory;
+      $scope.setInitialTransactionValues = setInitialTransactionValues;
       $scope.sortStart = sortStart;
       $scope.sortEnd = sortEnd;
       $scope.saveSequence = saveSequence;
@@ -56,7 +55,7 @@
         var total = 0;
         if ($scope.budget.transactions) {
           $scope.budget.transactions.forEach(function(transaction) {
-            if (transaction.categoryId === category.categoryId)
+            if (transaction.categoryId === category.categoryId && transaction.type === category.type)
               total += transaction.amount;
           });
           category.totalSpent = total;
@@ -64,17 +63,24 @@
         return total;
       };
       function getBudgetedIncome() {
-        var total = 0;
+        var totalSpendingBudgeted = 0;
+        var totalIncomeBudgeted = 0;
         if ($scope.budget.categories) {
-          $scope.budget.categories.forEach(function(c) {
-            total += c.budgetedAmount;
+          $scope.budget.categories.forEach(function (c) {
+            //only if it's a budget for debits
+            if (c.type === 1) {
+              totalSpendingBudgeted += c.budgetedAmount;
+            }
+            if (c.type === 0) {
+              totalIncomeBudgeted += c.budgetedAmount;
+            }
           });
           $scope.income = {
-            budgeted: total,
-            remaining: $scope.budget.income - total
-          };
+            budgeted: totalSpendingBudgeted,
+            remaining: totalIncomeBudgeted - totalSpendingBudgeted
+        };
         }
-        return total;
+        return totalSpendingBudgeted;
       };
       function refresh() {
         getCategories();
@@ -87,7 +93,9 @@
       function addCategory() {
         var cat =
           datacontext.createDetachedEntity('BudgetCategory', {
-            budgetId: $routeParams.id
+            budgetId: $routeParams.id,
+            //set type to debit
+            type: 1
           });
         datacontext.saveEntity(cat)
           .then(addSucceeded)
@@ -142,8 +150,10 @@
           failed({ message: error.message });
         }
       };
-      function setTransactionCategory(category) {
+      function setInitialTransactionValues(category) {
         $scope.newTransaction.category = category.category;
+        //set new transaction's type to debit
+        $scope.newTransaction.type = 1;
       };
 
       $scope.sortableOptions = {

@@ -5,6 +5,10 @@
   });
 </script>
 <h1 class="page-header">{{budget.name}}</h1>
+<div class="col-md-3">
+  <button class="btn btn-success" data-toggle="modal" data-target="#transactionModal"><span class="glyphicon glyphicon-plus"></span> Transaction</button>
+  <a class="btn btn-default" href="#/transactions/{{budget.id}}">All Transactions</a>
+</div>
 <div id="income" class="col-md-12">
   <div class="row">
     <div class="col-md-1"></div>
@@ -12,31 +16,28 @@
     <div class="col-md-2"><strong>Budgeted</strong></div>
     <div class="col-md-2"><strong>Remaining</strong></div>
   </div>
-  <div class="row">
+  <div class="row" data-ng-repeat="category in incomeCategories">
     <div id="income-label" class="col-md-1"><strong>Income</strong></div>
     <div class="col-md-2">
       <div class="input-group">
         <span class="input-group-addon">$</span>
-        <input class="form-control" type="number" data-on-blur="endEdit(budget)" data-ng-model="budget.income" />
+        <input class="form-control" type="number" data-on-blur="endEdit(budget)" disabled data-ng-model="income.totalIncomeBudgeted" />
       </div>
     </div>
     <div class="col-md-2">
       <div class="input-group">
         <span class="input-group-addon">$</span>
-        <input class="form-control" disabled value="{{getBudgetedIncome()}}" />
+        <input class="form-control" type="number" disabled value="{{getBudgetedIncome()}}" />
       </div>
     </div>
     <div class="col-md-2">
       <div class="input-group">
         <span class="input-group-addon">$</span>
-        <input class="form-control" disabled value="{{income.remaining}}" />
+        <input class="form-control" type="number" disabled value="{{income.remaining}}" />
       </div>
     </div>
     <div class="col-md-2"></div>
-    <div class="col-md-3">
-      <button class="btn btn-success" data-toggle="modal" data-target="#transactionModal"><span class="glyphicon glyphicon-plus"></span> Transaction</button>
-      <a class="btn btn-default" href="#/transactions/{{budget.id}}">All Transactions</a>
-    </div>
+    
   </div>
 </div>
 <div id="category-list" class="col-md-12">
@@ -48,8 +49,8 @@
     <div class="col-md-2"><strong>Remaining</strong></div>
     <div class="col-md-1"></div>
   </div>
-  <ul data-ui-sortable="sortableOptions" data-ng-model="budget.categories">
-    <li data-ng-repeat="category in budget.categories">
+  <ul data-ui-sortable="sortableOptions" data-ng-model="spendingCategories">
+    <li data-ng-repeat="category in spendingCategories">
       <div class="row">
         <div class="col-md-1">
           <button class="btn btn-danger" data-ng-click="removeCategory(category)"><span class="glyphicon glyphicon-remove"></span></button>
@@ -83,14 +84,13 @@
           </div>
         </div>
         <div class="col-md-2">
-            <input class="form-control" type="number" data-on-blur="endEdit(category)" data-ng-model="category.priority" />
         </div>
       </div>
     </li>
   </ul>
   <div class="row">
     <div class="col-md-1">
-      <button class="btn btn-success" data-ng-click="addCategory()"><span class="glyphicon glyphicon-plus"></span></button>
+      <button class="btn btn-success" data-ng-click="addCategory(1)"><span class="glyphicon glyphicon-plus"></span></button>
     </div>
   </div>
 </div>

@@ -21,6 +21,8 @@
       $scope.getCategories();
       $scope.getBudgetData();
       $scope.income = {};
+      $scope.incomeCategories = [];
+      $scope.spendingCategories = [];
 
       function getBudgetData() {
         datacontext.getBudgetData($routeParams.id)
@@ -30,7 +32,9 @@
       };
       function getSucceeded(data) {
         $scope.budget = data[0];
-        $scope.budget.categories.sort(function (first, second) {
+        $scope.incomeCategories = $scope.budget.categories.filter(function (c) { return c.type = 0; });
+        $scope.spendingCategories = $scope.budget.categories.filter(function (c) { return c.type = 1; });
+        $scope.spendingCategories.sort(function (first, second) {
           if (first.priority < second.priority)
             return -1;
           else
@@ -90,12 +94,11 @@
           .fin(refreshView);
       };
       
-      function addCategory() {
+      function addCategory(type) {
         var cat =
           datacontext.createDetachedEntity('BudgetCategory', {
             budgetId: $routeParams.id,
-            //set type to debit
-            type: 1
+            type: type
           });
         datacontext.saveEntity(cat)
           .then(addSucceeded)
@@ -168,13 +171,13 @@
       function sortEnd(e, ui) {
         var end = ui.item.index();
 
-        var previous = $scope.budget.categories.splice(lastSortStart, 1)[0];
-        $scope.budget.categories.splice(end, 0, previous);
+        var previous = $scope.spendingCategories.splice(lastSortStart, 1)[0];
+        $scope.spendingCategories.splice(end, 0, previous);
         refreshView();
         saveSequence();
       };
       function saveSequence() {
-        var categories = $scope.budget.categories;
+        var categories = $scope.spendingCategories;
         for (var i = 0; i < categories.length; i++) {
           var cat = categories[i];
           cat.priority = i;
@@ -186,7 +189,7 @@
             .fin(refreshView);
         
         function saveSequenceSucceeded() {
-          $scope.budget.categories = categories;
+          $scope.spendingCategories = categories;
         }
         function saveSequenceFailed(error) {
           failed({ message: error.message });

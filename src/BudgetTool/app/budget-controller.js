@@ -106,10 +106,13 @@
           .fin(refreshView);
 
         function addSucceeded() {
-          var len = $scope.budget.categories.length;
-          cat.priority = len === 0 ?
-            0 : $scope.budget.categories[len - 1].priority + 1;
-          $scope.budget.categories.push(cat);
+          var categories = type === 0 ? "incomeCategories" : "spendingCategories";
+          if (type === 1) {
+            var len = $scope[categories].length;
+            cat.priority = len === 0 ?
+              0 : $scope.spendingCategories[len - 1].priority + 1;
+          }
+          $scope[categories].push(cat);
         }
 
         function addFailed(error) {

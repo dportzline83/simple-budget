@@ -9,9 +9,9 @@
 <div id="income" class="col-md-8">
   <div class="row">
     <div class="col-md-1"></div>
-    <div class="col-md-3"><strong>Category</strong></div>
-    <div class="col-md-2"><strong>Budgeted</strong></div>
-    <div class="col-md-2"><strong>Received</strong></div>
+    <div class="col-md-5"><strong>Category</strong></div>
+    <div class="col-md-3"><strong>Budgeted</strong></div>
+    <div class="col-md-3"><strong>Received</strong></div>
   </div>
   <ul data-ui-sortable="sortableOptions" data-ng-model="incomeCategories">
     <li data-ng-repeat="category in incomeCategories">
@@ -19,18 +19,18 @@
         <div class="col-md-1">
           <button class="btn btn-danger" data-ng-click="removeCategory(category)"><span class="glyphicon glyphicon-remove"></span></button>
         </div>
-        <div class="col-md-3" >
+        <div class="col-md-5" >
           <select class="form-control" data-on-change="endEdit(category)" data-ng-model="category.category" data-ng-options="c.name for c in categories">
             <option value="">Choose category...</option>
           </select>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           <div class="input-group">
             <span class="input-group-addon">$</span>
             <input class="form-control" type="number" data-on-blur="endEdit(category)" data-ng-model="category.budgetedAmount" />
           </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           <div class="input-group">
             <span class="input-group-addon">$</span>
             <input class="form-control" disabled value="{{getSpentAmount(category)}}" />
@@ -51,8 +51,10 @@
   </div>
 </div>
 <div class="col-md-4">
-  <button class="btn btn-success" data-toggle="modal" data-target="#transactionModal"><span class="glyphicon glyphicon-plus"></span> Transaction</button>
-  <a class="btn btn-default" href="#/transactions/{{budget.id}}">All Transactions</a>
+  <div class="pull-right">
+    <button class="btn btn-success" data-toggle="modal" data-target="#transactionModal"><span class="glyphicon glyphicon-plus"></span> Transaction</button>
+    <a class="btn btn-default" href="#/transactions/{{budget.id}}">All Transactions</a>
+  </div>
 </div>
 <div id="category-list" class="col-md-12">
   <div class="row" data-ng-show="spendingCategories.length > 0">

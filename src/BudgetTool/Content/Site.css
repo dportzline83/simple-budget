@@ -6773,9 +6773,6 @@ footer {
 }
 /*#endregion */
 /* #region Budget Detail */
-#income {
-  margin-top: 15px;
-}
 [data-ui-sortable] {
   list-style-type: none;
   padding: 0px;
@@ -6784,8 +6781,7 @@ footer {
 [data-ui-sortable] li {
   cursor: move;
 }
-#category-list,
-#income {
+#category-list {
   margin-top: 10px;
 }
 #category-list .row,

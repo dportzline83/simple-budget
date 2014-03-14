@@ -160,8 +160,7 @@
       };
       function setInitialTransactionValues(category) {
         $scope.newTransaction.category = category.category;
-        //set new transaction's type to debit
-        $scope.newTransaction.type = 1;
+        $scope.newTransaction.type = category.type;
       };
 
       $scope.sortableOptions = {

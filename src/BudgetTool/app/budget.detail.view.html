@@ -6,11 +6,44 @@
 </script>
 <h1 class="page-header">{{budget.name}}</h1>
 
-<div id="income" class="col-md-8">
+<div class="row">
+  <div id="income-summary" class="col-md-3">
+    <h2 class="section-header">Income</h2>
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>Expected</th>
+          <th>Budgeted</th>
+          <th>Remaining</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{income.expected | currency}}</td>
+          <td>{{income.budgeted | currency}}</td>
+          <th>{{income.remaining | currency}}</th>
+          <td>
+            <a id="toggle-income-details" data-toggle="collapse" data-target="#income">
+              <span class="glyphicon glyphicon-plus"></span>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-4 col-md-offset-5">
+    <div class="pull-right">
+      <button class="btn btn-success" data-toggle="modal" data-target="#transactionModal"><span class="glyphicon glyphicon-plus"></span> Transaction</button>
+      <a class="btn btn-default" href="#/transactions/{{budget.id}}">All Transactions</a>
+    </div>
+  </div>
+</div>
+<div id="income" class="col-md-8 collapse">
   <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-5"><strong>Category</strong></div>
-    <div class="col-md-3"><strong>Budgeted</strong></div>
+    <div class="col-md-3"><strong>Expected</strong></div>
     <div class="col-md-3"><strong>Received</strong></div>
   </div>
   <ul data-ui-sortable="sortableOptions" data-ng-model="incomeCategories">
@@ -50,13 +83,8 @@
     </div>
   </div>
 </div>
-<div class="col-md-4">
-  <div class="pull-right">
-    <button class="btn btn-success" data-toggle="modal" data-target="#transactionModal"><span class="glyphicon glyphicon-plus"></span> Transaction</button>
-    <a class="btn btn-default" href="#/transactions/{{budget.id}}">All Transactions</a>
-  </div>
-</div>
 <div id="category-list" class="col-md-12">
+  <h2 class="section-header">Spending</h2>
   <div class="row" data-ng-show="spendingCategories.length > 0">
     <div class="col-md-1"></div>
     <div class="col-md-3"><strong>Category</strong></div>

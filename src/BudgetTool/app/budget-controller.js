@@ -40,6 +40,7 @@
           else
             return 1;
         });
+        getBudgetedIncome();
       };
       function failed(error) {
         $scope.error = error.message;
@@ -68,7 +69,7 @@
       };
       function getBudgetedIncome() {
         var totalSpendingBudgeted = 0;
-        var totalIncomeBudgeted = 0;
+        var totalExpectedIncome = 0;
         if ($scope.budget.categories) {
           $scope.budget.categories.forEach(function (c) {
             //only if it's a budget for debits
@@ -77,12 +78,13 @@
             }
             //credits
             if (c.type === 0) {
-              totalIncomeBudgeted += c.budgetedAmount;
+              totalExpectedIncome += c.budgetedAmount;
             }
           });
           $scope.income = {
+            expected: totalExpectedIncome,
             budgeted: totalSpendingBudgeted,
-            remaining: totalIncomeBudgeted - totalSpendingBudgeted
+            remaining: totalExpectedIncome - totalSpendingBudgeted
         };
         }
         return totalSpendingBudgeted;

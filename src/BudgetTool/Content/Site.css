@@ -6582,11 +6582,14 @@ input[type=number]::-webkit-outer-spin-button {
   min-height: 400px;
   text-align: center;
 }
-/*#region Header */
+/*#region Headers */
 .page-header {
   margin: 0px 0px 15px 0px;
   border-bottom: 2px solid #428bca;
   color: #5bc0de;
+}
+.section-header {
+  margin: 0px 0px 10px 0px;
 }
 header {
   text-align: center;
@@ -6782,7 +6785,7 @@ footer {
   cursor: move;
 }
 #category-list {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 #category-list .row,
 #income .row {
@@ -6792,6 +6795,9 @@ footer {
 }
 .datepicker {
   z-index: 2000 !important;
+}
+#toggle-income-details {
+  cursor: pointer;
 }
 /* #endregion */
 /* #region Budget List */

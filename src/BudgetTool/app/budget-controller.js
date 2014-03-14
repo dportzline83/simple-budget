@@ -75,6 +75,7 @@
             if (c.type === 1) {
               totalSpendingBudgeted += c.budgetedAmount;
             }
+            //credits
             if (c.type === 0) {
               totalIncomeBudgeted += c.budgetedAmount;
             }

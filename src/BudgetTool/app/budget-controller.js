@@ -32,8 +32,8 @@
       };
       function getSucceeded(data) {
         $scope.budget = data[0];
-        $scope.incomeCategories = $scope.budget.categories.filter(function (c) { return c.type = 0; });
-        $scope.spendingCategories = $scope.budget.categories.filter(function (c) { return c.type = 1; });
+        $scope.incomeCategories = $scope.budget.categories.filter(function (c) { return c.type === 0; });
+        $scope.spendingCategories = $scope.budget.categories.filter(function (c) { return c.type === 1; });
         $scope.spendingCategories.sort(function (first, second) {
           if (first.priority < second.priority)
             return -1;
@@ -121,8 +121,9 @@
       };
 
       function removeCategory(category) {
-        var index = $scope.budget.categories.indexOf(category);
-        $scope.budget.categories.splice(index, 1);
+        var categories = category.type === 0 ? "incomeCategories" : "spendingCategories";
+        var index = $scope[categories].indexOf(category);
+        $scope[categories].splice(index, 1);
 
         category.entityAspect.setDeleted();
         datacontext.saveEntity(category)

@@ -10,35 +10,53 @@
   <a class="btn btn-default" href="#/transactions/{{budget.id}}">All Transactions</a>
 </div>
 <div id="income" class="col-md-12">
-  <div class="row">
+  <div class="row" data-ng-show="budget.categories.length > 0">
     <div class="col-md-1"></div>
-    <div class="col-md-2"><strong>Expected</strong></div>
+    <div class="col-md-3"><strong>Category</strong></div>
     <div class="col-md-2"><strong>Budgeted</strong></div>
+    <div class="col-md-2"><strong>Spent</strong></div>
     <div class="col-md-2"><strong>Remaining</strong></div>
+    <div class="col-md-1"></div>
   </div>
-  <div class="row" data-ng-repeat="category in incomeCategories">
-    <div id="income-label" class="col-md-1"><strong>Income</strong></div>
-    <div class="col-md-2">
-      <div class="input-group">
-        <span class="input-group-addon">$</span>
-        <input class="form-control" type="number" data-on-blur="endEdit(budget)" disabled data-ng-model="income.totalIncomeBudgeted" />
+  <ul data-ui-sortable="sortableOptions" data-ng-model="incomeCategories">
+    <li data-ng-repeat="category in incomeCategories">
+      <div class="row">
+        <div class="col-md-1">
+          <button class="btn btn-danger" data-ng-click="removeCategory(category)"><span class="glyphicon glyphicon-remove"></span></button>
+        </div>
+        <div class="col-md-3" >
+          <select class="form-control" data-on-change="endEdit(category)" data-ng-model="category.category" data-ng-options="c.name for c in categories">
+            <option value="">Choose category...</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <input class="form-control" type="number" data-on-blur="endEdit(category)" data-ng-model="category.budgetedAmount" />
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <input class="form-control" disabled value="{{getSpentAmount(category)}}" />
+            <span class="input-group-btn">
+              <button class="btn btn-success" data-ng-click="setInitialTransactionValues(category)" data-toggle="modal" data-target="#transactionModal">
+                <span class="glyphicon glyphicon-plus"></span>
+              </button>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <input class="form-control" disabled value="{{category.budgetedAmount - category.totalSpent}}" />
+          </div>
+        </div>
+        <div class="col-md-2">
+        </div>
       </div>
-    </div>
-    <div class="col-md-2">
-      <div class="input-group">
-        <span class="input-group-addon">$</span>
-        <input class="form-control" type="number" disabled value="{{getBudgetedIncome()}}" />
-      </div>
-    </div>
-    <div class="col-md-2">
-      <div class="input-group">
-        <span class="input-group-addon">$</span>
-        <input class="form-control" type="number" disabled value="{{income.remaining}}" />
-      </div>
-    </div>
-    <div class="col-md-2"></div>
-    
-  </div>
+    </li>
+  </ul>
   <div class="row">
     <div class="col-md-1">
       <button class="btn btn-success" data-ng-click="addCategory(0)"><span class="glyphicon glyphicon-plus"></span></button>

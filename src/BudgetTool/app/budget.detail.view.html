@@ -21,8 +21,8 @@
       <tbody>
         <tr>
           <td>{{income.expected | currency}}</td>
-          <td>{{income.budgeted | currency}}</td>
-          <th>{{income.remaining | currency}}</th>
+          <td>{{getBudgetedIncome() | currency}}</td>
+          <th data-ng-class="remainingIncomeClass">{{income.remaining | currency}}</th>
           <td>
             <a id="toggle-income-details" data-toggle="collapse" data-target="#income">
               <span class="glyphicon glyphicon-plus"></span>

@@ -169,8 +169,11 @@
         }
       };
       function setInitialTransactionValues(category) {
-        $scope.newTransaction.category = category.category;
-        $scope.newTransaction.type = category.type;
+        if (category) {
+          $scope.newTransaction.category = category.category;
+          $scope.newTransaction.type = category.type;
+        }
+        $scope.newTransaction.date = new Date();
       };
 
       $scope.sortableOptions = {

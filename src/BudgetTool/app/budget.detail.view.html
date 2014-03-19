@@ -44,7 +44,12 @@
   </div>
   <div class="col-md-4 col-md-offset-5">
     <div class="pull-right">
-      <button class="btn btn-success" data-toggle="modal" data-target="#transactionModal"><span class="glyphicon glyphicon-plus"></span> Transaction</button>
+      <button class="btn btn-success"
+              data-toggle="modal"
+              data-target="#transactionModal"
+              data-ng-click="setInitialTransactionValues()">
+        <span class="glyphicon glyphicon-plus"></span> Transaction
+      </button>
       <a class="btn btn-default" href="#/transactions/{{budget.id}}">All Transactions</a>
     </div>
   </div>

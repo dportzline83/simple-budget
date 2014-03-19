@@ -63,14 +63,19 @@ budget.directive('onEnter', function() {
   };
 });
 
-budget.directive('sortable', function () {
+budget.directive('plusMinus', function() {
   return {
     restrict: 'A',
-    require: 'ngModel',
-    link: function(scope, element, attrs, ngModel) {
-      element.sortable({
-        start: scope.sortStart,
-        update: scope.sortEnd
+    require: '',
+    link: function (scope, element, attrs) {
+      element.bind('hidden.bs.collapse shown.bs.collapse', function () {
+        
+        var link = $('#' + attrs.plusMinus).find('span');
+        if (element.hasClass('in')) {
+          link.removeClass('glyphicon-plus').addClass('glyphicon-minus');
+        } else {
+          link.removeClass('glyphicon-minus').addClass('glyphicon-plus');
+        }
       });
     }
   };

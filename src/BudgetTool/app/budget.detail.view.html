@@ -3,6 +3,8 @@
     todayHighlight: true,
     autoclose: true
   });
+
+  $('[data-toggle=tooltip]').tooltip();
 </script>
 <h1 class="page-header">{{budget.name}}</h1>
 
@@ -22,15 +24,17 @@
         <tr>
           <td>{{income.expected | currency}}</td>
           <td>{{getBudgetedIncome() | currency}}</td>
-          <th data-ng-class="remainingIncomeClass">{{income.remaining | currency}}</th>
-          <td>
-            <a id="toggle-income-details" data-toggle="collapse" data-target="#income">
-              <span class="glyphicon glyphicon-plus"></span>
-            </a>
+          <td data-toggle="tooltip"
+              title="The remaining amount of income you expect to receive that is not budgeted."
+              data-placement="bottom"
+              data-ng-class="remainingIncomeClass">{{income.remaining | currency}}
           </td>
         </tr>
       </tbody>
     </table>
+    <a id="toggle-income-details" data-toggle="collapse" data-target="#income">
+      <span class="glyphicon glyphicon-plus"></span>
+    </a>
   </div>
   <div class="col-md-4 col-md-offset-5">
     <div class="pull-right">
@@ -39,7 +43,7 @@
     </div>
   </div>
 </div>
-<div id="income" class="col-md-8 collapse">
+<div id="income" class="col-md-8 collapse" data-plus-minus="toggle-income-details">
   <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-5"><strong>Category</strong></div>

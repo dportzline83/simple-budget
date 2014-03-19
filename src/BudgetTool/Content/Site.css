@@ -6802,6 +6802,12 @@ footer {
 #income-summary {
   font-size: 18px;
 }
+#income-summary table {
+  margin-bottom: 5px;
+}
+#income-summary td {
+  text-align: right;
+}
 /* #endregion */
 /* #region Budget List */
 #budget-list {

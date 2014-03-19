@@ -24,7 +24,9 @@ namespace BudgetTool
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                         "~/Content/bower_components/angular/angular.js",
                         "~/Content/bower_components/angular-route/angular-route.js",
-                        "~/Content/bower_components/angular-ui-sortable/sortable.js"));
+                        "~/Content/bower_components/angular-ui-sortable/sortable.js",
+                        "~/Content/bower_components/angular-ui-date/src/date.js"
+                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/ajaxlogin").Include(
                 "~/app/ajaxlogin.js"));

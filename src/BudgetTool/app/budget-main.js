@@ -1,4 +1,4 @@
-﻿window.budget = angular.module('budget', ['ngRoute', 'ui.sortable']);
+﻿window.budget = angular.module('budget', ['ngRoute', 'ui.sortable', 'ui.date']);
 
 budget.value('breeze', window.breeze)
     .value('Q', window.Q);

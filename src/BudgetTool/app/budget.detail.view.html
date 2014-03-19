@@ -25,16 +25,22 @@
           <td>{{income.expected | currency}}</td>
           <td>{{getBudgetedIncome() | currency}}</td>
           <td data-toggle="tooltip"
-              title="The remaining amount of income you expect to receive that is not budgeted."
+              title="The remaining amount of income you expect to receive that is not budgeted. This number should be 0!"
               data-placement="bottom"
               data-ng-class="remainingIncomeClass">{{income.remaining | currency}}
           </td>
         </tr>
       </tbody>
     </table>
-    <a id="toggle-income-details" data-toggle="collapse" data-target="#income">
-      <span class="glyphicon glyphicon-plus"></span>
-    </a>
+    <span data-toggle="tooltip"
+          title="Show or hide income details."
+          data-placement="bottom">
+      <a id="toggle-income-details"
+         data-toggle="collapse"
+         data-target="#income">
+        <span class="glyphicon glyphicon-plus"></span>
+      </a>
+    </span>
   </div>
   <div class="col-md-4 col-md-offset-5">
     <div class="pull-right">

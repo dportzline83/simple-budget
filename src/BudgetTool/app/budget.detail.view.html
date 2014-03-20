@@ -158,19 +158,15 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-md-12">
-            <form>
+            <form class="" role="form">
               <div class="form-group">
                 <select class="form-control" data-ng-model="newTransaction.category" data-ng-options="c.name for c in categories">
                   <option value="">Choose category...</option>
                 </select>
               </div>
               <div class="form-group">
-                <label>Income?</label>
-                <input class="form-control" type="checkbox" data-ng-model="newTransactionType" />
-              </div>
-              <div class="form-group">
                 <div class="input-group">
-                  <input type="text" class="form-control" data-ui-date="" placeholder="Date" data-ng-model="newTransaction.date"/>
+                  <input type="text" class="form-control" data-ui-date="" placeholder="Date" data-ng-model="newTransaction.date" ng-required="true" />
                   <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
               </div>
@@ -182,6 +178,10 @@
               </div>
               <div class="form-group">
                 <input class="form-control" placeholder="Description" data-ng-model="newTransaction.description" />
+              </div>
+              <div class="form-group">
+                <label for="transaction-type">Income?</label>
+                <input id="transaction-type" class="" type="checkbox" data-ng-model="newTransactionType" />
               </div>
             </form>
           </div>

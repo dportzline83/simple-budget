@@ -152,6 +152,7 @@
 
       function addTransaction(initialValues) {
         initialValues.budgetId = $routeParams.id;
+        initialValues.type = $scope.newTransactionType ? 0 : 1;
         var transaction =
           datacontext.createEntity('Transaction',
             initialValues);

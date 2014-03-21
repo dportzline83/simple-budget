@@ -62,10 +62,16 @@
         <div class="col-md-1">
           <button class="btn btn-danger" data-ng-click="removeCategory(category)"><span class="glyphicon glyphicon-remove"></span></button>
         </div>
-        <div class="col-md-5" >
-          <select class="form-control" data-on-change="endEdit(category)" data-ng-model="category.category" data-ng-options="c.name for c in categories">
+        <div class="col-md-5 category-selector" >
+          <select class="form-control"
+                  data-on-change="endEdit(category)"
+                  data-ng-model="category.category"
+                  data-ng-options="c.name for c in categories"
+                  data-ng-show="!showCategoryCreator">
             <option value="">Choose category...</option>
           </select>
+          <a data-ng-click="showCategoryCreator = !showCategoryCreator" data-ng-show="!showCategoryCreator">New</a>
+          <input type="text" class="form-control" data-on-blur="createNewCategory(category)" data-ng-model="newCategory.name" data-ng-show="showCategoryCreator"/>
         </div>
         <div class="col-md-3">
           <div class="input-group">
@@ -109,7 +115,7 @@
         <div class="col-md-1">
           <button class="btn btn-danger" data-ng-click="removeCategory(category)"><span class="glyphicon glyphicon-remove"></span></button>
         </div>
-        <div class="col-md-3" >
+        <div class="col-md-3 category-selector" >
           <select class="form-control" data-on-change="endEdit(category)" data-ng-model="category.category" data-ng-options="c.name for c in categories">
             <option value="">Choose category...</option>
           </select>

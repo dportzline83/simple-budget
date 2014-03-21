@@ -23,6 +23,9 @@
       $scope.income = {};
       $scope.incomeCategories = [];
       $scope.spendingCategories = [];
+      $scope.showCategoryCreator = false;
+      $scope.createNewCategory = createNewCategory;
+      $scope.newCategory = {};
 
       function getBudgetData() {
         datacontext.getBudgetData($routeParams.id)
@@ -210,6 +213,24 @@
           $scope.spendingCategories = categories;
         }
         function saveSequenceFailed(error) {
+          failed({ message: error.message });
+        }
+      };
+      function createNewCategory(budgetCategory) {
+        var category =
+          datacontext.createEntity('Category', $scope.newCategory);
+        datacontext.saveEntity(category)
+          .then(addSucceeded)
+          .fail(addFailed)
+          .fin(refreshView);
+
+        function addSucceeded() {
+          $scope.categories.push(category);
+          budgetCategory.category = category;
+          $scope.newCategory = {};
+          $scope.showCategoryCreator = false;
+        }
+        function addFailed(error) {
           failed({ message: error.message });
         }
       };

@@ -49,12 +49,12 @@
     </div>
   </div>
 </div>
-<div id="income" class="col-md-8 collapse" data-plus-minus="toggle-income-details">
+<div id="income" class="col-md-12 collapse" data-plus-minus="toggle-income-details">
   <div class="row">
     <div class="col-md-1"></div>
-    <div class="col-md-5"><strong>Category</strong></div>
-    <div class="col-md-3"><strong>Expected</strong></div>
-    <div class="col-md-3"><strong>Received</strong></div>
+    <div class="col-md-3"><strong>Category</strong></div>
+    <div class="col-md-2"><strong>Expected</strong></div>
+    <div class="col-md-2"><strong>Received</strong></div>
   </div>
   <ul data-ui-sortable="sortableOptions" data-ng-model="incomeCategories">
     <li data-ng-repeat="category in incomeCategories">
@@ -62,24 +62,24 @@
         <div class="col-md-1">
           <button class="btn btn-danger" data-ng-click="removeCategory(category)"><span class="glyphicon glyphicon-remove"></span></button>
         </div>
-        <div class="col-md-5 category-selector" >
+        <div class="col-md-3 category-selector" >
           <select class="form-control"
                   data-on-change="endEdit(category)"
                   data-ng-model="category.category"
                   data-ng-options="c.name for c in categories"
-                  data-ng-show="!showCategoryCreator">
+                  data-ng-show="!category.showCategoryCreator">
             <option value="">Choose category...</option>
           </select>
-          <a data-ng-click="showCategoryCreator = !showCategoryCreator" data-ng-show="!showCategoryCreator">New</a>
-          <input type="text" class="form-control" data-on-blur="createNewCategory(category)" data-ng-model="newCategory.name" data-ng-show="showCategoryCreator"/>
+          <a data-ng-click="category.showCategoryCreator = true" data-ng-show="!category.showCategoryCreator">New</a>
+          <input type="text" class="form-control" data-on-blur="createNewCategory(category)" data-ng-model="newCategory.name" data-ng-show="category.showCategoryCreator"/>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
           <div class="input-group">
             <span class="input-group-addon">$</span>
             <input class="form-control" type="number" data-on-blur="endEdit(category)" data-ng-model="category.budgetedAmount" />
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
           <div class="input-group">
             <span class="input-group-addon">$</span>
             <input class="form-control" disabled value="{{getSpentAmount(category)}}" />
@@ -116,9 +116,15 @@
           <button class="btn btn-danger" data-ng-click="removeCategory(category)"><span class="glyphicon glyphicon-remove"></span></button>
         </div>
         <div class="col-md-3 category-selector" >
-          <select class="form-control" data-on-change="endEdit(category)" data-ng-model="category.category" data-ng-options="c.name for c in categories">
+          <select class="form-control"
+                  data-on-change="endEdit(category)"
+                  data-ng-model="category.category"
+                  data-ng-options="c.name for c in categories"
+                  data-ng-show="!category.showCategoryCreator">
             <option value="">Choose category...</option>
           </select>
+          <a data-ng-click="category.showCategoryCreator = true" data-ng-show="!category.showCategoryCreator">New</a>
+          <input type="text" class="form-control" data-on-blur="createNewCategory(category)" data-ng-model="newCategory.name" data-ng-show="category.showCategoryCreator"/>
         </div>
         <div class="col-md-2">
           <div class="input-group">

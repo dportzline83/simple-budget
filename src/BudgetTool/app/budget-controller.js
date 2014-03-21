@@ -227,8 +227,9 @@
         function addSucceeded() {
           $scope.categories.push(category);
           budgetCategory.category = category;
+          datacontext.saveEntity(budgetCategory);
           $scope.newCategory = {};
-          $scope.showCategoryCreator = false;
+          budgetCategory.showCategoryCreator = false;
         }
         function addFailed(error) {
           failed({ message: error.message });

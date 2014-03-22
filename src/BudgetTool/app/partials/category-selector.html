@@ -1,0 +1,9 @@
+﻿<select class="form-control"
+        data-on-change="endEdit(category)"
+        data-ng-model="category.category"
+        data-ng-options="c.name for c in categories"
+        data-ng-show="!category.showCategoryCreator">
+  <option value="">Choose category...</option>
+</select>
+<a data-ng-click="category.showCategoryCreator = true" data-ng-show="!category.showCategoryCreator">New</a>
+<input type="text" class="form-control" data-on-blur="createNewCategory(category)" data-ng-model="newCategory.name" data-ng-show="category.showCategoryCreator" />

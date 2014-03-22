@@ -63,15 +63,7 @@
           <button class="btn btn-danger" data-ng-click="removeCategory(category)"><span class="glyphicon glyphicon-remove"></span></button>
         </div>
         <div class="col-md-3 category-selector" >
-          <select class="form-control"
-                  data-on-change="endEdit(category)"
-                  data-ng-model="category.category"
-                  data-ng-options="c.name for c in categories"
-                  data-ng-show="!category.showCategoryCreator">
-            <option value="">Choose category...</option>
-          </select>
-          <a data-ng-click="category.showCategoryCreator = true" data-ng-show="!category.showCategoryCreator">New</a>
-          <input type="text" class="form-control" data-on-blur="createNewCategory(category)" data-ng-model="newCategory.name" data-ng-show="category.showCategoryCreator"/>
+          <div data-ng-include="'/app/partials/category-selector.html'"></div>
         </div>
         <div class="col-md-2">
           <div class="input-group">
@@ -116,15 +108,7 @@
           <button class="btn btn-danger" data-ng-click="removeCategory(category)"><span class="glyphicon glyphicon-remove"></span></button>
         </div>
         <div class="col-md-3 category-selector" >
-          <select class="form-control"
-                  data-on-change="endEdit(category)"
-                  data-ng-model="category.category"
-                  data-ng-options="c.name for c in categories"
-                  data-ng-show="!category.showCategoryCreator">
-            <option value="">Choose category...</option>
-          </select>
-          <a data-ng-click="category.showCategoryCreator = true" data-ng-show="!category.showCategoryCreator">New</a>
-          <input type="text" class="form-control" data-on-blur="createNewCategory(category)" data-ng-model="newCategory.name" data-ng-show="category.showCategoryCreator"/>
+          <div data-ng-include="'/app/partials/category-selector.html'"></div>
         </div>
         <div class="col-md-2">
           <div class="input-group">

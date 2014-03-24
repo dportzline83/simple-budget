@@ -6,4 +6,6 @@
   <option value="">Choose category...</option>
 </select>
 <a data-ng-click="category.showCategoryCreator = true" data-ng-show="!category.showCategoryCreator">New</a>
-<input type="text" class="form-control" data-on-blur="createNewCategory(category)" data-ng-model="newCategory.name" data-ng-show="category.showCategoryCreator" />
+<a data-ng-click="category.showCategoryCreator = false; newCategory = {};" data-ng-hide="!category.showCategoryCreator">Cancel</a>
+<a data-ng-click="createNewCategory(category)" data-ng-hide="!category.showCategoryCreator">Save</a>
+<input type="text" class="form-control" data-ng-model="newCategory.name" data-ng-show="category.showCategoryCreator" />

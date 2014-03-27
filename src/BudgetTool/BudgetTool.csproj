@@ -227,7 +227,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\budget-category-controller.js" />
     <Content Include="app\budget-controller.js" />
+    <Content Include="app\budget.category.view.html" />
     <Content Include="app\budgets-controller.js" />
     <Content Include="app\budget-model.js" />
     <Content Include="app\budget.list.view.html" />

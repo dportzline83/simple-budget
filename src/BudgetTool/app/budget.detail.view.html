@@ -50,7 +50,7 @@
   </div>
 </div>
 <div id="income" class="col-md-12 collapse" data-plus-minus="toggle-income-details">
-  <div class="row">
+  <div class="row budget-list">
     <div class="col-md-1"></div>
     <div class="col-md-3"><strong>Category</strong></div>
     <div class="col-md-2"><strong>Expected</strong></div>
@@ -58,7 +58,7 @@
   </div>
   <ul data-ui-sortable="sortableOptions" data-ng-model="incomeCategories">
     <li data-ng-repeat="category in incomeCategories">
-      <div class="row">
+      <div class="row budget-list">
         <div class="col-md-1">
           <button class="btn btn-danger" data-ng-click="removeCategory(category)"><span class="glyphicon glyphicon-remove"></span></button>
         </div>
@@ -93,7 +93,7 @@
 </div>
 <div id="category-list" class="col-md-12">
   <h2 class="section-header">Spending</h2>
-  <div class="row" data-ng-show="spendingCategories.length > 0">
+  <div class="row budget-list" data-ng-show="spendingCategories.length > 0">
     <div class="col-md-1"></div>
     <div class="col-md-3"><strong>Category</strong></div>
     <div class="col-md-2"><strong>Budgeted</strong></div>
@@ -103,7 +103,7 @@
   </div>
   <ul data-ui-sortable="sortableOptions" data-ng-model="spendingCategories">
     <li data-ng-repeat="category in spendingCategories">
-      <div class="row">
+      <div class="row budget-list">
         <div class="col-md-1">
           <button class="btn btn-danger" data-ng-click="removeCategory(category)"><span class="glyphicon glyphicon-remove"></span></button>
         </div>

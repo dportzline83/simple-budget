@@ -6789,16 +6789,15 @@ footer {
 }
 #category-list .row,
 #income .row {
+  border-bottom: 1px solid #eeeeee;
+}
+.budget-list.row {
   padding-top: 5px;
   padding-bottom: 5px;
-  border-bottom: 1px solid #eeeeee;
 }
 .category-selector .form-control {
   width: auto;
   display: inline-block;
-}
-.datepicker {
-  z-index: 2000 !important;
 }
 #toggle-income-details {
   cursor: pointer;

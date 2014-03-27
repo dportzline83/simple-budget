@@ -20,6 +20,11 @@ budget.config([
         templateUrl: '/app/budget.transaction.view.html',
         controller: 'TransactionCtrl'
       })
+      .when('/categories',
+      {
+        templateUrl: '/app/budget.category.view.html',
+        controller: 'CategoryCtrl'
+      })
       .when('/about', { templateUrl: 'app/about.view.html', controller: 'AboutCtrl' })
       .otherwise({ redirectTo: '/' });
 

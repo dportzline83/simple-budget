@@ -12,7 +12,8 @@
 
 
       function getCategories() {
-        datacontext.getCategories()
+
+        datacontext.getUserCategories()
           .then(function(data) {
             $scope.categories = data;
           })

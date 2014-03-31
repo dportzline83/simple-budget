@@ -34,6 +34,8 @@ namespace BudgetTool.Models.Budget
         [ForeignKey("UserProfile")]
         public Nullable<int> UserId { get; set; }
         public virtual UserProfile UserProfile { get; set; }
+
+        public virtual ICollection<BudgetCategory> BudgetCategories { get; set; } 
     }
 
     public class BudgetCategory

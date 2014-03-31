@@ -13,6 +13,7 @@
             metadataStore: manager.metadataStore,
             getBudgets: getBudgets,
             getCategories: getCategories,
+            getUserCategories: getUserCategories,
             getBudgetData: getBudgetData,
             createBudget: createBudget,
             createCategory: createCategory,
@@ -45,9 +46,16 @@
             var query = breeze.EntityQuery
               .from("Categories")
               .orderBy("name asc");
-            //if (initialized) {
-            //  query = query.using(breeze.FetchStrategy.FromLocalCache);
-            //}
+            return manager.executeQuery(query)
+              .then(getSucceeded);
+          }
+
+          function getUserCategories() {
+            var query = breeze.EntityQuery
+              .from("Categories")
+              .expand('BudgetCategories')
+              .where('userId', '!=', null)
+              .orderBy("name asc");
             return manager.executeQuery(query)
               .then(getSucceeded);
           }

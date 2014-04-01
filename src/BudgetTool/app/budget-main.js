@@ -85,3 +85,19 @@ budget.directive('plusMinus', function() {
     }
   };
 });
+
+budget.directive('modal', function () {
+  return {
+    restrict: 'E',
+    require: '',
+    templateUrl: "~/app/partials.modal.html",
+    scope: {
+      modalId: "=",
+      modalTitle: "=",
+      cancelAction: "=",
+      submitAction: "="
+    },
+    link: function (scope, element, attrs) {
+    }
+  };
+});

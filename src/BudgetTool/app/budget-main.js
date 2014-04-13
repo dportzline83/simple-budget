@@ -86,18 +86,18 @@ budget.directive('plusMinus', function() {
   };
 });
 
-budget.directive('modal', function () {
+budget.directive('modal',['$parse', function ($parse) {
   return {
     restrict: 'E',
-    require: '',
-    templateUrl: "~/app/partials.modal.html",
+    templateUrl: "app/partials/modal.html",
+    transclude: true,
     scope: {
-      modalId: "=",
-      modalTitle: "=",
-      cancelAction: "=",
-      submitAction: "="
+      modalId: '@',
+      modalTitle: '@',
+      submitAction: '&',
+      cancelAction: '&'
     },
     link: function (scope, element, attrs) {
     }
   };
-});
+}]);

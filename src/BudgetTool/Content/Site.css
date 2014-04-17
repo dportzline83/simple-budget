@@ -6784,6 +6784,9 @@ footer {
 [data-ui-sortable] li {
   cursor: move;
 }
+[data-ui-sortable] li a {
+  cursor: pointer;
+}
 #category-list {
   margin-top: 20px;
 }

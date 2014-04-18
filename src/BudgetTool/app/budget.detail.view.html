@@ -20,7 +20,7 @@
           <td>{{income.expected | currency}}</td>
           <td>{{getBudgetedIncome() | currency}}</td>
           <td data-toggle="tooltip"
-              title="The remaining amount of income you expect to receive that is not budgeted. This number should be 0!"
+              title="The amount you have left to budget. This number should be 0!"
               data-placement="bottom"
               data-ng-class="remainingIncomeClass">{{income.remaining | currency}}
           </td>
@@ -95,7 +95,7 @@
   <h2 class="section-header">Spending</h2>
   <div class="row budget-list" data-ng-show="spendingCategories.length > 0">
     <div class="col-md-1"></div>
-    <div class="col-md-3"><strong>Category</strong></div>
+    <div class="col-md-3"><strong>Category</strong> (<a href="#/categories">See Custom</a>)</div>
     <div class="col-md-2"><strong>Budgeted</strong></div>
     <div class="col-md-2"><strong>Spent</strong></div>
     <div class="col-md-2"><strong>Remaining</strong></div>

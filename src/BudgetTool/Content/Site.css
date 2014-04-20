@@ -6588,6 +6588,9 @@ input[type=number]::-webkit-outer-spin-button {
   border-bottom: 2px solid #428bca;
   color: #5bc0de;
 }
+.page-header input {
+  border: none;
+}
 .section-header {
   margin: 0px 0px 10px 0px;
 }

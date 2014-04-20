@@ -1,7 +1,11 @@
 ﻿<script type="text/javascript">
   $('[data-toggle=tooltip]').tooltip();
 </script>
-<h1 class="page-header">{{budget.name}}</h1>
+<h1 class="page-header">
+  <input data-ng-model="budget.name"
+         data-toggle="tooltip"
+         title="Click to edit"/>
+</h1>
 
 <div class="row">
   <div id="income-summary" class="col-md-3">

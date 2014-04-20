@@ -6,7 +6,6 @@
          data-toggle="tooltip"
          title="Click to edit"/>
 </h1>
-
 <div class="row">
   <div id="income-summary" class="col-md-3">
     <h2 class="section-header">Income</h2>
@@ -148,14 +147,6 @@
     </div>
   </div>
 </div>
-<!--<div id="transactionModal" class="modal fade">
-  <div class="modal-dialog modal-sm">
-  <div class="modal-content">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h4 class="modal-title" id="myModalLabel">Add Transaction</h4>
-  </div>
-  <div class="modal-body">-->
 <modal modal-id="transactionModal" modal-title="Add Transaction" cancel-action="newTransaction = {}" submit-action="addTransaction(newTransaction)" >
 <div class="row">
   <div class="col-md-12">
@@ -188,12 +179,4 @@
   </div>
 </div>
 </modal>
-      <!--</div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" data-ng-click="newTransaction = {};">Cancel</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" data-ng-click="addTransaction(newTransaction)">Save</button>
-      </div>
-    </div>
-  </div>
-</div>-->
 <p class="alert alert-danger" data-ng-show="error">{{error}}</p>

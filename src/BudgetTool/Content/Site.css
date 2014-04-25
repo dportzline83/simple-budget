@@ -6732,6 +6732,9 @@ ol.round {
 }
 /*#endregion */
 /*#region info and errors */
+input.ng-invalid {
+  border-color: red;
+}
 .error {
   float: none;
   color: red;

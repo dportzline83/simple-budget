@@ -1,4 +1,4 @@
-﻿budget.controller('BudgetCtrl',
+﻿budget.controller('DetailController',
   ['$scope', 'breeze', 'datacontext', '$routeParams',
     function($scope, breeze, datacontext, $routeParams) {
       $scope.budget = {};

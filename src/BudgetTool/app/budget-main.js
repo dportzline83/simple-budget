@@ -8,24 +8,24 @@ budget.config([
       .when('/',
       {
         templateUrl: '/app/budget.list.view.html',
-        controller: 'BudgetsCtrl'
+        controller: 'ListController'
       })
       .when('/details/:id',
       {
         templateUrl: '/app/budget.detail.view.html',
-        controller: 'BudgetCtrl'
+        controller: 'DetailController'
       })
       .when('/transactions/:id',
       {
         templateUrl: '/app/budget.transaction.view.html',
-        controller: 'TransactionCtrl'
+        controller: 'TransactionController'
       })
       .when('/categories',
       {
         templateUrl: '/app/budget.category.view.html',
-        controller: 'CategoryCtrl'
+        controller: 'CategoryController'
       })
-      .when('/about', { templateUrl: 'app/about.view.html', controller: 'AboutCtrl' })
+      .when('/about', { templateUrl: 'app/about.view.html', controller: 'AboutController' })
       .otherwise({ redirectTo: '/' });
 
     //$locationProvider.html5Mode(true);

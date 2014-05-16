@@ -1,4 +1,4 @@
-﻿budget.controller('CategoryCtrl',
+﻿budget.controller('CategoryController',
   ['$scope', 'breeze', 'datacontext',
     function($scope, breeze, datacontext) {
       $scope.categories = [];

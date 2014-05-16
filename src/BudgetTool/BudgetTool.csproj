@@ -223,7 +223,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account\AccountModels.cs" />
+    <Compile Include="Models\Budget\Budget.cs" />
+    <Compile Include="Models\Budget\BudgetCategory.cs" />
+    <Compile Include="Models\Budget\BudgetContext.cs" />
+    <Compile Include="Models\Budget\BudgetRepository.cs" />
     <Compile Include="Models\Budget\Category.cs" />
+    <Compile Include="Models\Budget\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

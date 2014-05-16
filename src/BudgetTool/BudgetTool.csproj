@@ -227,11 +227,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\budget-category-controller.js" />
-    <Content Include="app\budget-controller.js" />
+    <Content Include="app\category-controller.js" />
+    <Content Include="app\detail-controller.js" />
     <Content Include="app\budget.category.view.html" />
-    <Content Include="app\budgets-controller.js" />
-    <Content Include="app\budget-model.js" />
+    <Content Include="app\list-controller.js" />
+    <Content Include="app\model.js" />
     <Content Include="app\budget.list.view.html" />
     <Content Include="app\budget-logger.js" />
     <Content Include="app\budget.detail.view.html" />
@@ -371,8 +371,8 @@
     <None Include="Scripts\breeze.intellisense.js" />
     <Content Include="Scripts\breeze.debug.js" />
     <Content Include="Scripts\breeze.min.js" />
-    <Content Include="app\budget-datacontext.js" />
-    <Content Include="app\budget-main.js" />
+    <Content Include="app\datacontext.js" />
+    <Content Include="app\main.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
@@ -392,7 +392,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="app\about.controller.js" />
+    <Content Include="app\about-controller.js" />
     <Content Include="app\about.logger.js" />
     <Content Include="app\about.view.html" />
     <Content Include="app\ajaxlogin.js" />

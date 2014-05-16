@@ -38,12 +38,12 @@ namespace BudgetTool
                         "~/Scripts/breeze.savequeuing.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/budget").Include(
-                    "~/app/budget-main.js",
-                    "~/app/budget-model.js",
-                    "~/app/budget-datacontext.js",
-                    "~/app/budgets-controller.js",
-                    "~/app/budget-controller.js",
-                    "~/app/budget-category-controller.js",
+                    "~/app/main.js",
+                    "~/app/model.js",
+                    "~/app/datacontext.js",
+                    "~/app/list-controller.js",
+                    "~/app/detail-controller.js",
+                    "~/app/category-controller.js",
                     "~/app/transaction-controller.js",
                     "~/app/budget-logger.js"
                 ));

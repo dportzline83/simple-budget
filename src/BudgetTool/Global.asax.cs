@@ -24,6 +24,7 @@ namespace BudgetTool
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
 
+#if DEBUG
             Database.
                 SetInitializer(new DatabaseInitializer());
 
@@ -32,6 +33,7 @@ namespace BudgetTool
                 context.Database.Initialize(false);
             }
             WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+#endif
         }
     }
 

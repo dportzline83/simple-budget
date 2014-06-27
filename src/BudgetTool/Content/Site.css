@@ -6582,6 +6582,9 @@ input[type=number]::-webkit-outer-spin-button {
   min-height: 400px;
   text-align: center;
 }
+ul {
+  list-style-type: none;
+}
 /*#region Headers */
 .page-header {
   margin: 0px 0px 15px 0px;
@@ -6824,5 +6827,11 @@ footer {
 /* #region Budget List */
 #budget-list {
   margin-top: 10px;
+}
+#budget-list a {
+  display: inherit;
+  text-align: center;
+  width: 100%;
+  line-height: 30px;
 }
 /* #endregion */

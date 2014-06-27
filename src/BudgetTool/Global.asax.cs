@@ -32,8 +32,9 @@ namespace BudgetTool
             {
                 context.Database.Initialize(false);
             }
-            WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
 #endif
+            WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+
         }
     }
 

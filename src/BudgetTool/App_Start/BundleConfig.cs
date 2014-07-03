@@ -57,7 +57,7 @@ namespace BudgetTool
                 "~/Content/bower_components/bootstrap/dist/js/bootstrap.js",
                 "~/Content/datepicker/bootstrap-datepicker.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new StyleBundle("~/styles/css").Include(
                 "~/Content/Site.css"));
         }
     }

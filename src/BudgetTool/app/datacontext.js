@@ -12,6 +12,7 @@
           var datacontext = {
             metadataStore: manager.metadataStore,
             getBudgets: getBudgets,
+            getBudgetsWithCategories: getBudgetsWithCategories,
             getCategories: getCategories,
             getUserCategories: getUserCategories,
             getBudgetData: getBudgetData,
@@ -40,6 +41,18 @@
 
             return manager.executeQuery(query)
                 .then(getSucceeded);
+          }
+
+          function getBudgetsWithCategories() {
+            var query = breeze.EntityQuery
+              .from("Budgets")
+              .expand("Categories.Category")
+              .orderBy("id asc");
+            //if (initialized) {
+            //  query = query.using(breeze.FetchStrategy.FromLocalCache);
+            //}
+            return manager.executeQuery(query)
+              .then(getSucceeded);
           }
 
           function getCategories() {

@@ -3,13 +3,11 @@
 <button class="btn btn-default" data-ng-click="addBudget()">Add New Budget</button>
 <br/>
 <div class="col-md-4">
-  <div id="budget-list" data-ng-repeat="budget in budgets">
-    <ul>
-      <li>
-        <a href="#/details/{{budget.id}}" class="bg-success">{{budget.name}}</a>
-        <a href="#" ng-click="copyBudget(budget)">Make a copy</a>
-      </li>
-    </ul>
-  </div>
+  <ul id="budget-list">
+    <li class="row" data-ng-repeat="budget in budgets">
+      <a href="#/details/{{budget.id}}" class="bg-success">{{budget.name}}</a>
+      <a href="#" ng-click="copyBudget(budget)">Make a copy</a>
+    </li>
+  </ul>
 </div>
 <p data-ng-show="error">{{error}}</p>

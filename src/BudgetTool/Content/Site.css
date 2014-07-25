@@ -6584,6 +6584,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 ul {
   list-style-type: none;
+  padding-left: 0px;
 }
 /*#region Headers */
 .page-header {
@@ -6840,5 +6841,6 @@ footer {
 }
 #budget-list li {
   border-bottom: 1px solid #eeeeee;
+  margin-top: 5px;
 }
 /* #endregion */

@@ -67,6 +67,14 @@
               datacontext.createEntity('BudgetCategory', newCategory);
             });
             datacontext.saveChanges();
+            $scope.budgets.push(newBudget);
+            
+            //make sure the real id gets updated on the $scope when the server sends it
+            var handle = newBudget.entityAspect.propertyChanged.subscribe(function(args) {
+              refreshView();
+              newBudget.entityAspect.propertyChanged.unsubscribe(handle);
+            });
+
           }
         }
     ]);

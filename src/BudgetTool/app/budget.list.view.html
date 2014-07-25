@@ -2,12 +2,12 @@
 
 <button class="btn btn-default" data-ng-click="addBudget()">Add New Budget</button>
 <br/>
-<div class="col-md-3">
+<div class="col-md-4">
   <div id="budget-list" data-ng-repeat="budget in budgets">
     <ul>
       <li>
         <a href="#/details/{{budget.id}}" class="bg-success">{{budget.name}}</a>
-        <a ng-click="copyBudget(budget)">Make a copy</a>
+        <a href="#" ng-click="copyBudget(budget)">Make a copy</a>
       </li>
     </ul>
   </div>

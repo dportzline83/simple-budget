@@ -6834,4 +6834,7 @@ footer {
   width: 100%;
   line-height: 30px;
 }
+#budget-list li {
+  border-bottom: 1px solid #eeeeee;
+}
 /* #endregion */

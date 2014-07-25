@@ -290,8 +290,12 @@ footer {
 }
 
 #category-list, #income {
-  .row {
+  div.row {
     border-bottom: 1px solid @gray-lighter;
+  }
+
+  > div.row:last-child {
+    border-bottom: none;
   }
 }
 

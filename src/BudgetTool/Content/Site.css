@@ -6799,9 +6799,13 @@ footer {
 #category-list {
   margin-top: 20px;
 }
-#category-list .row,
-#income .row {
+#category-list div.row,
+#income div.row {
   border-bottom: 1px solid #eeeeee;
+}
+#category-list > div.row:last-child,
+#income > div.row:last-child {
+  border-bottom: none;
 }
 .budget-list.row {
   padding-top: 5px;

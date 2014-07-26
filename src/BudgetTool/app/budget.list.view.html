@@ -5,7 +5,7 @@
 <div class="col-md-4">
   <ul id="budget-list">
     <li class="row" data-ng-repeat="budget in budgets">
-      <a href="#/details/{{budget.id}}" class="bg-success">{{budget.name}}</a>
+      <a href="/#/details/{{budget.id}}" class="bg-success">{{budget.name}}</a>
       <a href="#" ng-click="copyBudget(budget)">Make a copy</a>
     </li>
   </ul>

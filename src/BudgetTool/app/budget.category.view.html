@@ -1,23 +1,16 @@
-﻿<h1 class="page-header">Categories</h1>
+﻿<h1 class="page-header row">Categories</h1>
 
-<div class="col-md-3">
-  <table class="table table-condensed table-striped">
-    <thead>
-      <tr><th></th><th>Category Name</th></tr>
-    </thead>
-    <tbody>
-      <tr data-ng-repeat="category in categories" class="">
-        <td>
-          <button class="btn btn-danger"
-                  data-ng-click="deleteCategory(category)"
-                  data-ng-show="category.budgetCategories.length === 0">
-            <span class="glyphicon glyphicon-remove"></span>
-          </button>
-        </td>
-        <td>
-          {{category.name}}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<ul id="category-list" class="">
+  <li data-ng-repeat="category in categories" class="row">
+    <div class="col-md-1">
+      <button class="btn btn-sm btn-danger"
+              data-ng-click="deleteCategory(category)"
+              data-ng-show="category.budgetCategories.length === 0">
+        <span class="glyphicon glyphicon-remove"></span>
+      </button>
+    </div>
+    <div class="col-md-3">
+      {{category.name}}
+    </div>
+  </li>
+</ul>

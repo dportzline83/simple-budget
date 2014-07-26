@@ -242,6 +242,7 @@
     <Content Include="app\budget.detail.view.html" />
     <Content Include="app\budget.transaction.view.html" />
     <Content Include="app\partials\category-selector.html" />
+    <Content Include="app\partials\loader.html" />
     <Content Include="app\partials\modal.html" />
     <Content Include="app\transaction-controller.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />

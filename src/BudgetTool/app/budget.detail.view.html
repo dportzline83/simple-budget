@@ -1,6 +1,8 @@
 ﻿<script type="text/javascript">
   $('[data-toggle=tooltip]').tooltip();
 </script>
+<div data-ng-include="'/app/partials/loader.html'"></div>
+
 <h1 class="page-header row">
   <input data-ng-model="budget.name"
          data-toggle="tooltip"
@@ -8,6 +10,7 @@
          required
          data-on-blur="endEdit(budget)"/>
 </h1>
+
 <div class="row">
   <div id="income-summary" class="col-md-3">
     <h2 class="section-header">Income</h2>

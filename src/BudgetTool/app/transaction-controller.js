@@ -17,6 +17,7 @@
       $scope.getCategories();
       $scope.getBudgetData();
       $scope.income = {};
+      $scope.loading = true;
 
       function getBudgetData() {
         datacontext.getBudgetData($routeParams.id)
@@ -54,6 +55,7 @@
       }
       function getSucceeded(data) {
         $scope.budget = data[0];
+        $scope.loading = false;
       }
       function failed(error) {
         $scope.error = error.message;

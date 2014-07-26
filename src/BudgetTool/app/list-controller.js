@@ -1,6 +1,6 @@
 ﻿budget.controller('ListController',
-    ['$scope', 'breeze', 'datacontext', '$routeParams', '$location',
-        function ($scope, breeze, datacontext, $routeParams, $location) {
+    ['$scope', 'breeze', 'datacontext', '$timeout',
+        function ($scope, breeze, datacontext, $timeout) {
 
           $scope.budgets = [];
           $scope.error = "";
@@ -9,6 +9,7 @@
           $scope.refresh = refresh;
           $scope.endEdit = endEdit;
           $scope.copyBudget = copyBudget;
+          $scope.loading = true;
 
           $scope.getBudgets();
 
@@ -26,6 +27,9 @@
           }
           function getSucceeded(data) {
             $scope.budgets = data;
+            $timeout(function() {
+              $scope.loading = false;
+            }, 1000);
           }
           function failed(error) {
             $scope.error = error.message;

@@ -7,6 +7,7 @@
       $scope.addCategory = addCategory;
       $scope.endEdit = endEdit;
       $scope.deleteCategory = deleteCategory;
+      $scope.loading = true;
 
       $scope.getCategories();
 
@@ -16,6 +17,7 @@
         datacontext.getUserCategories()
           .then(function(data) {
             $scope.categories = data;
+            $scope.loading = false;
           })
           .fail(failed)
           .fin(refreshView);

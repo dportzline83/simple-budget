@@ -26,6 +26,7 @@
       $scope.showCategoryCreator = false;
       $scope.createNewCategory = createNewCategory;
       $scope.newCategory = {};
+      $scope.loading = true;
 
       function getBudgetData() {
         datacontext.getBudgetData($routeParams.id)
@@ -44,6 +45,7 @@
             return 1;
         });
         getBudgetedIncome();
+        $scope.loading = false;
       };
       function failed(error) {
         $scope.error = error.message;

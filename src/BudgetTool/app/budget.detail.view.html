@@ -3,190 +3,194 @@
 </script>
 <div data-ng-include="'/app/partials/loader.html'"></div>
 
-<h1 class="page-header row">
-  <input data-ng-model="budget.name"
-         data-toggle="tooltip"
-         title="Click to edit"
-         required
-         data-on-blur="endEdit(budget)"/>
-</h1>
+<div ng-show="!loading">
+  <h1 class="page-header row">
+    <input data-ng-model="budget.name"
+           data-toggle="tooltip"
+           title="Click to edit"
+           required
+           data-on-blur="endEdit(budget)" />
+  </h1>
 
-<div class="row">
-  <div id="income-summary" class="col-md-3">
-    <h2 class="section-header">Income</h2>
-    <table class="table table-condensed">
-      <thead>
-        <tr>
-          <th>Expected</th>
-          <th>Budgeted</th>
-          <th>Remaining</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{{income.expected | currency}}</td>
-          <td>{{getBudgetedIncome() | currency}}</td>
-          <td data-toggle="tooltip"
-              title="The amount you have left to budget. This number should be 0!"
-              data-placement="bottom"
-              data-ng-class="remainingIncomeClass">{{income.remaining | currency}}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <span data-toggle="tooltip"
-          title="Show or hide income details."
-          data-placement="bottom">
-      <a id="toggle-income-details"
-         data-toggle="collapse"
-         data-target="#income">
-        <span class="glyphicon glyphicon-plus"></span>
-      </a>
-    </span>
-  </div>
-  <div class="col-md-4 col-md-offset-5">
-    <div class="pull-right">
-      <button class="btn btn-success"
-              data-toggle="modal"
-              data-target="#transactionModal"
-              data-ng-click="setInitialTransactionValues()">
-        <span class="glyphicon glyphicon-plus"></span> Transaction
-      </button>
-      <a class="btn btn-default" href="/#/transactions/{{budget.id}}">All Transactions</a>
-    </div>
-  </div>
-</div>
-<div id="income" class="collapse" data-plus-minus="toggle-income-details">
-  <h3>Income Details</h3>
-  <div class="row budget-list" data-ng-show="incomeCategories.length > 0">
-    <div class="col-md-1"></div>
-    <div class="col-md-3"><strong>Category</strong></div>
-    <div class="col-md-2"><strong>Expected</strong></div>
-    <div class="col-md-2"><strong>Received</strong></div>
-  </div>
-  <ul data-ui-sortable="sortableOptions" data-ng-model="incomeCategories">
-    <li data-ng-repeat="category in incomeCategories">
-      <form>
-        <div class="row budget-list">
-          <div class="col-md-1">
-            <button class="btn btn-danger" data-ng-click="removeCategory(category)"><span class="glyphicon glyphicon-remove"></span></button>
-          </div>
-          <div class="col-md-3 category-selector">
-            <div data-ng-include="'/app/partials/category-selector.html'"></div>
-          </div>
-          <div class="col-md-2">
-            <div class="input-group">
-              <span class="input-group-addon">$</span>
-              <input class="form-control" type="number" data-on-blur="endEdit(category)" data-ng-model="category.budgetedAmount" required />
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="input-group">
-              <span class="input-group-addon">$</span>
-              <input class="form-control" disabled value="{{getSpentAmount(category)}}" />
-              <span class="input-group-btn">
-                <button class="btn btn-success" data-ng-click="setInitialTransactionValues(category)" data-toggle="modal" data-target="#transactionModal">
-                  <span class="glyphicon glyphicon-plus"></span>
-                </button>
-              </span>
-            </div>
-          </div>
-        </div>
-      </form>
-    </li>
-  </ul>
   <div class="row">
-    <div class="col-md-1">
-      <button class="btn btn-success" data-ng-click="addCategory(0)"><span class="glyphicon glyphicon-plus"></span></button>
+    <div id="income-summary" class="col-md-3">
+      <h2 class="section-header">Income</h2>
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th>Expected</th>
+            <th>Budgeted</th>
+            <th>Remaining</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{income.expected | currency}}</td>
+            <td>{{getBudgetedIncome() | currency}}</td>
+            <td data-toggle="tooltip"
+                title="The amount you have left to budget. This number should be 0!"
+                data-placement="bottom"
+                data-ng-class="remainingIncomeClass">
+              {{income.remaining | currency}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <span data-toggle="tooltip"
+            title="Show or hide income details."
+            data-placement="bottom">
+        <a id="toggle-income-details"
+           data-toggle="collapse"
+           data-target="#income">
+          <span class="glyphicon glyphicon-plus"></span>
+        </a>
+      </span>
+    </div>
+    <div class="col-md-4 col-md-offset-5">
+      <div class="pull-right">
+        <button class="btn btn-success"
+                data-toggle="modal"
+                data-target="#transactionModal"
+                data-ng-click="setInitialTransactionValues()">
+          <span class="glyphicon glyphicon-plus"></span> Transaction
+        </button>
+        <a class="btn btn-default" href="/#/transactions/{{budget.id}}">All Transactions</a>
+      </div>
     </div>
   </div>
-</div>
-<div id="category-list">
-  <h2 class="section-header">Spending</h2>
-  <div class="row budget-list" data-ng-show="spendingCategories.length > 0">
-    <div class="col-md-1"></div>
-    <div class="col-md-3"><strong>Category</strong> (<a href="#/categories">See Custom</a>)</div>
-    <div class="col-md-2"><strong>Budgeted</strong></div>
-    <div class="col-md-2"><strong>Spent</strong></div>
-    <div class="col-md-2"><strong>Remaining</strong></div>
-    <div class="col-md-1"></div>
-  </div>
-  <ul data-ui-sortable="sortableOptions" data-ng-model="spendingCategories">
-    <li data-ng-repeat="category in spendingCategories">
-      <form>
-        <div class="row budget-list">
-          <div class="col-md-1">
-            <button class="btn btn-danger" data-ng-click="removeCategory(category)"><span class="glyphicon glyphicon-remove"></span></button>
-          </div>
-          <div class="col-md-3 category-selector">
-            <div data-ng-include="'/app/partials/category-selector.html'"></div>
-          </div>
-          <div class="col-md-2">
-            <div class="input-group">
-              <span class="input-group-addon">$</span>
-              <input class="form-control" type="number" data-on-blur="endEdit(category)" data-ng-model="category.budgetedAmount" required />
+  <div id="income" class="collapse" data-plus-minus="toggle-income-details">
+    <h3>Income Details</h3>
+    <div class="row budget-list" data-ng-show="incomeCategories.length > 0">
+      <div class="col-md-1"></div>
+      <div class="col-md-3"><strong>Category</strong></div>
+      <div class="col-md-2"><strong>Expected</strong></div>
+      <div class="col-md-2"><strong>Received</strong></div>
+    </div>
+    <ul data-ui-sortable="sortableOptions" data-ng-model="incomeCategories">
+      <li data-ng-repeat="category in incomeCategories">
+        <form>
+          <div class="row budget-list">
+            <div class="col-md-1">
+              <button class="btn btn-danger" data-ng-click="removeCategory(category)"><span class="glyphicon glyphicon-remove"></span></button>
+            </div>
+            <div class="col-md-3 category-selector">
+              <div data-ng-include="'/app/partials/category-selector.html'"></div>
+            </div>
+            <div class="col-md-2">
+              <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input class="form-control" type="number" data-on-blur="endEdit(category)" data-ng-model="category.budgetedAmount" required />
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input class="form-control" disabled value="{{getSpentAmount(category)}}" />
+                <span class="input-group-btn">
+                  <button class="btn btn-success" data-ng-click="setInitialTransactionValues(category)" data-toggle="modal" data-target="#transactionModal">
+                    <span class="glyphicon glyphicon-plus"></span>
+                  </button>
+                </span>
+              </div>
             </div>
           </div>
-          <div class="col-md-2">
-            <div class="input-group">
-              <span class="input-group-addon">$</span>
-              <input class="form-control" disabled value="{{getSpentAmount(category)}}" />
-              <span class="input-group-btn">
-                <button class="btn btn-success" data-ng-click="setInitialTransactionValues(category)" data-toggle="modal" data-target="#transactionModal">
-                  <span class="glyphicon glyphicon-plus"></span>
-                </button>
-              </span>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="input-group">
-              <span class="input-group-addon">$</span>
-              <input class="form-control" disabled value="{{category.budgetedAmount - category.totalSpent}}" />
-            </div>
-          </div>
-          <div class="col-md-2">
-          </div>
-        </div>
-      </form>
-    </li>
-  </ul>
-  <div class="row">
-    <div class="col-md-1">
-      <button class="btn btn-success" data-ng-click="addCategory(1)"><span class="glyphicon glyphicon-plus"></span></button>
+        </form>
+      </li>
+    </ul>
+    <div class="row">
+      <div class="col-md-1">
+        <button class="btn btn-success" data-ng-click="addCategory(0)"><span class="glyphicon glyphicon-plus"></span></button>
+      </div>
     </div>
   </div>
-</div>
-<modal modal-id="transactionModal" modal-title="Add Transaction" cancel-action="newTransaction = {}" submit-action="addTransaction(newTransaction)" >
-<div class="row">
-  <div class="col-md-12">
-    <form class="" role="form">
-      <div class="form-group">
-        <select class="form-control" data-ng-model="newTransaction.category" data-ng-options="c.name for c in categories">
-          <option value="">Choose category...</option>
-        </select>
+  <div id="category-list">
+    <h2 class="section-header">Spending</h2>
+    <div class="row budget-list" data-ng-show="spendingCategories.length > 0">
+      <div class="col-md-1"></div>
+      <div class="col-md-3"><strong>Category</strong> (<a href="#/categories">See Custom</a>)</div>
+      <div class="col-md-2"><strong>Budgeted</strong></div>
+      <div class="col-md-2"><strong>Spent</strong></div>
+      <div class="col-md-2"><strong>Remaining</strong></div>
+      <div class="col-md-1"></div>
+    </div>
+    <ul data-ui-sortable="sortableOptions" data-ng-model="spendingCategories">
+      <li data-ng-repeat="category in spendingCategories">
+        <form>
+          <div class="row budget-list">
+            <div class="col-md-1">
+              <button class="btn btn-danger" data-ng-click="removeCategory(category)"><span class="glyphicon glyphicon-remove"></span></button>
+            </div>
+            <div class="col-md-3 category-selector">
+              <div data-ng-include="'/app/partials/category-selector.html'"></div>
+            </div>
+            <div class="col-md-2">
+              <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input class="form-control" type="number" data-on-blur="endEdit(category)" data-ng-model="category.budgetedAmount" required />
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input class="form-control" disabled value="{{getSpentAmount(category)}}" />
+                <span class="input-group-btn">
+                  <button class="btn btn-success" data-ng-click="setInitialTransactionValues(category)" data-toggle="modal" data-target="#transactionModal">
+                    <span class="glyphicon glyphicon-plus"></span>
+                  </button>
+                </span>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input class="form-control" disabled value="{{category.budgetedAmount - category.totalSpent}}" />
+              </div>
+            </div>
+            <div class="col-md-2">
+            </div>
+          </div>
+        </form>
+      </li>
+    </ul>
+    <div class="row">
+      <div class="col-md-1">
+        <button class="btn btn-success" data-ng-click="addCategory(1)"><span class="glyphicon glyphicon-plus"></span></button>
       </div>
-      <div class="form-group">
-        <div class="input-group">
-          <input type="text" class="form-control" data-ui-date="" placeholder="Date" data-ng-model="newTransaction.date" ng-required="true" required />
-          <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="input-group">
-          <span class="input-group-addon">$</span>
-          <input class="form-control" type="number" placeholder="Amount" data-ng-model="newTransaction.amount" required/>
-        </div>
-      </div>
-      <div class="form-group">
-        <input class="form-control" placeholder="Description" data-ng-model="newTransaction.description" />
-      </div>
-      <div class="form-group">
-        <label for="transaction-type">Income?</label>
-        <input id="transaction-type" class="" type="checkbox" data-ng-model="newTransactionType" required />
-      </div>
-    </form>
+    </div>
   </div>
+  <modal modal-id="transactionModal" modal-title="Add Transaction" cancel-action="newTransaction = {}" submit-action="addTransaction(newTransaction)">
+    <div class="row">
+      <div class="col-md-12">
+        <form class="" role="form">
+          <div class="form-group">
+            <select class="form-control" data-ng-model="newTransaction.category" data-ng-options="c.name for c in categories">
+              <option value="">Choose category...</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" class="form-control" data-ui-date="" placeholder="Date" data-ng-model="newTransaction.date" ng-required="true" required />
+              <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon">$</span>
+              <input class="form-control" type="number" placeholder="Amount" data-ng-model="newTransaction.amount" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <input class="form-control" placeholder="Description" data-ng-model="newTransaction.description" />
+          </div>
+          <div class="form-group">
+            <label for="transaction-type">Income?</label>
+            <input id="transaction-type" class="" type="checkbox" data-ng-model="newTransactionType" required />
+          </div>
+        </form>
+      </div>
+    </div>
+  </modal>
 </div>
-</modal>
+
 <p class="alert alert-danger" data-ng-show="error">{{error}}</p>

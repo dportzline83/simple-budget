@@ -1,50 +1,50 @@
 ﻿<h1 class="page-header row">{{budget.name}} Budget Transactions</h1>
 <div data-ng-include="'/app/partials/loader.html'"></div>
-
-<div>
-  <div class="col-md-2">
+<div ng-show="!loading">
+  <div>
+    <div class="col-md-2">
       <a class="btn btn-default" href="/#/details/{{budget.id}}">Back to budget</a>
-  </div>
-</div>
-<div id="category-list" class="col-md-12">
-  <div class="row" data-ng-show="budget.transactions.length > 0">
-    <div class="col-md-1"></div>
-    <div class="col-md-3"><strong>Category</strong></div>
-    <div class="col-md-2"><strong>Date</strong></div>
-    <div class="col-md-2"><strong>Amount</strong></div>
-    <div class="col-md-2"><strong>Description</strong></div>
-    <div class="col-md-1"></div>
-  </div>
-  <div class="row" data-ng-repeat="trans in budget.transactions">
-    <div class="col-md-1">
-      <button class="btn btn-sm btn-danger" data-ng-click="removeTransaction(trans)"><span class="glyphicon glyphicon-remove"></span></button>
     </div>
-    <div class="col-md-3" >
-      <select class="form-control" data-on-change="endEdit(trans)" data-ng-model="trans.category" data-ng-options="c.name for c in categories">
-        <option value="">Choose category...</option>
-      </select>
+  </div>
+  <div id="category-list" class="col-md-12">
+    <div class="row" data-ng-show="budget.transactions.length > 0">
+      <div class="col-md-1"></div>
+      <div class="col-md-3"><strong>Category</strong></div>
+      <div class="col-md-2"><strong>Date</strong></div>
+      <div class="col-md-2"><strong>Amount</strong></div>
+      <div class="col-md-2"><strong>Description</strong></div>
+      <div class="col-md-1"></div>
     </div>
-    <div class="col-md-2">
-      <div class="input-group">
-        <input type="text" class="form-control" data-ui-date="" placeholder="Date" data-on-blur="endEdit(trans)" data-ng-model="trans.date"/>
-        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+    <div class="row" data-ng-repeat="trans in budget.transactions">
+      <div class="col-md-1">
+        <button class="btn btn-sm btn-danger" data-ng-click="removeTransaction(trans)"><span class="glyphicon glyphicon-remove"></span></button>
+      </div>
+      <div class="col-md-3">
+        <select class="form-control" data-on-change="endEdit(trans)" data-ng-model="trans.category" data-ng-options="c.name for c in categories">
+          <option value="">Choose category...</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <div class="input-group">
+          <input type="text" class="form-control" data-ui-date="" placeholder="Date" data-on-blur="endEdit(trans)" data-ng-model="trans.date" />
+          <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="input-group">
+          <span class="input-group-addon">$</span>
+          <input class="form-control" type="number" data-on-blur="endEdit(trans)" data-ng-model="trans.amount" required />
+        </div>
+      </div>
+      <div class="col-md-4">
+        <input class="form-control" type="text" data-on-blur="endEdit(trans)" data-ng-model="trans.description" />
       </div>
     </div>
-    <div class="col-md-2">
-      <div class="input-group">
-        <span class="input-group-addon">$</span>
-        <input class="form-control" type="number" data-on-blur="endEdit(trans)" data-ng-model="trans.amount" required />
+    <div class="row">
+      <div class="col-md-1">
+        <button class="btn btn-sm btn-success" data-ng-click="addTransaction()"><span class="glyphicon glyphicon-plus"></span></button>
       </div>
-    </div>
-    <div class="col-md-4">
-        <input class="form-control" type="text" data-on-blur="endEdit(trans)" data-ng-model="trans.description"/>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-1">
-      <button class="btn btn-sm btn-success" data-ng-click="addTransaction()"><span class="glyphicon glyphicon-plus"></span></button>
     </div>
   </div>
 </div>
-
 <p class="alert alert-danger" data-ng-show="error">{{error}}</p>

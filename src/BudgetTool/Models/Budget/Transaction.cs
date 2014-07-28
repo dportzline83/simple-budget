@@ -5,8 +5,8 @@ namespace BudgetTool.Models.Budget
 {
     public enum TransactionType
     {
-        Debit,
-        Credit
+        Credit,
+        Debit
     }
 
     public class Transaction

@@ -157,7 +157,7 @@
 
       function addTransaction(initialValues) {
         initialValues.budgetId = $routeParams.id;
-        initialValues.type = $scope.newTransactionType ? 0 : 1;
+        initialValues.type = $scope.isIncome ? 0 : 1;
         var transaction =
           datacontext.createEntity('Transaction',
             initialValues);
@@ -177,7 +177,7 @@
       function setInitialTransactionValues(category) {
         if (category) {
           $scope.newTransaction.category = category.category;
-          $scope.newTransaction.type = category.type;
+          $scope.isIncome = category.type === 0 ? true : false;
         }
         $scope.newTransaction.date = new Date();
       };

@@ -3,7 +3,7 @@
         function (breeze, Q, model, logger, $timeout) {
 
           logger.log("creating budget datacontext");
-          var initalizedBudgetsWithCategories,
+          var initializedBudgetData,
             initializedCategories;
           configureBreeze();
 
@@ -34,10 +34,10 @@
               .from("Budgets")
               .expand("Transactions", "Categories.Category")
               .orderBy("id asc");
-            if (initalizedBudgetsWithCategories) {
+            if (initializedBudgetData) {
               query = query.using(breeze.FetchStrategy.FromLocalCache);
             }
-            initalizedBudgetsWithCategories = true;
+            initializedBudgetData = true;
             return manager.executeQuery(query)
               .then(getSucceeded);
           }
@@ -73,7 +73,7 @@
               .expand("Transactions, Categories.Category")
               .orderBy("id asc");
             query = query.where("id", "==", budgetId);
-            if (initalizedBudgetsWithCategories) {
+            if (initializedBudgetData) {
               query = query.using(breeze.FetchStrategy.FromLocalCache);
             }
             return manager.executeQuery(query)

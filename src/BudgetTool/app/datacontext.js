@@ -3,7 +3,8 @@
         function (breeze, Q, model, logger, $timeout) {
 
           logger.log("creating budget datacontext");
-          var initialized;
+          var initalizedBudgetsWithCategories,
+            initializedCategories;
           configureBreeze();
 
           var manager = new breeze.EntityManager("/api/Budget");
@@ -33,10 +34,10 @@
               .from("Budgets")
               .expand("Categories.Category")
               .orderBy("id asc");
-            if (initialized) {
+            if (initalizedBudgetsWithCategories) {
               query = query.using(breeze.FetchStrategy.FromLocalCache);
             }
-            initialized = true;
+            initalizedBudgetsWithCategories = true;
             return manager.executeQuery(query)
               .then(getSucceeded);
           }
@@ -45,6 +46,10 @@
             var query = breeze.EntityQuery
               .from("Categories")
               .orderBy("name asc");
+            if (initializedCategories) {
+              query = query.using(breeze.FetchStrategy.FromLocalCache);
+            }
+            initializedCategories = true;
             return manager.executeQuery(query)
               .then(getSucceeded);
           }
@@ -55,6 +60,9 @@
               .expand('BudgetCategories')
               .where('userId', '!=', null)
               .orderBy("name asc");
+            if (initializedCategories) {
+              query = query.using(breeze.FetchStrategy.FromLocalCache);
+            }
             return manager.executeQuery(query)
               .then(getSucceeded);
           }

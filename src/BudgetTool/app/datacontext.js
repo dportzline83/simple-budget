@@ -11,7 +11,6 @@
 
           var datacontext = {
             metadataStore: manager.metadataStore,
-            getBudgets: getBudgets,
             getBudgetsWithCategories: getBudgetsWithCategories,
             getCategories: getCategories,
             getUserCategories: getUserCategories,
@@ -29,28 +28,15 @@
           model.initialize(datacontext);
           return datacontext;
 
-          function getBudgets() {
-            var query = breeze.EntityQuery
-                .from("Budgets")
-                .orderBy("id asc");
-
-            if (initialized) {
-              query = query.using(breeze.FetchStrategy.FromLocalCache);
-            }
-            initialized = true;
-
-            return manager.executeQuery(query)
-                .then(getSucceeded);
-          }
-
           function getBudgetsWithCategories() {
             var query = breeze.EntityQuery
               .from("Budgets")
               .expand("Categories.Category")
               .orderBy("id asc");
-            //if (initialized) {
-            //  query = query.using(breeze.FetchStrategy.FromLocalCache);
-            //}
+            if (initialized) {
+              query = query.using(breeze.FetchStrategy.FromLocalCache);
+            }
+            initialized = true;
             return manager.executeQuery(query)
               .then(getSucceeded);
           }

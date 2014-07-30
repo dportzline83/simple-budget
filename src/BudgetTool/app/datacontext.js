@@ -32,7 +32,7 @@
           function getBudgetsWithCategories() {
             var query = breeze.EntityQuery
               .from("Budgets")
-              .expand("Categories.Category")
+              .expand("Transactions", "Categories.Category")
               .orderBy("id asc");
             if (initalizedBudgetsWithCategories) {
               query = query.using(breeze.FetchStrategy.FromLocalCache);
@@ -73,9 +73,9 @@
               .expand("Transactions, Categories.Category")
               .orderBy("id asc");
             query = query.where("id", "==", budgetId);
-            //if (initialized) {
-            //  query = query.using(breeze.FetchStrategy.FromLocalCache);
-            //}
+            if (initalizedBudgetsWithCategories) {
+              query = query.using(breeze.FetchStrategy.FromLocalCache);
+            }
             return manager.executeQuery(query)
               .then(getSucceeded);
           }

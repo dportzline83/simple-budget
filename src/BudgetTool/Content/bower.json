@@ -12,7 +12,8 @@
 	"angular-route": "latest",
 	"angular-ui-date": "latest",
 	"angular-ui-sortable": "latest",
-	"bootstrap": "latest"
+	"bootstrap": "latest",
+    "breezejs": "latest"
   },
   "devDependencies": {
   }

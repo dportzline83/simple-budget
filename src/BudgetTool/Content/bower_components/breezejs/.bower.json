@@ -1,0 +1,21 @@
+{
+  "name": "breezejs",
+  "version": "1.4.16",
+  "main": [
+    "breeze.debug.js"
+  ],
+  "ignore": [
+    "getLibs.cmd"
+  ],
+  "dependencies": {},
+  "homepage": "https://github.com/Breeze/breeze.js.bower",
+  "_release": "1.4.16",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.4.16",
+    "commit": "82a1a99cfd94e716a3e23dbf79bfb6fee695b70e"
+  },
+  "_source": "git://github.com/Breeze/breeze.js.bower.git",
+  "_target": "*",
+  "_originalSource": "breezejs"
+}

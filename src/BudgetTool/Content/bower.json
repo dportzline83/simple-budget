@@ -7,12 +7,12 @@
     "**/*.txt"
   ],
   "dependencies": {
-    "jquery": "latest",
-	"angular": "latest",
-	"angular-route": "latest",
+    "jquery": "2.1.0",
+	"angular": "1.2.16",
+	"angular-route": "1.2.16",
 	"angular-ui-date": "latest",
 	"angular-ui-sortable": "latest",
-	"bootstrap": "latest",
+	"bootstrap": "3.1.1",
     "breezejs": "latest"
   },
   "devDependencies": {

@@ -33,9 +33,9 @@ namespace BudgetTool
 
             bundles.Add(new ScriptBundle("~/bundles/breeze").Include(
                         "~/Scripts/q.js",
-                        "~/Scripts/breeze.debug.js",
-                        "~/Scripts/breeze.min.js",
-                        "~/Scripts/breeze.savequeuing.js"));
+                        "~/Content/bower_components/breezejs/breeze.debug.js",
+                        "~/Content/bower_components/breezejs/breeze.min.js",
+                        "~/Content/bower_components/breezejs/labs/breeze.savequeuing.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/budget").Include(
                     "~/app/main.js",

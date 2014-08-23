@@ -36,8 +36,8 @@
       };
       function getSucceeded(data) {
         $scope.budget = data[0];
-        $scope.incomeCategories = $scope.budget.categories.filter(function (c) { return c.type === 0; });
-        $scope.spendingCategories = $scope.budget.categories.filter(function (c) { return c.type === 1; });
+        $scope.incomeCategories = $scope.budget.categories.filter(function (c) { return c.type == 0; });
+        $scope.spendingCategories = $scope.budget.categories.filter(function (c) { return c.type == 1; });
         $scope.spendingCategories.sort(function (first, second) {
           if (first.priority < second.priority)
             return -1;
@@ -65,7 +65,7 @@
         var total = 0;
         if ($scope.budget.transactions) {
           $scope.budget.transactions.forEach(function(transaction) {
-            if (transaction.categoryId === category.categoryId && transaction.type === category.type)
+            if (transaction.categoryId === category.categoryId && transaction.type == category.type)
               total += transaction.amount;
           });
           category.totalSpent = total;
@@ -79,11 +79,11 @@
         if ($scope.budget.categories) {
           $scope.budget.categories.forEach(function(c) {
             //only if it's a budget for debits
-            if (c.type === 1) {
+            if (c.type == 1) {
               totalSpendingBudgeted += c.budgetedAmount;
             }
             //credits
-            if (c.type === 0) {
+            if (c.type == 0) {
               totalExpectedIncome += c.budgetedAmount;
             }
           });
@@ -137,7 +137,7 @@
       };
 
       function removeCategory(category) {
-        var categories = category.type === 0 ? "incomeCategories" : "spendingCategories";
+        var categories = category.type == 0 ? "incomeCategories" : "spendingCategories";
         var index = $scope[categories].indexOf(category);
         $scope[categories].splice(index, 1);
 
@@ -157,7 +157,7 @@
 
       function addTransaction(initialValues) {
         initialValues.budgetId = $routeParams.id;
-        initialValues.type = $scope.isIncome ? 0 : 1;
+        initialValues.type = $scope.isIncome ? "0" : "1";
         var transaction =
           datacontext.createEntity('Transaction',
             initialValues);
@@ -177,7 +177,7 @@
       function setInitialTransactionValues(category) {
         if (category) {
           $scope.newTransaction.category = category.category;
-          $scope.isIncome = category.type === 0 ? true : false;
+          $scope.isIncome = category.type == 0 ? true : false;
         }
         $scope.newTransaction.date = new Date();
       };

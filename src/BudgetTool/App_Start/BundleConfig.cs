@@ -32,7 +32,7 @@ namespace BudgetTool
                 "~/app/ajaxlogin.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/breeze").Include(
-                        "~/Scripts/q.js",
+                        "~/Content/bower_components/q/q.js",
                         "~/Content/bower_components/breezejs/breeze.debug.js",
                         "~/Content/bower_components/breezejs/breeze.min.js",
                         "~/Content/bower_components/breezejs/labs/breeze.savequeuing.js"));

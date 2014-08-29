@@ -286,6 +286,7 @@
     <Content Include="Content\bower_components\jquery-ui\ui\jquery.ui.sortable.js" />
     <Content Include="Content\bower_components\jquery\dist\jquery.js" />
     <Content Include="Content\bower_components\jquery\dist\jquery.min.js" />
+    <Content Include="Content\bower_components\q\q.js" />
     <Content Include="Content\datepicker\bootstrap-datepicker.js" />
     <Content Include="Content\Site.css">
       <DependentUpon>Site.less</DependentUpon>
@@ -381,7 +382,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\q.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

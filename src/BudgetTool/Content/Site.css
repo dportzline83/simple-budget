@@ -6800,10 +6800,6 @@ footer {
 #category-list {
   margin-top: 20px;
 }
-#category-list .row,
-#income .row {
-  border-bottom: 1px solid #eeeeee;
-}
 #category-list > div.row:last-child,
 #income > div.row:last-child {
   border-bottom: none;
@@ -6818,6 +6814,9 @@ footer {
 .budget-list .input-group-addon {
   padding-top: 3px;
   padding-bottom: 3px;
+}
+.budget-list li {
+  border-bottom: 1px solid #eeeeee;
 }
 .category-selector .form-control {
   width: auto;
@@ -6848,7 +6847,6 @@ footer {
 }
 #budget-list li {
   border-bottom: 1px solid #eeeeee;
-  margin-top: 5px;
 }
 /* #endregion */
 /* #region Loader */

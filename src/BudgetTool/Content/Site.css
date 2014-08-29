@@ -6808,9 +6808,16 @@ footer {
 #income > div.row:last-child {
   border-bottom: none;
 }
-.budget-list.row {
-  padding-top: 5px;
-  padding-bottom: 5px;
+.budget-list input,
+.budget-list select,
+.budget-list button {
+  padding: 3px 6px 3px 6px;
+  height: 28px;
+}
+.budget-list .row,
+.budget-list .input-group-addon {
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 .category-selector .form-control {
   width: auto;

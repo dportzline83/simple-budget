@@ -59,18 +59,18 @@
       </div>
     </div>
   </div>
-  <div id="income" class="collapse" data-plus-minus="toggle-income-details">
+  <div id="income" class="collapse budget-list" data-plus-minus="toggle-income-details">
     <h3>Income Details</h3>
-    <div class="row budget-list" data-ng-show="incomeCategories.length > 0">
+    <div class="row " data-ng-show="incomeCategories.length > 0">
       <div class="col-md-1"></div>
       <div class="col-md-3"><strong>Category</strong></div>
       <div class="col-md-2"><strong>Expected</strong></div>
       <div class="col-md-2"><strong>Received</strong></div>
     </div>
-    <ul data-ui-sortable="sortableOptions" data-ng-model="incomeCategories">
+    <ul data-ui-sortable="sortableOptions" data-ng-model="incomeCategories" class="budget-list">
       <li data-ng-repeat="category in incomeCategories">
         <form>
-          <div class="row budget-list">
+          <div class="row">
             <div class="col-md-1">
               <button class="btn btn-danger" data-ng-click="removeCategory(category)"><span class="glyphicon glyphicon-remove"></span></button>
             </div>
@@ -104,9 +104,9 @@
       </div>
     </div>
   </div>
-  <div id="category-list">
+  <div id="category-list" class="budget-list">
     <h2 class="section-header">Spending</h2>
-    <div class="row budget-list" data-ng-show="spendingCategories.length > 0">
+    <div class="row" data-ng-show="spendingCategories.length > 0">
       <div class="col-md-1"></div>
       <div class="col-md-3"><strong>Category</strong> (<a href="#/categories">See Custom</a>)</div>
       <div class="col-md-2"><strong>Budgeted</strong></div>
@@ -117,7 +117,7 @@
     <ul data-ui-sortable="sortableOptions" data-ng-model="spendingCategories">
       <li data-ng-repeat="category in spendingCategories">
         <form>
-          <div class="row budget-list">
+          <div class="row">
             <div class="col-md-1">
               <button class="btn btn-danger" data-ng-click="removeCategory(category)"><span class="glyphicon glyphicon-remove"></span></button>
             </div>

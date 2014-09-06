@@ -18,7 +18,7 @@
     <ul>
       <li class="row" data-ng-repeat="trans in budget.transactions">
         <div class="col-md-1">
-          <button class="btn btn-sm btn-danger" data-ng-click="removeTransaction(trans)"><span class="glyphicon glyphicon-remove"></span></button>
+          <button type="button" class="btn btn-sm btn-danger" data-ng-click="removeTransaction(trans)"><span class="glyphicon glyphicon-remove"></span></button>
         </div>
         <div class="col-md-3">
           <select class="form-control" data-on-change="endEdit(trans)" data-ng-model="trans.category" data-ng-options="c.name for c in categories">
@@ -44,7 +44,7 @@
     </ul>
     <div class="row">
       <div class="col-md-1">
-        <button class="btn btn-sm btn-success" data-ng-click="addTransaction()"><span class="glyphicon glyphicon-plus"></span></button>
+        <button type="button" class="btn btn-sm btn-success" data-ng-click="addTransaction()"><span class="glyphicon glyphicon-plus"></span></button>
       </div>
     </div>
   </div>

@@ -10,10 +10,8 @@
       $scope.addTransaction = addTransaction;
       $scope.getBudgetedIncome = getBudgetedIncome;
       $scope.removeTransaction = removeTransaction;
-      $scope.setTransactionCategory = setTransactionCategory;
       $scope.refresh = refresh;
       $scope.endEdit = endEdit;
-      $scope.newTransaction = {};
       $scope.getCategories();
       $scope.getBudgetData();
       $scope.income = {};
@@ -69,7 +67,7 @@
         datacontext.saveEntity(trans)
           .then(removeSucceeded)
           .fail(removeFailed)
-          .fin(refreshView());
+          .fin(refreshView);
 
         function removeSucceeded() {
           var index = $scope.budget.transactions.indexOf(trans);
@@ -94,14 +92,10 @@
 
         function addSucceeded() {
           $scope.budget.transactions.push(transaction);
-          $scope.newTransaction = {};
         }
         function addFailed(error) {
           failed({ message: error.message });
         }
-      }
-      function setTransactionCategory(category) {
-        $scope.newTransaction.category = category.category;
       }
     }
   ]);

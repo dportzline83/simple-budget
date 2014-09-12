@@ -70,7 +70,7 @@
           });
           category.totalSpent = total;
         }
-        return total;
+        return total.toFixed(2);
       };
 
       function getBudgetedIncome() {

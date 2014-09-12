@@ -144,7 +144,7 @@
             <div class="col-md-2">
               <div class="input-group">
                 <span class="input-group-addon">$</span>
-                <input class="form-control" disabled value="{{category.budgetedAmount - category.totalSpent}}" />
+                <input class="form-control" disabled value="{{(category.budgetedAmount - category.totalSpent).toFixed(2)}}" />
               </div>
             </div>
             <div class="col-md-2">

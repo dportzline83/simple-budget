@@ -1,12 +1,6 @@
 ﻿@import "bower_components/bootstrap/less/bootstrap.less";
 @import "datepicker/datepicker3.less";
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
 .content-wrapper {
   margin: 0 auto;
   max-width: 960px;
@@ -94,24 +88,10 @@ header {
 
 /*#region auth forms */
 
-#changePasswordForm input,
-#registerForm input,
-#loginForm input {
-  border: 1px solid #dedede;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-}
-
   #changePasswordForm input[type=text], #changePasswordForm input[type=password],
-  #registerForm input[type=text], #registerForm input[type=password],
-  #loginForm input[type=text], #loginForm input[type=password] {
+  #registerForm input[type=text], #registerForm input[type=password] {
     background: white;
     width: 220px;
-  }
-
-  #loginForm input[type=checkbox] {
-    border: none;
   }
 
   #changePasswordForm input[type=submit] {
@@ -127,9 +107,11 @@ header {
 }
 
 #loginPanel {
-  display: block;
-  padding: 25px;
-  width: 600px;
+  margin-top: 40px;
+  p {
+    margin-top: 22px;
+
+  }
 }
 
   #registerPanel h2,
@@ -140,22 +122,13 @@ header {
 
   #registerPanel a,
   #loginPanel a {
-    color: navy;
     font-weight: bold;
-    cursor: pointer;
   }
 
   #registerPanel p,
   #loginPanel p {
     clear: both;
   }
-
-#localLoginPanel {
-  border-right: solid 2px #c8c8c8;
-  float: left;
-  width: 45%;
-  text-align: left;
-}
 
 #socialLoginPanel {
   margin-left: 40px;
@@ -178,10 +151,6 @@ header {
 }
 
 fieldset {
-  border: none;
-  margin: 0 auto;
-  padding: 0 20px;
-  text-align: left;
   display: inline;
 }
 

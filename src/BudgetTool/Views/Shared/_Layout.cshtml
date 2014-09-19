@@ -21,7 +21,10 @@
     <footer>
       <nav>
         <ul id="menu">
-          <li><a href="/#/">Budget List</a></li>
+          @if (@User.Identity.IsAuthenticated)
+          {
+            <li><a href="/#/">Budget List</a></li>
+          }
           @*<li>@Html.ActionLink("API", "Index", "Help", new { area = "HelpPage" }, null)</li>*@
         </ul>
       </nav>

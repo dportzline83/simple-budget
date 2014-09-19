@@ -10,7 +10,6 @@
   @Scripts.Render("~/bundles/modernizr")
 </head>
 <body class="container">
-  <!--[if lt IE 9]><p class="error" style="clear:both;">'Breeze + Angular' requires browser support for defined properties.</p><![endif]-->
   <div id="userSettings" class="pull-right">
     @Html.Partial("_UserSettings")
   </div>
@@ -23,7 +22,7 @@
       <nav>
         <ul id="menu">
           <li><a href="/#/">Budget List</a></li>
-          <li>@Html.ActionLink("API", "Index", "Help", new { area = "HelpPage" }, null)</li>
+          @*<li>@Html.ActionLink("API", "Index", "Help", new { area = "HelpPage" }, null)</li>*@
         </ul>
       </nav>
       <p>&copy; @DateTime.Now.Year - @ViewBag.Title</p>

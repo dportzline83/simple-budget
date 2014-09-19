@@ -8,6 +8,8 @@ namespace BudgetTool.Areas.HelpPage.Controllers
     /// <summary>
     /// The controller that will handle requests for the help page.
     /// </summary>
+    ///
+    [DisableActionsInRelease]
     public class HelpController : Controller
     {
         public HelpController()
@@ -39,6 +41,20 @@ namespace BudgetTool.Areas.HelpPage.Controllers
             }
 
             return View("Error");
+        }
+    }
+
+    public class DisableActionsInReleaseAttribute : ActionFilterAttribute
+    {
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+#if DEBUG
+            // no-op
+#else
+            {
+                filterContext.Result = new HttpStatusCodeResult(404);
+            }
+#endif
         }
     }
 }

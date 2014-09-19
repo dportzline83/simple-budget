@@ -52,7 +52,7 @@
     $("#showLogin").click(function () {
         $("#registerPanel").hide("slide", function () {
             $("#loginPanel").show("slide", function () {
-                $("#loginName").focus();
+                $("#UserName").focus();
             });
         });
     });

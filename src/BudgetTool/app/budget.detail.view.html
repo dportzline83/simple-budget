@@ -72,7 +72,7 @@
         <form>
           <div class="row">
             <div class="col-md-1">
-              <button type="button" class="btn btn-danger" data-ng-click="removeCategory(category)"><span class="glyphicon glyphicon-remove"></span></button>
+              <button type="button" class="btn btn-sm btn-danger" data-ng-click="removeCategory(category)"><span class="glyphicon glyphicon-remove"></span></button>
             </div>
             <div class="col-md-3 category-selector">
               <div data-ng-include="'/app/partials/category-selector.html'"></div>
@@ -97,12 +97,14 @@
           </div>
         </form>
       </li>
+      <li>
+        <div class="row">
+          <div class="col-md-1">
+            <button type="button" class="btn btn-sm btn-success" data-ng-click="addCategory(0)"><span class="glyphicon glyphicon-plus"></span></button>
+          </div>
+        </div>
+      </li>
     </ul>
-    <div class="row">
-      <div class="col-md-1">
-        <button type="button" class="btn btn-success" data-ng-click="addCategory(0)"><span class="glyphicon glyphicon-plus"></span></button>
-      </div>
-    </div>
   </div>
   <div id="category-list" class="budget-list">
     <h2 class="section-header">Spending</h2>
@@ -119,7 +121,7 @@
         <form>
           <div class="row">
             <div class="col-md-1">
-              <button type="button" class="btn btn-danger" data-ng-click="removeCategory(category)"><span class="glyphicon glyphicon-remove"></span></button>
+              <button type="button" class="btn btn-sm btn-danger" data-ng-click="removeCategory(category)"><span class="glyphicon glyphicon-remove"></span></button>
             </div>
             <div class="col-md-3 category-selector">
               <div data-ng-include="'/app/partials/category-selector.html'"></div>
@@ -150,12 +152,14 @@
           </div>
         </form>
       </li>
+      <li>
+        <div class="row">
+          <div class="col-md-1">
+            <button type="button" class="btn btn-sm btn-success" data-ng-click="addCategory(1)"><span class="glyphicon glyphicon-plus"></span></button>
+          </div>
+        </div>
+      </li>
     </ul>
-    <div class="row">
-      <div class="col-md-1">
-        <button type="button" class="btn btn-success" data-ng-click="addCategory(1)"><span class="glyphicon glyphicon-plus"></span></button>
-      </div>
-    </div>
   </div>
   <modal modal-id="transactionModal" modal-title="Add Transaction" cancel-action="newTransaction = {}" submit-action="addTransaction(newTransaction)">
     <div class="row">

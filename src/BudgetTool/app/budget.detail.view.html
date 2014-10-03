@@ -26,13 +26,13 @@
         </thead>
         <tbody>
           <tr>
-            <td>{{income.expected | currency}}</td>
+            <td>{{totals.expectedIncome | currency}}</td>
             <td>{{calculateSummary() | currency}}</td>
             <td data-toggle="tooltip"
                 title="The amount you have left to budget. This number should be 0!"
                 data-placement="bottom"
                 data-ng-class="remainingIncomeClass">
-              {{income.remaining | currency}}
+              {{totals.remainingIncome | currency}}
             </td>
           </tr>
         </tbody>
@@ -146,7 +146,7 @@
             <div class="col-md-2">
               <div class="input-group">
                 <span class="input-group-addon">$</span>
-                <input class="form-control" disabled value="{{(category.budgetedAmount - category.totalSpent).toFixed(2)}}" />
+                <input class="form-control" disabled value="{{category.remainingToSpend.toFixed(2)}}" />
               </div>
             </div>
           </div>

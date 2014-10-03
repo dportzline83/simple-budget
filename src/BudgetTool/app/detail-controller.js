@@ -69,38 +69,45 @@
               total += transaction.amount;
           });
           category.totalSpent = total;
+          category.remainingToSpend = category.budgetedAmount - total;
         }
         return total.toFixed(2);
       };
 
       function calculateSummary() {
-        var totalSpendingBudgeted = 0,
-          totalExpectedIncome = 0;
+        var totalBudgeted = 0,
+          totalExpectedIncome = 0,
+          totalSpent = 0,
+            remainingToSpend = 0;
         if ($scope.budget.categories) {
           $scope.budget.categories.forEach(function(c) {
-            //only if it's a budget for debits
+            //debits
             if (c.type == 1) {
-              totalSpendingBudgeted += c.budgetedAmount;
+              totalBudgeted += c.budgetedAmount;
+              totalSpent += c.totalSpent ? c.totalSpent : 0;
+              remainingToSpend += c.remainingToSpend;
             }
             //credits
             if (c.type == 0) {
               totalExpectedIncome += c.budgetedAmount;
             }
           });
-          $scope.income = {
-            expected: totalExpectedIncome.toFixed(2),
-            budgeted: totalSpendingBudgeted.toFixed(2),
-            remaining: (totalExpectedIncome - totalSpendingBudgeted).toFixed(2)
-          };
-          if ($scope.income.remaining < 0)
+          $scope.totals = {
+            expectedIncome: totalExpectedIncome.toFixed(2),
+            budgetedIncome: totalBudgeted.toFixed(2),
+            remainingIncome: (totalExpectedIncome - totalBudgeted).toFixed(2),
+            spent: totalSpent.toFixed(2),
+            remainingToSpend: remainingToSpend.toFixed(2)
+        };
+          if ($scope.totals.remainingIncome < 0)
             $scope.remainingIncomeClass = "text-danger";
-          else if ($scope.income.remaining > 0) {
+          else if ($scope.totals.remaining > 0) {
             $scope.remainingIncomeClass = "text-warning";
           } else
             $scope.remainingIncomeClass = "text-success";
         }
 
-        return totalSpendingBudgeted;
+        return totalBudgeted;
       };
       function refresh() {
         getCategories();

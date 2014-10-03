@@ -14,7 +14,7 @@
 
   <div class="row">
     <div id="income-summary" class="col-md-3">
-      <h2 class="section-header">Income</h2>
+      <h2 class="section-header">Summary</h2>
       <table class="table table-condensed">
         <thead>
           <tr>
@@ -27,7 +27,7 @@
         <tbody>
           <tr>
             <td>{{income.expected | currency}}</td>
-            <td>{{getBudgetedIncome() | currency}}</td>
+            <td>{{calculateSummary() | currency}}</td>
             <td data-toggle="tooltip"
                 title="The amount you have left to budget. This number should be 0!"
                 data-placement="bottom"

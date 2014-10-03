@@ -9,7 +9,7 @@
       $scope.addCategory = addCategory;
       $scope.addTransaction = addTransaction;
       $scope.getSpentAmount = getSpentAmount;
-      $scope.getBudgetedIncome = getBudgetedIncome;
+      $scope.calculateSummary = calculateSummary;
       $scope.removeCategory = removeCategory;
       $scope.setInitialTransactionValues = setInitialTransactionValues;
       $scope.sortStart = sortStart;
@@ -44,7 +44,7 @@
           else
             return 1;
         });
-        getBudgetedIncome();
+        calculateSummary();
         $scope.loading = false;
       };
       function failed(error) {
@@ -73,9 +73,9 @@
         return total.toFixed(2);
       };
 
-      function getBudgetedIncome() {
-        var totalSpendingBudgeted = 0;
-        var totalExpectedIncome = 0;
+      function calculateSummary() {
+        var totalSpendingBudgeted = 0,
+          totalExpectedIncome = 0;
         if ($scope.budget.categories) {
           $scope.budget.categories.forEach(function(c) {
             //only if it's a budget for debits
@@ -88,9 +88,9 @@
             }
           });
           $scope.income = {
-            expected: totalExpectedIncome,
-            budgeted: totalSpendingBudgeted,
-            remaining: totalExpectedIncome - totalSpendingBudgeted
+            expected: totalExpectedIncome.toFixed(2),
+            budgeted: totalSpendingBudgeted.toFixed(2),
+            remaining: (totalExpectedIncome - totalSpendingBudgeted).toFixed(2)
           };
           if ($scope.income.remaining < 0)
             $scope.remainingIncomeClass = "text-danger";

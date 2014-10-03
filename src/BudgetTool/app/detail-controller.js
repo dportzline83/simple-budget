@@ -78,7 +78,8 @@
         var totalBudgeted = 0,
           totalExpectedIncome = 0,
           totalSpent = 0,
-            remainingToSpend = 0;
+          remainingToSpend = 0,
+          totalIncomeReceived = 0;
         if ($scope.budget.categories) {
           $scope.budget.categories.forEach(function(c) {
             //debits
@@ -90,10 +91,12 @@
             //credits
             if (c.type == 0) {
               totalExpectedIncome += c.budgetedAmount;
+              totalIncomeReceived += c.totalSpent;
             }
           });
           $scope.totals = {
             expectedIncome: totalExpectedIncome.toFixed(2),
+            incomeReceived: totalIncomeReceived.toFixed(2),
             budgetedIncome: totalBudgeted.toFixed(2),
             remainingIncome: (totalExpectedIncome - totalBudgeted).toFixed(2),
             spent: totalSpent.toFixed(2),

@@ -104,6 +104,19 @@
           </div>
         </div>
       </li>
+      <li class="totals">
+        <div class="row">
+          <div class="col-md-1 col-md-offset-2">
+            <strong>Totals:</strong>
+          </div>
+          <div class="col-md-2 col-md-offset-1">
+            <strong>{{ totals.expectedIncome | currency }}</strong>
+          </div>
+          <div class="col-md-2">
+            <strong>{{ totals.incomeReceived | currency }}</strong>
+          </div>
+        </div>
+      </li>
     </ul>
   </div>
   <div id="category-list" class="budget-list">
@@ -159,7 +172,7 @@
           </div>
         </div>
       </li>
-      <li id="totals">
+      <li class="totals">
         <div class="row">
           <div class="col-md-1 col-md-offset-2">
             <strong>Totals:</strong>

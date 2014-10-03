@@ -6808,7 +6808,7 @@ footer {
 #income-summary td {
   text-align: right;
 }
-#totals div[class*=col-] {
+.totals div[class*=col-] {
   padding-left: 48px;
 }
 /* #endregion */

@@ -14,26 +14,25 @@
 
   <div class="row">
     <div id="income-summary" class="col-md-3">
-      <h2 class="section-header">Summary</h2>
+      <h2 class="section-header">Balance</h2>
       <table class="table table-condensed">
         <thead>
           <tr>
-            <th>Income</th>
-            <th>Budgeted</th>
-            <th>Remaining</th>
-            <th></th>
+            <th>Projected</th>
+            <th>Current</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>{{totals.expectedIncome | currency}}</td>
-            <td>{{calculateSummary() | currency}}</td>
-            <td data-toggle="tooltip"
-                title="The amount you have left to budget. This number should be 0!"
-                data-placement="bottom"
-                data-ng-class="remainingIncomeClass">
-              {{totals.remainingIncome | currency}}
+            <td>
+              <span data-toggle="tooltip"
+                    title="The amount you have left to budget. This number should be 0!"
+                    data-placement="bottom"
+                    data-ng-class="remainingIncomeClass">
+                {{ totals.remainingIncome | currency }}
+              </span>
             </td>
+            <td>{{ totals.actualBalance | currency}}</td>
           </tr>
         </tbody>
       </table>

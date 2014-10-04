@@ -6805,7 +6805,8 @@ footer {
 #income-summary table {
   margin-bottom: 5px;
 }
-#income-summary td {
+#income-summary td,
+#income-summary th {
   text-align: right;
 }
 .totals div[class*=col-] {

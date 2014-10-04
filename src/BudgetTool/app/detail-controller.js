@@ -100,7 +100,8 @@
             budgetedIncome: totalBudgeted.toFixed(2),
             remainingIncome: (totalExpectedIncome - totalBudgeted).toFixed(2),
             spent: totalSpent.toFixed(2),
-            remainingToSpend: remainingToSpend.toFixed(2)
+            remainingToSpend: remainingToSpend.toFixed(2),
+            actualBalance: (totalIncomeReceived - totalSpent).toFixed(2)
         };
           if ($scope.totals.remainingIncome < 0)
             $scope.remainingIncomeClass = "text-danger";

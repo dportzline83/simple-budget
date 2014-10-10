@@ -80,8 +80,10 @@
 
       function addTransaction() {
         var initialValues = {
-          budgetId: $routeParams.id
-        };
+          budgetId: $routeParams.id,
+          type: "1", //debit
+          date: new Date()
+      };
         var transaction =
           datacontext.createDetachedEntity('Transaction',
             initialValues);

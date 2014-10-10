@@ -70,9 +70,9 @@
           .fin(refreshView);
 
         function removeSucceeded() {
-          var index = $scope.budget.transactions.indexOf(trans);
-          $scope.budget.transactions.splice(index, 1);
+
         }
+
         function removeFailed(error) {
           failed({ message: error.message });
         }

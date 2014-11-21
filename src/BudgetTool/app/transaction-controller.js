@@ -16,6 +16,7 @@
       $scope.getBudgetData();
       $scope.income = {};
       $scope.loading = true;
+      $scope.transactions = [];
 
       function getBudgetData() {
         datacontext.getBudgetData($routeParams.id)
@@ -53,6 +54,13 @@
       }
       function getSucceeded(data) {
         $scope.budget = data[0];
+        $scope.transactions =
+          $scope.budget.transactions.sort(
+          function(a, b) {
+            if (a.date < b.date) return -1;
+            if (a.date > b.date) return 1;
+            return 0;
+          });
         $scope.loading = false;
       }
       function failed(error) {

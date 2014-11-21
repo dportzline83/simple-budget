@@ -6778,7 +6778,7 @@ footer {
 #income > div.row:last-child {
   border-bottom: none;
 }
-.budget-list input,
+.budget-list input:not([type=radio]),
 .budget-list select,
 .budget-list button {
   padding: 3px 6px 3px 6px;

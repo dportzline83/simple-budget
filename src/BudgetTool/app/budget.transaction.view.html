@@ -9,22 +9,37 @@
   <div id="category-list" class="budget-list">
     <div class="row" data-ng-show="budget.transactions.length > 0">
       <div class="col-md-1"></div>
-      <div class="col-md-3"><strong>Category</strong></div>
+      <div class="col-md-2"><strong>Category</strong></div>
+      <div class="col-md-2"><strong>Type</strong></div>
       <div class="col-md-2"><strong>Date</strong></div>
       <div class="col-md-2"><strong>Amount</strong></div>
-      <div class="col-md-2"><strong>Description</strong></div>
+      <div class="col-md-3"><strong>Description</strong></div>
       <div class="col-md-1"></div>
     </div>
     <ul>
-      <li data-ng-repeat="trans in budget.transactions">
+      <li data-ng-repeat="trans in transactions">
         <div class="row">
           <div class="col-md-1">
             <button type="button" class="btn btn-sm btn-danger" data-ng-click="removeTransaction(trans)"><span class="glyphicon glyphicon-remove"></span></button>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-2">
             <select class="form-control" data-on-change="endEdit(trans)" data-ng-model="trans.category" data-ng-options="c.name for c in categories">
               <option value="">Choose category...</option>
             </select>
+          </div>
+          <div class="col-md-2">
+            <div class="radio-inline">
+              <label>
+                <input type="radio" name="transaction-type{{trans.id}}" ng-model="trans.type" value="0" data-ng-change="endEdit(trans)" />
+                Credit
+              </label>
+            </div>
+            <div class="radio-inline">
+              <label>
+                <input type="radio" name="transaction-type{{trans.id}}" ng-model="trans.type" value="1" data-ng-change="endEdit(trans)" />
+                Debit
+              </label>
+            </div>
           </div>
           <div class="col-md-2">
             <div class="input-group">
@@ -38,7 +53,7 @@
               <input class="form-control" type="number" data-on-blur="endEdit(trans)" data-ng-model="trans.amount" required />
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
             <input class="form-control" type="text" data-on-blur="endEdit(trans)" data-ng-model="trans.description" />
           </div>
         </div>

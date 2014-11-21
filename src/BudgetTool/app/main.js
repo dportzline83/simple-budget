@@ -86,7 +86,7 @@ budget.directive('plusMinus', function() {
   };
 });
 
-budget.directive('modal',['$parse', function ($parse) {
+budget.directive('modal',['$parse', function () {
   return {
     restrict: 'E',
     templateUrl: "app/partials/modal.html",
@@ -96,8 +96,6 @@ budget.directive('modal',['$parse', function ($parse) {
       modalTitle: '@',
       submitAction: '&',
       cancelAction: '&'
-    },
-    link: function (scope, element, attrs) {
     }
   };
 }]);

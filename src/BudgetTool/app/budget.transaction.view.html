@@ -6,6 +6,9 @@
       <a class="btn btn-default" href="/#/details/{{budget.id}}">Back to budget</a>
     </div>
   </div>
+  <div class="pull-right">
+    Order by: <select data-ng-model="orderBy" data-ng-options="option for option in orderByOptions"></select>
+  </div>
   <div id="category-list" class="budget-list">
     <div class="row" data-ng-show="budget.transactions.length > 0">
       <div class="col-md-1"></div>
@@ -17,7 +20,7 @@
       <div class="col-md-1"></div>
     </div>
     <ul>
-      <li data-ng-repeat="trans in transactions">
+      <li data-ng-repeat="trans in transactions | orderBy: orderBy.toLowerCase()">
         <div class="row">
           <div class="col-md-1">
             <button type="button" class="btn btn-sm btn-danger" data-ng-click="removeTransaction(trans)"><span class="glyphicon glyphicon-remove"></span></button>

@@ -245,6 +245,7 @@
     <Content Include="app\partials\loader.html" />
     <Content Include="app\partials\modal.html" />
     <Content Include="app\transaction-controller.js" />
+    <Content Include="app\webpack-main.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bower_components\angular-route\angular-route.js" />
     <Content Include="Content\bower_components\angular-route\angular-route.min.js" />

@@ -152,3 +152,6 @@ $RECYCLE.BIN/
 
 # Custom rules
 App_Data
+
+node_modules/
+src/BudgetTool/app/public

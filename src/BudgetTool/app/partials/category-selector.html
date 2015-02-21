@@ -5,7 +5,7 @@
         data-ng-show="!category.showCategoryCreator">
   <option value="">Choose category...</option>
 </select>
-<a href="#" data-ng-click="category.showCategoryCreator = true" data-ng-show="!category.showCategoryCreator">New</a>
-<a href="#"  data-ng-click="category.showCategoryCreator = false; newCategory = {};" data-ng-hide="!category.showCategoryCreator">Cancel</a>
-<a href="#" data-ng-click="createNewCategory(category)" data-ng-hide="!category.showCategoryCreator">Save</a>
+<a data-ng-click="category.showCategoryCreator = true" data-ng-show="!category.showCategoryCreator">New</a>
+<a data-ng-click="category.showCategoryCreator = false; newCategory = {};" data-ng-hide="!category.showCategoryCreator">Cancel</a>
+<a data-ng-click="createNewCategory(category)" data-ng-hide="!category.showCategoryCreator">Save</a>
 <input type="text" class="form-control" data-ng-model="newCategory.name" data-ng-show="category.showCategoryCreator" />
